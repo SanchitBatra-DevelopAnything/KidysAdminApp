@@ -1,10 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { UtilityService } from './services/utility/utility.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit , OnDestroy{
   title = 'kidysAdmin';
+  showHeaderSub:Subscription = new Subscription();
+  showHeader:boolean = false;
+
+  constructor(private utilityService : UtilityService){
+    
+  }
+
+  ngOnInit()
+  {
+    this.showHeaderSub = this.utilityService.userLoggedIn.subscribe((show)=>{
+      this.showHeader = show;
+    });
+  }
+
+  ngOnDestroy()
+  {
+    this.showHeaderSub.unsubscribe();
+  }
 }
