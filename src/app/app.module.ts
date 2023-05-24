@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ApiService } from './services/api/api.service';
 import { HeaderComponent } from './header/header.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { CategoryItemComponent } from './category-item/category-item.component';
@@ -30,6 +30,7 @@ const appRoutes : Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    DynamicDialogModule,
     RouterModule.forRoot(appRoutes,{useHash: true}),
   ],
   providers: [],
