@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api/api.service';
 import { UtilityService } from '../services/utility/utility.service';
@@ -12,7 +12,7 @@ import { UtilityService } from '../services/utility/utility.service';
 export class LoginComponent implements OnInit {
   isLoading:boolean = false;
   admins : any = [];
-  loginForm:FormGroup = new FormGroup({
+  loginForm:UntypedFormGroup = new UntypedFormGroup({
 
   });
 
@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.utilityService.userLoggedIn.next(false);
-    this.loginForm = new FormGroup({
-      'username' : new FormControl(null), 
-      'password' : new FormControl(null)
+    this.loginForm = new UntypedFormGroup({
+      'username' : new UntypedFormControl(null), 
+      'password' : new UntypedFormControl(null)
     });
     this.getAdmins();
   } 
