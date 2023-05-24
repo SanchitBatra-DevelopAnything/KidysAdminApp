@@ -10,7 +10,7 @@ import { UtilityService } from './services/utility/utility.service';
 export class AppComponent implements OnInit , OnDestroy{
   title = 'kidysAdmin';
   showHeaderSub:Subscription = new Subscription();
-  showHeader:boolean = false;
+  showHeader:boolean = true;
 
   constructor(private utilityService : UtilityService){
     

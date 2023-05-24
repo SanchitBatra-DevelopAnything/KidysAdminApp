@@ -8,12 +8,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ApiService } from './services/api/api.service';
 import { HeaderComponent } from './header/header.component';
-import { CategoriesComponent } from './categories/categories.component';
+import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { CategoryItemComponent } from './category-item/category-item.component';
 
 
 const appRoutes : Routes = [
   {path: '' , component:LoginComponent , pathMatch:"full"},
-  {path: 'categories' , component : CategoriesComponent}
+  {path: 'categories' , component : CategoriesListComponent}
 ];
 
 @NgModule({
@@ -21,7 +22,8 @@ const appRoutes : Routes = [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    CategoriesComponent,
+    CategoriesListComponent,
+    CategoryItemComponent,
   ],
   imports: [
     BrowserModule,

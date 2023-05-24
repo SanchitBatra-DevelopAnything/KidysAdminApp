@@ -1,0 +1,27 @@
+<div class="card bottom-spaced-box">
+    <!-- <a (click) = "openCategoryScreen($event)" style = "cursor: pointer;"> -->
+    <img src = {{category.imgUrl}} class = "card-img-top img img-responsive">
+    <!-- </a> -->
+    <div class="card-body">
+        <h5 class="card-title center-text">
+            {{getCategoryName()}}
+        </h5>
+        <br>
+        <div class="row flex">
+            <div class = "col col-xs-4">
+                <button class = "btn btn-success" (click) = "onAddItem()">Add item</button>
+            </div>
+            <!-- <div class = "col col-xs-4">
+                <button class = "btn btn-primary" (click) = "onAddSubcategory()">Add Subcategory</button>
+            </div>
+            <div class = "col col-xs-4" *ngIf = "!isDeleting">
+                <button class = "btn btn-danger" (click) = "openDialog()">Delete</button>
+            </div>
+            <div class = "col col-xs-4" *ngIf = "isDeleting">
+                <button class = "btn btn-danger">
+                    <div class="loader loader-button"></div>
+                </button>
+            </div> -->
+        </div>
+    </div>
+</div>

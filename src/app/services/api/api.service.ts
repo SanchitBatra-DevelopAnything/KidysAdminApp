@@ -15,5 +15,9 @@ export class ApiService {
     return this.http.get(this.dbUrl + "admins.json");
   }
 
+  public getCategories() : Observable<any> {
+    return this.http.get(this.dbUrl+"Categories.json");
+  }
+
 
 }
