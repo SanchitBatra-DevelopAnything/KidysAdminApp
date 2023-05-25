@@ -19,11 +19,19 @@ import { HeaderComponent } from './header/header.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { CategoryItemComponent } from './category-item/category-item.component';
 import { AddItemComponent } from './add-item/add-item.component';
+import { ManageComponent } from './manage/manage.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { OrdersComponent } from './orders/orders.component';
+import { ReportingComponent } from './reporting/reporting.component';
 
 
 const appRoutes : Routes = [
   {path: '' , component:LoginComponent , pathMatch:"full"},
-  {path: 'categories' , component : CategoriesListComponent}
+  {path: 'categories' , component : CategoriesListComponent},
+  {path:'notifications' , component:NotificationsComponent},
+  {path : 'dailyReport' , component : OrdersComponent},
+  {path : 'manage' , component : ManageComponent},
+  {path : 'reporting' , component : ReportingComponent}
 ];
 
 @NgModule({
@@ -34,6 +42,10 @@ const appRoutes : Routes = [
     CategoriesListComponent,
     CategoryItemComponent,
     AddItemComponent,
+    ManageComponent,
+    NotificationsComponent,
+    OrdersComponent,
+    ReportingComponent,
   ],
   imports: [
     BrowserModule,

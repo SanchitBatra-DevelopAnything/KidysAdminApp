@@ -36,14 +36,16 @@
     <ng-template pTemplate="header">
         <img src = "../../assets/kidys logo-17.png" class = "img img-responsive">
     </ng-template>
-    <hr>
+    <hr class = "custom-hr">
     <ng-template pTemplate="content">
-        <h4 class = "pangolin">CATEGORIES</h4>
-        <hr>
-        <h4 class = "pangolin">ORDERS</h4>
-        <hr>
-        <h4 class = "pangolin">MANAGE</h4>
-        <hr>
-        <h4 class = "pangolin">REPORTING</h4>
+        <h4 class = "pangolin option"><a routerLink = "/categories" routerLinkActive = "active-link" (click) = "openDrawer = false;">CATEGORIES</a></h4>
+        <hr class = "custom-hr">
+        <h4 class = "pangolin option"><a routerLink = "/dailyReport" routerLinkActive = "active-link" (click) = "openDrawer = false;">ORDERS</a></h4>
+        <hr class = "custom-hr">
+        <h4 class = "pangolin option"><a routerLink = "/notifications" routerLinkActive = "active-link" (click) = "openDrawer = false;">NOTIFICATIONS</a></h4>
+        <hr class = "custom-hr">
+        <h4 class = "pangolin option"><a routerLink = "/manage" routerLinkActive = "active-link" (click) = "openDrawer = false;">MANAGE</a></h4>
+        <hr class = "custom-hr">
+        <h4 class = "pangolin option"><a routerLink = "/reporting" routerLinkActive = "active-link" (click) = "openDrawer = false;">REPORTING</a></h4>
     </ng-template>
 </p-sidebar>

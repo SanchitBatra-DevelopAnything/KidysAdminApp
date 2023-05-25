@@ -61,4 +61,20 @@ body {
     margin-top: 80px;
     padding: 20px;
   }
+
+  .option {
+      cursor: pointer;
+  }
+
+  .custom-hr
+  {
+      margin: 0px;
+  }
+
+  .active-link
+  {
+      color: red;
+      font-size: 24px;
+      font-weight: bolder;
+  }
   
