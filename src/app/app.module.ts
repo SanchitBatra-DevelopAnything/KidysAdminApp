@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ToastrModule } from 'ngx-toastr';
+import { SidebarModule } from 'primeng/sidebar';
 import { environment } from 'src/environments/environment';
 
 
@@ -40,6 +41,7 @@ const appRoutes : Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SidebarModule,
     DynamicDialogModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),

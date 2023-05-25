@@ -17,7 +17,7 @@
 
 <div class="navbar">
     
-    <a for="navbar-toggle" class="navbar-icon">&#9776;</a>
+    <a for="navbar-toggle" class="navbar-icon" (click) = "toggleDrawer()">&#9776;</a>
 
     <div class="navbar-header">
         <img src = "../../assets/kidys logo-17.png" class = "navbar-brand">
@@ -31,3 +31,19 @@
       </ul>
     </nav>
   </div>
+
+  <p-sidebar [(visible)]="openDrawer" styleClass="p-sidebar-mask" (onHide) = "openDrawer = false;">
+    <ng-template pTemplate="header">
+        <img src = "../../assets/kidys logo-17.png" class = "img img-responsive">
+    </ng-template>
+    <hr>
+    <ng-template pTemplate="content">
+        <h4 class = "pangolin">CATEGORIES</h4>
+        <hr>
+        <h4 class = "pangolin">ORDERS</h4>
+        <hr>
+        <h4 class = "pangolin">MANAGE</h4>
+        <hr>
+        <h4 class = "pangolin">REPORTING</h4>
+    </ng-template>
+</p-sidebar>

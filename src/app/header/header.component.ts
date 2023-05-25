@@ -9,6 +9,7 @@ import { UtilityService } from '../services/utility/utility.service';
 export class HeaderComponent implements OnInit {
 
   loggedIn = true;
+  openDrawer:boolean = false;
 
   constructor(private utilityService:UtilityService) { }
 
@@ -20,6 +21,12 @@ export class HeaderComponent implements OnInit {
     sessionStorage.clear();
     this.loggedIn = false;
     this.utilityService.userLoggedIn.next(false); //inform app component to delete header.
+  }
+
+  toggleDrawer()
+  {
+    this.openDrawer = true;
+    console.log(this.openDrawer);
   }
 
 }
