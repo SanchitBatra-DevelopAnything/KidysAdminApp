@@ -1,9 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { AddItemComponent } from '../add-item/add-item.component';
+import { UtilityService } from '../services/utility/utility.service';
 
 @Component({
   selector: 'app-category-item',
   templateUrl: './category-item.component.html',
-  styleUrls: ['./category-item.component.scss']
+  styleUrls: ['./category-item.component.scss'],
+  providers : [DialogService]
 })
 export class CategoryItemComponent implements OnInit {
 
@@ -13,7 +17,9 @@ export class CategoryItemComponent implements OnInit {
   @Input()
   categoryKeyInDb:any;
 
-  constructor() { }
+  ref:DynamicDialogRef | undefined;
+
+  constructor(private dialogService:DialogService , private utilityService:UtilityService) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +31,12 @@ export class CategoryItemComponent implements OnInit {
 
   onAddItem()
   {
-    
+    this.ref = this.dialogService.open(AddItemComponent, { 
+      data: {
+          key:this.categoryKeyInDb
+      },
+      header: 'Add an item'
+  });
   }
 
 }

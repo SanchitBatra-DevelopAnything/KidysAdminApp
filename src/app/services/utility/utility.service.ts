@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class UtilityService {
 
   userLoggedIn : Subject<boolean>;
+  
 
   constructor() { 
     this.userLoggedIn = new Subject<boolean>();
