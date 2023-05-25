@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+@import "https://fonts.googleapis.com/css?family=Pangolin";
+
 .loader {
     border: 4px solid #f3f3f3; /* Light gray border */
     border-top: 4px solid #3498db; /* Blue border for spinning effect */
@@ -19,6 +21,20 @@
       transform: translate(-50%, -50%) rotate(360deg);
     }
   }
+
+  .pangolin {
+    font-family: 'Pangolin';
+  }
+
+  .choc-button{
+    background-color: rgb(43, 33, 31);
+    color: white;
+}
+
+.choc-button:hover{
+  background-color: rgb(43, 33, 31);
+  color: white;
+}
 
   .toast-center-center {
     top: 50%;

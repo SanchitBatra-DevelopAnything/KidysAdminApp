@@ -1,4 +1,4 @@
-<nav class = "navbar navbar-default">
+<!-- <nav class = "navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
                 <img src = "../../assets/kidys logo-17.png" class = "navbar-brand">
@@ -8,10 +8,26 @@
                 <li routerLinkActive = "active"><a routerLink = "/categories">Categories</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <!-- <li routerLinkActive = "active"><a routerLink = "/manage">Manage</a></li> -->
-                <!-- <li routerLinkActive = "active"><a routerLink = "/notifications"><i class="pi pi-bell mr-4 p-text-secondary" pBadge style="font-size: 2rem" value="{{totalNotifications}}"></i></a></li> -->
+                
                 <li *ngIf = "loggedIn"><a routerLink = "/" (click) = "onLogout()">Logout</a></li>
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
+
+<div class="navbar">
+    
+    <a for="navbar-toggle" class="navbar-icon">&#9776;</a>
+
+    <div class="navbar-header">
+        <img src = "../../assets/kidys logo-17.png" class = "navbar-brand">
+    </div>
+
+
+    <h4 style = "color:white">Welcome to Kidy's Bakery Admin Portal</h4>
+    <nav class="navbar-menu">
+      <ul class = "navbar-right">
+        <li *ngIf = "loggedIn"><a routerLink = "/" (click) = "onLogout()">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
