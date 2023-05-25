@@ -33,9 +33,11 @@ export class CategoryItemComponent implements OnInit {
   {
     this.ref = this.dialogService.open(AddItemComponent, { 
       data: {
-          key:this.categoryKeyInDb
+          key:this.categoryKeyInDb,
+          category:this.category
       },
-      header: 'Add an item'
+      header: 'Add an item',
+      maximizable:true
   });
   }
 
