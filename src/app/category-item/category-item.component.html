@@ -3,14 +3,21 @@
     <img src = {{category.imgUrl}} class = "card-img-top img img-responsive">
     <!-- </a> -->
     <div class="card-body">
-        <h5 class="card-title center-text pangolin" style= "font-size: 30px;">
-            {{getCategoryName()}}
-        </h5>
-        <br>
-        <div class="row flex">
-            <div class = "col col-xs-4">
-                <button class = "btn choc-button" (click) = "onAddItem()">Add item</button>
-            </div>
-        </div>
+       
+            
+                <div style = "display: flex; justify-content: center;">
+                    <h5 class="card-title center-text pangolin" style= "font-size: 30px; display: inline-block;">
+                        {{getCategoryName()}}
+                    </h5>
+                    <h5>
+                        <button class = "btn choc-button" style = "display: inline-block; margin-left: 15px;" (click) = "onAddItem()">Add item</button>
+                    </h5>
+                </div>
+                
+            
+                
+            
+            
+        
     </div>
 </div>
