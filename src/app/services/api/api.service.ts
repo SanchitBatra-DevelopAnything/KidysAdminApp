@@ -19,5 +19,10 @@ export class ApiService {
     return this.http.get(this.dbUrl+"Categories.json");
   }
 
+  public addItem(value:any , catKey:any) : Observable<any>
+  {
+    return this.http.post(this.dbUrl+"Categories/"+catKey+"/items.json" , value);
+  }
+
 
 }

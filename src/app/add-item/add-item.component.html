@@ -1,10 +1,9 @@
 <!-- app.component.html -->
-
-<div class="container">
+<div class="container" *ngIf = "!isLoading">
     <h1>Add items here!</h1>
     <h5>for : {{parentCategoryData.categoryName}}</h5>
   
-    <form [formGroup]="addItemForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="addItemForm" (ngSubmit) = "onSubmit(addItemForm.value)">
      
    <div class="form-group">
     <label for="photo">Photo Upload</label>
@@ -49,7 +48,9 @@
         <input type="number" id="modern_trade_price" formControlName="modern_trade_price" class = "form-control">
       </div>
   
-      <button type="button" class = "btn btn-primary" (click) = "onSubmit()">Submit</button>
+      <button type="submit" class = "btn btn-primary">Submit</button>
     </form>
   </div>
+
+  <div class="loader center" *ngIf = "isLoading"></div>
   

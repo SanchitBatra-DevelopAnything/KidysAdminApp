@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Subscription } from 'rxjs';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { finalize } from 'rxjs';
+import { ApiService } from '../services/api/api.service';
 import { UtilityService } from '../services/utility/utility.service';
 
 @Component({
@@ -15,13 +17,16 @@ export class AddItemComponent implements OnInit{
   categoryKey:string = "";
   fullConfig:any;
   parentCategoryData:any;
+  task:AngularFireUploadTask | any;
+  isLoading:boolean = false;
 
   addItemForm: FormGroup = new FormGroup({
 
   });
   photoPreview: string | undefined;
+  selectedImage:any;
 
-  constructor(private config:DynamicDialogConfig , private utilityService:UtilityService , private formBuilder:FormBuilder){}
+  constructor(private config:DynamicDialogConfig , private formBuilder:FormBuilder , private storage:AngularFireStorage , private apiService:ApiService){}
   
   ngOnInit()
   {
@@ -39,10 +44,6 @@ export class AddItemComponent implements OnInit{
     });
   }
 
-  submit()
-  {
-    console.log(this.categoryKey);
-  }
 
   onFileChange(event: any) {
     const reader = new FileReader();
@@ -53,15 +54,38 @@ export class AddItemComponent implements OnInit{
       reader.onload = () => {
         this.photoPreview = reader.result as string;
       };
+      this.selectedImage = event.target.files[0];
+    }
+    else
+    {
+      this.selectedImage = null;
     }
   }
 
-  onSubmit() {
+  async onSubmit(formValue : any)  {
     if (this.addItemForm.valid) {
       // Process form data here
-      console.log(this.addItemForm.value);
+      this.isLoading = true;
+      var filePath = `items/${this.selectedImage.name}_${new Date().getTime()}`;
+      var fileRef = this.storage.ref(filePath);
+      this.task = this.storage.upload(filePath,this.selectedImage);
+      (await this.task).ref.getDownloadURL().then((url:any) => {
+          formValue["imgUrl"] = url;
+          this.apiService.addItem(formValue , this.categoryKey).subscribe(()=>{
+            this.isLoading = false;
+            this.resetForm();
+          });
+       });
     } else {
       // Display validation errors or take appropriate action
     }
   }
+
+  resetForm()
+  {
+    this.addItemForm.reset();
+    this.photoPreview = undefined;
+    this.selectedImage = null;
+  }
 }
+

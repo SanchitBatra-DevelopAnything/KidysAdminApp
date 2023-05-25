@@ -37,7 +37,9 @@ export class CategoryItemComponent implements OnInit {
           category:this.category
       },
       header: 'Add an item',
-      maximizable:true
+      maximizable:true,
+      height : "800px",
+      width:"600px",
   });
   }
 
