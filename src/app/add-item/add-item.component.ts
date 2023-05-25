@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { finalize } from 'rxjs';
 import { ApiService } from '../services/api/api.service';
@@ -26,7 +27,7 @@ export class AddItemComponent implements OnInit{
   photoPreview: string | undefined;
   selectedImage:any;
 
-  constructor(private config:DynamicDialogConfig , private formBuilder:FormBuilder , private storage:AngularFireStorage , private apiService:ApiService){}
+  constructor(private config:DynamicDialogConfig , private formBuilder:FormBuilder , private storage:AngularFireStorage , private apiService:ApiService , private toastr:ToastrService){}
   
   ngOnInit()
   {
@@ -73,6 +74,11 @@ export class AddItemComponent implements OnInit{
           formValue["imgUrl"] = url;
           this.apiService.addItem(formValue , this.categoryKey).subscribe(()=>{
             this.isLoading = false;
+            this.toastr.success('Item Added Successfully!', 'Notification!' , {
+              timeOut : 4000 ,
+              closeButton : true , 
+              positionClass : 'toast-top-right'
+            });
             this.resetForm();
           });
        });

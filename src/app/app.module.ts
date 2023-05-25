@@ -7,6 +7,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ToastrModule } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
 
@@ -40,6 +41,7 @@ const appRoutes : Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     DynamicDialogModule,
+    ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     RouterModule.forRoot(appRoutes,{useHash: true}),
