@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
     arr = Object.values(this.admins);
     for(let i=0;i<arr.length;i++)
     {
-      if(arr[i].username == adminName)
+      if(arr[i].username.trim() == adminName.trim())
       {
         return i;
       }
