@@ -9,6 +9,7 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ToastrModule } from 'ngx-toastr';
 import { SidebarModule } from 'primeng/sidebar';
+import { DialogModule } from 'primeng/dialog';
 import { environment } from 'src/environments/environment';
 
 
@@ -25,6 +26,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemComponent } from './item/item.component';
+
 import { SpeedDialModule } from 'primeng/speeddial';
 
 
@@ -61,6 +63,7 @@ const appRoutes : Routes = [
     ReactiveFormsModule,
     SidebarModule,
     SpeedDialModule,
+    DialogModule,
     DynamicDialogModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
