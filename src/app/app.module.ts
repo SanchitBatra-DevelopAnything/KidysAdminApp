@@ -23,11 +23,14 @@ import { ManageComponent } from './manage/manage.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ReportingComponent } from './reporting/reporting.component';
+import { ItemListComponent } from './item-list/item-list.component';
+import { ItemComponent } from './item/item.component';
 
 
 const appRoutes : Routes = [
   {path: '' , component:LoginComponent , pathMatch:"full"},
   {path: 'categories' , component : CategoriesListComponent},
+  {path : 'itemsOf/:categoryKey/:categoryName' , component : ItemListComponent },
   {path:'notifications' , component:NotificationsComponent},
   {path : 'dailyReport' , component : OrdersComponent},
   {path : 'manage' , component : ManageComponent},
@@ -46,6 +49,8 @@ const appRoutes : Routes = [
     NotificationsComponent,
     OrdersComponent,
     ReportingComponent,
+    ItemListComponent,
+    ItemComponent,
   ],
   imports: [
     BrowserModule,

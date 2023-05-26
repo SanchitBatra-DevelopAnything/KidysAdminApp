@@ -1,0 +1,23 @@
+<div class="container">
+    <input type = "text" placeholder=" Search" style = "float: right; width:50%;" [(ngModel)] = "searchInput" (input) = "searchItems()"> 
+    <br>
+
+    
+
+    <div class="loader center" *ngIf = "isLoading">
+
+    </div>
+    <div *ngIf = "noItems && !isLoading">
+        <h4>No Items Here.</h4>
+        <p>Please add from the ADD ITEM button on <a routerLink = "/categories">CATEGORIES</a> screen.</p>
+    </div>
+    <div class="row">
+        <div class="col col-xs-4" *ngFor = "let item of filteredItems ; let i = index">
+            <app-item [item] = item
+            [parentCategoryKey] = "categoryKey"
+            [parentCategoryName] ="categoryName">
+            </app-item>
+        </div>
+    </div>
+    
+</div>

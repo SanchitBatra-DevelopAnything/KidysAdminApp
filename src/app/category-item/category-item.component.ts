@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { UtilityService } from '../services/utility/utility.service';
@@ -19,7 +20,7 @@ export class CategoryItemComponent implements OnInit {
 
   ref:DynamicDialogRef | undefined;
 
-  constructor(private dialogService:DialogService , private utilityService:UtilityService) { }
+  constructor(private dialogService:DialogService , private utilityService:UtilityService , private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -41,6 +42,11 @@ export class CategoryItemComponent implements OnInit {
       height : "800px",
       width:"600px",
   });
+  }
+
+  openCategoryScreen(e:any)
+  {
+    this.router.navigate(['itemsOf/'+this.categoryKeyInDb+"/"+this.getCategoryName()]);
   }
 
 }
