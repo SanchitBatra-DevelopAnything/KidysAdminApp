@@ -25,7 +25,7 @@ export class ItemListComponent implements OnInit , OnDestroy {
   categoryKey : string = "";
   categoryName : string = "";
 
-  deleteItemSub : Subscription = new Subscription();
+  deleteItemSub : Subscription | undefined;
   updateItemSub: Subscription = new Subscription();
 
 
@@ -41,10 +41,11 @@ export class ItemListComponent implements OnInit , OnDestroy {
     this.categoryName = this.route.snapshot.params['categoryName'];
 
   
-  //  this.deleteItemSub =  this.utilityService.itemDeleted.subscribe((_)=>{
-  //    this.searchInput = "";
-  //     this.loadItems(this.selectedSubcategory , this.selectedSubcategoryKey);
-  //   });
+   this.deleteItemSub =  this.utilityService.itemDeleted.subscribe((_)=>{
+     this.searchInput = "";
+     console.log("RECEIVED the deletion confirmation");
+      this.loadItems();
+    });
   //   this.updateItemSub = this.utilityService.itemUpdated.subscribe((_)=>{
   //     this.searchInput = "";
   //     this.loadItems(this.selectedSubcategory,this.selectedSubcategoryKey);
@@ -56,11 +57,12 @@ export class ItemListComponent implements OnInit , OnDestroy {
 
   loadItems()
   {
+    this.isLoading = true;
     this.ItemsList = [];
     this.ItemsKeys = [];
     this.fullItemsObject = [];
     this.filteredItems = this.fullItemsObject;
-    this.isLoading = true;
+    
 
     this.apiService.getItems(this.categoryKey).subscribe((items : any)=>{
       if(items == null)
@@ -105,7 +107,10 @@ export class ItemListComponent implements OnInit , OnDestroy {
  
   ngOnDestroy()
   {
-    this.deleteItemSub.unsubscribe();
+    if(this.deleteItemSub!=undefined)
+    {
+      this.deleteItemSub.unsubscribe();
+    }
     this.updateItemSub.unsubscribe();
   }
 

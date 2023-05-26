@@ -63,7 +63,8 @@ export class ItemComponent implements OnInit{
     this.isDeleting = true;
     this.dialogVisible = false;
     this.apiService.deleteItem(this.parentCategoryKey , this.item.key).subscribe((_)=>{
-      //this.utilityService.itemDeleted.next(this.item.key);
+      this.utilityService.itemDeleted.next(this.item.key);
+      console.log("sent the key");
       this.isDeleting = false;
     });
   }

@@ -21,7 +21,7 @@
         <h4>No Items Here.</h4>
         <p>Please add from the ADD ITEM button on <a routerLink = "/categories">CATEGORIES</a> screen.</p>
     </div>
-    <div class="row">
+    <div class="row" *ngIf = "!isLoading">
         <div class="col col-xs-4" *ngFor = "let item of filteredItems ; let i = index">
             <app-item [item] = item
             [parentCategoryKey] = "categoryKey"
