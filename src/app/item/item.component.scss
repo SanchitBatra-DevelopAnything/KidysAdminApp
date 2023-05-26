@@ -23,6 +23,7 @@
   .center-text
   {
       text-align: center;
+      overflow: hidden;
   }
 
   .bottom-spaced-box
@@ -39,6 +40,12 @@
   .small-loader-button {
       width : 50px;
       height : 30px;
+  }
+
+  .edit-btn-container{
+      position:absolute;
+      bottom:10px;
+      right:10px;
   }
 
   

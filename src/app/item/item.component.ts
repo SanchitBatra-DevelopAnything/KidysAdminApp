@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { MenuItem } from 'primeng/api';
 import { finalize } from 'rxjs';
 import { ApiService } from '../services/api/api.service';
 import { UtilityService } from '../services/utility/utility.service';
@@ -19,6 +20,8 @@ export class ItemComponent implements OnInit{
 
   @Input()
   parentCategoryName:any;
+
+  items:MenuItem[] = [];
 
 
   isDeleting : boolean = false;
@@ -46,6 +49,20 @@ export class ItemComponent implements OnInit{
     this.isDeleting = false;
     this.isEditMode = false;
     this.isBeingUpdated = false;
+    this.items = [
+      {
+          icon: 'pi pi-pencil',
+          command: () => {
+              
+          }
+      },
+      {
+          icon: 'pi pi-trash',
+          command: () => {
+              
+          }
+      },
+  ];
   }
 
   

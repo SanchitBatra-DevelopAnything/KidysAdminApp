@@ -25,6 +25,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemComponent } from './item/item.component';
+import { SpeedDialModule } from 'primeng/speeddial';
 
 
 const appRoutes : Routes = [
@@ -59,6 +60,7 @@ const appRoutes : Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     SidebarModule,
+    SpeedDialModule,
     DynamicDialogModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
