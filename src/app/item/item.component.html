@@ -9,15 +9,23 @@
                     <h5 class="card-title center-text pangolin" style= "font-size: 30px; display: inline-block;">
                         {{item.itemName | uppercase}}
                     </h5>
-                    <div style = "margin-left:10px;" class = "pangolin;">
-                        <p>DELHI-NCR-PRICE : Rs.{{item.delhi_ncr_price}}</p>
-                        <p>OUT-STATION-PRICE : Rs.{{item.out_station_price}}</p>
-                        <p>WESTERN-PRICE : Rs. {{item.western_price}}</p>
-                        <p>SUPER-STOCKIST-PRICE : Rs. {{item.super_stockist_price}}</p>    
-                        <p>MODERN-TRADE-PRICE : Rs. {{item.modern_trade_price}}</p>
+                    <div style = "display: flex;">
+                        <div style = "margin-left:10px;" class = "pangolin;">
+                            <p>DELHI-NCR-PRICE : Rs.{{item.delhi_ncr_price}}</p>
+                            <p>OUT-STATION-PRICE : Rs.{{item.out_station_price}}</p>
+                            <p>WESTERN-PRICE : Rs. {{item.western_price}}</p>
+                            <p>SUPER-STOCKIST-PRICE : Rs. {{item.super_stockist_price}}</p>    
+                            <p>MODERN-TRADE-PRICE : Rs. {{item.modern_trade_price}}</p>
+                        </div>
+                        <div style = "position: absolute; bottom:30%; right:15%;">
+                             <p-speedDial [model]="items" direction="up"></p-speedDial> 
+                            
+                        </div>
+                         
                     </div>
                     
-                        <!-- <p-speedDial [model]="items" direction="down"></p-speedDial> -->
+                    
+                        
                     
                 </div>
                 
