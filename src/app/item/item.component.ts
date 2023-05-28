@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ConfirmationService, ConfirmEventType, MenuItem } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { finalize } from 'rxjs';
+import { EditItemComponent } from '../edit-item/edit-item.component';
 import { ApiService } from '../services/api/api.service';
 import { UtilityService } from '../services/utility/utility.service';
 
@@ -27,23 +29,23 @@ export class ItemComponent implements OnInit{
 
   dialogVisible:boolean = false;
 
+  ref:DynamicDialogRef | undefined;
 
 
-  constructor(private storage : AngularFireStorage,private apiService : ApiService , private utilityService : UtilityService) { }
+
+  constructor(private storage : AngularFireStorage,private apiService : ApiService , private utilityService : UtilityService , private dialogService:DialogService) { }
 
   ngOnInit(): void {
     this.items = [
       {
           icon: 'pi pi-pencil',
           command: () => {
-              
+              this.editItem()
           }
       },
       {
           icon: 'pi pi-trash',
           command: ($event) => {
-              // this.confirmPosition('left');
-              console.log("Hello");
               this.showDialog();
           }
       },
@@ -67,5 +69,20 @@ export class ItemComponent implements OnInit{
       console.log("sent the key");
       this.isDeleting = false;
     });
+  }
+
+  editItem()
+  {
+    this.ref = this.dialogService.open(EditItemComponent, { 
+      data: {
+          categoryKey:this.parentCategoryKey,
+          key:this.item.key,
+          itemData:this.item
+      },
+      header: 'Edit an item',
+      maximizable:true,
+      height : "800px",
+      width:"600px",
+  });
   }
 }

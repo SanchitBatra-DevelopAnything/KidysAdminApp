@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -28,6 +28,7 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { ItemComponent } from './item/item.component';
 
 import { SpeedDialModule } from 'primeng/speeddial';
+import { EditItemComponent } from './edit-item/edit-item.component';
 
 
 const appRoutes : Routes = [
@@ -54,6 +55,7 @@ const appRoutes : Routes = [
     ReportingComponent,
     ItemListComponent,
     ItemComponent,
+    EditItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,7 @@ const appRoutes : Routes = [
     AngularFireStorageModule,
     RouterModule.forRoot(appRoutes,{useHash: true}),
   ],
-  providers: [],
+  providers: [DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
