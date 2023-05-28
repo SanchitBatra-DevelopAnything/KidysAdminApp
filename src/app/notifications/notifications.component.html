@@ -1,1 +1,40 @@
-<p>notifications works!</p>
+<div class="row">
+    <div class="col">
+        <div class="container">
+            <h3 style = "display : inline; font-size:48px;" class = "pangolin">Distributor Requests!</h3> 
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div class="loader center" *ngIf = "isLoading">
+
+</div>
+
+<div class="container" *ngIf = "!isLoading">
+
+    <p *ngIf = "notificationData.length == 0" style = "color: red; font-size: 20px;" class = "pangolin">No Pending Distributor Requests!</p>
+ <div class="row">
+     <div class="col-xs-6" *ngFor="let data of notificationData; let i=index;">
+        <div class="card flex justify-content-center">
+            <p-card header="NAME : {{data.distributorName}}">
+                <p style = "font-weight: bold; color: red; font-size:15px;">
+                    GST NO. {{data.GST}}
+                </p>
+                <p style = "font-weight: bold; color: red; font-size:15px;">
+                    From : {{data.area}}
+                </p>
+                <ng-template pTemplate="footer">
+                    <p>
+                        <span style = "font-size: 15px; font-weight: bold;">PRICE LIST : </span> 
+                        <p-dropdown [options]="priceListOptions" optionLabel="name" (onChange) = "attachPriceList($event , i)"></p-dropdown>
+                    </p>
+                    <p-button label="Approve" icon="pi pi-check" (click) = "onApprove(i)"></p-button>
+                    <p-button label="Reject" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click) = "onReject(i)"></p-button>
+                </ng-template>
+            </p-card>
+        </div>
+     </div>
+ </div>   
+
+</div>

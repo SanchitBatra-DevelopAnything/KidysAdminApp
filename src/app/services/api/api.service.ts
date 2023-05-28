@@ -39,5 +39,17 @@ export class ApiService {
     return this.http.put(this.dbUrl+"Categories/" + categoryKey + "/items/" + itemKey+".json" , updatedItem);
   }
 
+  public getDistributorRequests() : Observable<any>
+  {
+    return this.http.get(this.dbUrl+"DistributorNotifications.json");
+  }
 
+  public makeDistributor(data:any) : Observable<any>
+  {
+    return this.http.post(this.dbUrl+"Distributors.json" , data);
+  }
+
+  public deleteNotification(key:any) :Observable<any> {
+    return this.http.delete(this.dbUrl+"DistributorNotifications/"+key+".json");
+  }
 }

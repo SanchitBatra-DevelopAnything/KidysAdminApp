@@ -10,6 +10,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ToastrModule } from 'ngx-toastr';
 import { SidebarModule } from 'primeng/sidebar';
 import { DialogModule } from 'primeng/dialog';
+import { CardModule } from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown';
 import { environment } from 'src/environments/environment';
 
 
@@ -66,6 +68,8 @@ const appRoutes : Routes = [
     SidebarModule,
     SpeedDialModule,
     DialogModule,
+    CardModule,
+    DropdownModule,
     DynamicDialogModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
