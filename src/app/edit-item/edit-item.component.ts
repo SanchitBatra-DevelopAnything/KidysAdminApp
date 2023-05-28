@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ApiService } from '../services/api/api.service';
+import { UtilityService } from '../services/utility/utility.service';
 
 @Component({
   selector: 'app-edit-item',
@@ -28,7 +29,7 @@ export class EditItemComponent {
   photoPreview: string | undefined;
   selectedImage:any;
 
-  constructor(private config:DynamicDialogConfig , private formBuilder:FormBuilder , private storage:AngularFireStorage , private apiService:ApiService , private toastr:ToastrService){}
+  constructor(private config:DynamicDialogConfig , private formBuilder:FormBuilder , private storage:AngularFireStorage , private apiService:ApiService , private toastr:ToastrService , private utilityService:UtilityService){}
   
   ngOnInit()
   {
@@ -77,12 +78,13 @@ export class EditItemComponent {
       this.isLoading = true;
       if(this.originalUrl!=this.photoPreview)
       {
-        var filePath = `items/${this.selectedImage.name}_${new Date().getTime()}`;
+      var filePath = `items/${this.selectedImage.name}_${new Date().getTime()}`;
       var fileRef = this.storage.ref(filePath);
         this.task = this.storage.upload(filePath,this.selectedImage);
         (await this.task).ref.getDownloadURL().then((url:any) => {
             formValue["imgUrl"] = url;
             this.apiService.editItem(this.categoryKey , this.itemKey , formValue).subscribe(()=>{
+              this.utilityService.itemEditted.next(this.itemKey);
               this.isLoading = false;
               this.toastr.success('Item Editted Successfully!', 'Notification!' , {
                 timeOut : 4000 ,
@@ -98,6 +100,7 @@ export class EditItemComponent {
         //photo was same , only update the items content.
         formValue["imgUrl"] = this.originalUrl;
         this.apiService.editItem(this.categoryKey , this.itemKey , formValue).subscribe((_)=>{
+          this.utilityService.itemEditted.next(this.itemKey);
           this.isLoading = false;
           this.toastr.success('Item Editted Successfully!', 'Notification!' , {
             timeOut : 4000 ,

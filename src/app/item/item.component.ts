@@ -54,7 +54,7 @@ export class ItemComponent implements OnInit{
 
   showDialog()
   {
-    this.dialogVisible = true;
+    this.dialogVisible = true; //OK BUTTON IN DIALOG TRIGGERS DELETE METHOD.
   }
 
 

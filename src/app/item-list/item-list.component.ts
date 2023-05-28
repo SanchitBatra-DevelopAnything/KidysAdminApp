@@ -26,7 +26,7 @@ export class ItemListComponent implements OnInit , OnDestroy {
   categoryName : string = "";
 
   deleteItemSub : Subscription | undefined;
-  updateItemSub: Subscription = new Subscription();
+  updateItemSub: Subscription | undefined;
 
 
 
@@ -46,10 +46,10 @@ export class ItemListComponent implements OnInit , OnDestroy {
      console.log("RECEIVED the deletion confirmation");
       this.loadItems();
     });
-  //   this.updateItemSub = this.utilityService.itemUpdated.subscribe((_)=>{
-  //     this.searchInput = "";
-  //     this.loadItems(this.selectedSubcategory,this.selectedSubcategoryKey);
-  //   });
+    this.updateItemSub = this.utilityService.itemEditted.subscribe((_)=>{
+      this.searchInput = "";
+      this.loadItems();
+    });
     this.loadItems();
   }
 
@@ -111,7 +111,10 @@ export class ItemListComponent implements OnInit , OnDestroy {
     {
       this.deleteItemSub.unsubscribe();
     }
-    this.updateItemSub.unsubscribe();
+    if(this.updateItemSub!=undefined)
+    {
+      this.updateItemSub.unsubscribe();
+    }
   }
 
 }
