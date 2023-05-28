@@ -86,7 +86,7 @@ export class EditItemComponent {
             this.apiService.editItem(this.categoryKey , this.itemKey , formValue).subscribe(()=>{
               this.utilityService.itemEditted.next(this.itemKey);
               this.isLoading = false;
-              this.toastr.success('Item Editted Successfully!', 'Notification!' , {
+              this.toastr.success('Item Editted Successfully , Please close the form!', 'Notification!' , {
                 timeOut : 4000 ,
                 closeButton : true , 
                 positionClass : 'toast-top-right'
@@ -102,7 +102,7 @@ export class EditItemComponent {
         this.apiService.editItem(this.categoryKey , this.itemKey , formValue).subscribe((_)=>{
           this.utilityService.itemEditted.next(this.itemKey);
           this.isLoading = false;
-          this.toastr.success('Item Editted Successfully!', 'Notification!' , {
+          this.toastr.success('Item Editted Successfully , Please close the form!', 'Notification!' , {
             timeOut : 4000 ,
             closeButton : true , 
             positionClass : 'toast-top-right'
