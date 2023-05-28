@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../services/api/api.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class NotificationsComponent implements OnInit {
 
 
 
-  constructor(private apiService:ApiService){}
+  constructor(private apiService:ApiService , private toastr : ToastrService){}
 
   ngOnInit()
   {
@@ -65,6 +66,11 @@ export class NotificationsComponent implements OnInit {
     this.apiService.deleteNotification(this.notificationKeys[index]).subscribe((_)=>{
       this.apiService.makeDistributor(this.notificationData[index]).subscribe((_)=>{
         this.loadNotifications();
+        this.toastr.success('Request Approved Successfully!', 'Notification!' , {
+          timeOut : 4000 ,
+          closeButton : true , 
+          positionClass : 'toast-top-right'
+        });
       });
     });
   }
@@ -74,6 +80,11 @@ export class NotificationsComponent implements OnInit {
     this.isLoading = true;
     this.apiService.deleteNotification(this.notificationKeys[index]).subscribe((_)=>{
       this.loadNotifications();
+      this.toastr.success('Request Rejected Successfully!', 'Notification!' , {
+        timeOut : 4000 ,
+        closeButton : true , 
+        positionClass : 'toast-top-right'
+      });
     });
   }
 
