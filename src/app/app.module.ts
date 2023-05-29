@@ -31,6 +31,9 @@ import { ItemComponent } from './item/item.component';
 
 import { SpeedDialModule } from 'primeng/speeddial';
 import { EditItemComponent } from './edit-item/edit-item.component';
+import { DistributorAreasComponent } from './manage/distributor-areas/distributor-areas.component';
+import { DistributorsListComponent } from './manage/distributors-list/distributors-list.component';
+import { PriceListsNDiscountsComponent } from './manage/price-lists-n-discounts/price-lists-n-discounts.component';
 
 
 const appRoutes : Routes = [
@@ -40,6 +43,11 @@ const appRoutes : Routes = [
   {path:'notifications' , component:NotificationsComponent},
   {path : 'dailyReport' , component : OrdersComponent},
   {path : 'manage' , component : ManageComponent},
+  {path : 'manage' , component : ManageComponent , children:[
+    {path : 'areas', component : DistributorAreasComponent},
+    {path : 'distributors', component : DistributorsListComponent},
+    {path:'priceListsAndDiscounts',component:PriceListsNDiscountsComponent}
+  ] ,},
   {path : 'reporting' , component : ReportingComponent}
 ];
 

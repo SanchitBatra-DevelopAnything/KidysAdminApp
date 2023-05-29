@@ -1,1 +1,19 @@
-<p>manage works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="nav nav-tabs">
+                <li role = "presentation" routerLinkActive = "active"><a routerLink = "/manage/shops">Distributor Areas</a></li>
+                <li role = "presentation" routerLinkActive = "active"><a routerLink = "/manage/retailers">Distributors</a></li>
+                <!-- <li role = "presentation" routerLinkActive = "active"><a routerLink = "/manage/chefs">Chefs</a></li> -->
+                <!-- <li role = "presentation" routerLinkActive = "active"><a routerLink = "/manage/salesmen">Salesmen</a></li> -->
+                <li role = "presentation" routerLinkActive = "active"><a routerLink = "/manage/distributorships">Price Lists & Discounts</a></li>
+                <!-- <li role = "presentation" routerLinkActive = "active"><a routerLink = "/manage/salesmen">Salesmen</a></li>                 -->
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
