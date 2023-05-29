@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ConfirmationService, ConfirmEventType, MenuItem } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { finalize } from 'rxjs';
+import { finalize, Subscription } from 'rxjs';
 import { EditItemComponent } from '../edit-item/edit-item.component';
 import { ApiService } from '../services/api/api.service';
 import { UtilityService } from '../services/utility/utility.service';
@@ -12,7 +12,7 @@ import { UtilityService } from '../services/utility/utility.service';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit{
+export class ItemComponent implements OnInit , OnDestroy{
 
   @Input()
   item : any; //comes with a key.
@@ -29,6 +29,8 @@ export class ItemComponent implements OnInit{
 
   dialogVisible:boolean = false;
 
+  itemEdittedSubscription:Subscription | undefined;
+
   ref:DynamicDialogRef | undefined;
 
 
@@ -36,6 +38,11 @@ export class ItemComponent implements OnInit{
   constructor(private storage : AngularFireStorage,private apiService : ApiService , private utilityService : UtilityService , private dialogService:DialogService) { }
 
   ngOnInit(): void {
+
+    this.itemEdittedSubscription = this.utilityService.itemEditted.subscribe(()=>{
+      this.ref?.close();
+    });
+
     this.items = [
       {
           icon: 'pi pi-pencil',
@@ -84,5 +91,14 @@ export class ItemComponent implements OnInit{
       height : "800px",
       width:"600px",
   });
+
+  }
+
+  ngOnDestroy()
+  {
+    if(this.itemEdittedSubscription!=undefined)
+    {
+      this.itemEdittedSubscription.unsubscribe();
+    }
   }
 }
