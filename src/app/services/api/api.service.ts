@@ -52,4 +52,14 @@ export class ApiService {
   public deleteNotification(key:any) :Observable<any> {
     return this.http.delete(this.dbUrl+"DistributorNotifications/"+key+".json");
   }
+
+  public getDistributors() : Observable<any>
+  {
+    return this.http.get(this.dbUrl+"Distributors.json");
+  }
+
+  public deleteDistributor(key:any) : Observable<any>
+  {
+    return this.http.delete(this.dbUrl+"Distributors/"+key+".json");
+  }
 }

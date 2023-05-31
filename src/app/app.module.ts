@@ -66,6 +66,7 @@ const appRoutes : Routes = [
     ItemListComponent,
     ItemComponent,
     EditItemComponent,
+    DistributorsListComponent,
   ],
   imports: [
     BrowserModule,
