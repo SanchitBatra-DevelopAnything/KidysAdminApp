@@ -28,6 +28,9 @@ export class DistributorsListComponent {
   getDistributors()
   {
     this.isLoading = true;
+    this.distributorKeys = [];
+    this.distributorsData = [];
+    this.distributorUsefulData = [];
     this.apiService.getDistributors().subscribe((distributors)=>{
       if(distributors == null)
       {
