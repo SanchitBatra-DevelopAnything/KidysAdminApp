@@ -47,7 +47,8 @@ export class EditItemComponent {
       out_station_price: [this.itemData["out_station_price"], Validators.required],
       western_price: [this.itemData["western_price"], Validators.required],
       super_stockist_price: [this.itemData["super_stockist_price"], Validators.required],
-      modern_trade_price: [this.itemData["modern_trade_price"], Validators.required]
+      modern_trade_price: [this.itemData["modern_trade_price"], Validators.required],
+      details : [this.itemData['details']],
     });
 
     this.photoPreview = this.itemData["imgUrl"];
