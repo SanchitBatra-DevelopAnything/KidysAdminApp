@@ -41,7 +41,8 @@ export class AddItemComponent implements OnInit{
       out_station_price: ['', Validators.required],
       western_price: ['', Validators.required],
       super_stockist_price: ['', Validators.required],
-      modern_trade_price: ['', Validators.required]
+      modern_trade_price: ['', Validators.required],
+      details : [''],
     });
   }
 
