@@ -62,4 +62,9 @@ export class ApiService {
   {
     return this.http.delete(this.dbUrl+"Distributors/"+key+".json");
   }
+
+  public getActiveOrders():Observable<any>
+  {
+    return this.http.get(this.dbUrl+"activeDistributorOrders.json");
+  }
 }
