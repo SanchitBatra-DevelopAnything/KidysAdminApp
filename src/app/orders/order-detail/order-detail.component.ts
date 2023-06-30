@@ -24,6 +24,12 @@ export class OrderDetailComponent {
 
   displayedColumns : string[] = [];
   dataSource:any;
+
+  changeDispatchVisible:boolean =false;
+  changeDispatchItemName:string = "";
+  changeDispatchItemOrderedQuantity:number = 0;
+  changeDispatchItemDispatchedQuantity:number = 0;
+  changeDispatchItemSerialNumber:number = -1;
   
   
   
@@ -145,9 +151,33 @@ export class OrderDetailComponent {
     
   // }
 
+  changeDispatchQuantityModal(element:any)
+  {
+    console.log(element);
+    this.changeDispatchItemOrderedQuantity = element.OrderedQuantity;
+    this.changeDispatchItemName = element.Item;
+    this.changeDispatchItemDispatchedQuantity = element.DispatchedQuantity;
+    this.changeDispatchItemSerialNumber = element.Sno;
+     this.changeDispatchVisible = true;
+  }
+
   changeDispatchQuantity()
   {
-    console.log("Open");
+    console.log(this.changeDispatchItemDispatchedQuantity);
+    //changeDispatchItemDispatchedQuantity update hogyi ngModel se.
+    //update BillData with selectedSerialNumber , update Quantity and total for it.
+    if(this.changeDispatchItemSerialNumber == -1)
+    {
+      return;
+    }
+    this.billData[this.changeDispatchItemSerialNumber-1]['DispatchedQuantity'] = this.changeDispatchItemDispatchedQuantity;
+    let price:any = this.billData[this.changeDispatchItemSerialNumber-1]['Price'];
+    let orderedQty = this.billData[this.changeDispatchItemSerialNumber-1]['OrderedQuantity'];
+    let newDispatchQuantity = this.billData[this.changeDispatchItemSerialNumber-1]['DispatchedQuantity'];
+    let newPrice = (price/orderedQty)*newDispatchQuantity;
+    this.billData[this.changeDispatchItemSerialNumber-1]['Price'] = newPrice;
+    //close the dialog.
+    this.changeDispatchVisible = false;
   }
 
 }
@@ -157,5 +187,5 @@ export interface BillElement {
   'DispatchedQuantity' : number;
   'Sno': number;
   'OrderedQuantity': number;
-  'Price': string;
+  'Price': number;
 }
