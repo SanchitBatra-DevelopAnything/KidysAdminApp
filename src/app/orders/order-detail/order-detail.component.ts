@@ -68,6 +68,7 @@ export class OrderDetailComponent {
         return;
       }
       this.orderData = orderDetail;
+      this.orderData['totalDispatchPrice'] = this.orderData['totalPrice'];
       this.orderDate = this.orderData['orderDate'];
       this.formBillData();
       this.isLoading = false;
@@ -177,7 +178,18 @@ export class OrderDetailComponent {
     let newPrice = (price/orderedQty)*newDispatchQuantity;
     this.billData[this.changeDispatchItemSerialNumber-1]['Price'] = newPrice;
     //close the dialog.
+    this.getUpdatedTotal();
     this.changeDispatchVisible = false;
+  }
+
+  getUpdatedTotal()
+  {
+    let total = 0;
+    for(let i=0;i<this.billData.length;i++)
+    {
+      total = total + this.billData[i]['Price'];
+    }
+    this.orderData['totalDispatchPrice'] = total;
   }
 
 }
