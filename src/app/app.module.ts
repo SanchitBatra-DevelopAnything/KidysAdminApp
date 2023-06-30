@@ -14,6 +14,7 @@ import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { environment } from 'src/environments/environment';
 
 
@@ -90,6 +91,7 @@ const appRoutes : Routes = [
     AngularFireStorageModule,
     MatTableModule , 
     MatPaginatorModule,
+    OverlayPanelModule,
     RouterModule.forRoot(appRoutes,{useHash: true}),
   ],
   providers: [DialogService],

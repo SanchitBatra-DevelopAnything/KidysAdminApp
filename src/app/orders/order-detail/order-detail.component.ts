@@ -145,6 +145,11 @@ export class OrderDetailComponent {
     
   // }
 
+  changeDispatchQuantity()
+  {
+    console.log("Open");
+  }
+
 }
 
 export interface BillElement {

@@ -46,7 +46,7 @@
 
             <ng-container matColumnDef="DispatchedQuantity">
               <th mat-header-cell *matHeaderCellDef style = "font-size:35px;">D Qty.</th>
-              <td mat-cell *matCellDef="let element" style = "font-size: 35px;"> {{element.DispatchedQuantity}} <span><a style = "font-size: 15px; cursor: pointer;">CHANGE?</a></span></td>
+              <td mat-cell *matCellDef="let element" style = "font-size: 35px;"> {{element.DispatchedQuantity}} <span><a style = "font-size: 15px; cursor: pointer;" (click) = "changeDispatchQuantity()">CHANGE?</a></span></td>
             </ng-container>
         
             <!-- Symbol Column -->
