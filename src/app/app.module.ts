@@ -51,7 +51,8 @@ const appRoutes : Routes = [
     {path : 'distributors', component : DistributorsListComponent},
     {path:'priceListsAndDiscounts',component:PriceListsNDiscountsComponent}
   ] ,},
-  {path : 'reporting' , component : ReportingComponent}
+  {path : 'reporting' , component : ReportingComponent},
+  {path : 'orderBill/:orderArea/:orderedBy/:orderKey' , component : OrderDetailComponent}
 ];
 
 @NgModule({

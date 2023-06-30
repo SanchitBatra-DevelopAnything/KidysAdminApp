@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api/api.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class OrdersComponent implements OnInit{
   activeOrdersKeys :any= [];
   isLoading = false;
 
-  constructor(private apiService:ApiService)
+  constructor(private apiService:ApiService , private router:Router)
   {
 
   }
@@ -53,6 +54,11 @@ export class OrdersComponent implements OnInit{
       this.isLoading = false;
     });
     
+  }
+
+  showBill(area:string , orderedBy : string, orderKey:string)
+  {
+    this.router.navigate(['orderBill/'+area+'/'+orderedBy+'/'+orderKey]);
   }
 
 
