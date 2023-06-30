@@ -12,6 +12,8 @@ import { SidebarModule } from 'primeng/sidebar';
 import { DialogModule } from 'primeng/dialog';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { environment } from 'src/environments/environment';
 
 
@@ -34,6 +36,7 @@ import { EditItemComponent } from './edit-item/edit-item.component';
 import { DistributorAreasComponent } from './manage/distributor-areas/distributor-areas.component';
 import { DistributorsListComponent } from './manage/distributors-list/distributors-list.component';
 import { PriceListsNDiscountsComponent } from './manage/price-lists-n-discounts/price-lists-n-discounts.component';
+import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 
 
 const appRoutes : Routes = [
@@ -67,6 +70,7 @@ const appRoutes : Routes = [
     ItemComponent,
     EditItemComponent,
     DistributorsListComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,8 @@ const appRoutes : Routes = [
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
+    MatTableModule , 
+    MatPaginatorModule,
     RouterModule.forRoot(appRoutes,{useHash: true}),
   ],
   providers: [DialogService],

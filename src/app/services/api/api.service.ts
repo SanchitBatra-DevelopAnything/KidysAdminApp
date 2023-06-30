@@ -67,4 +67,9 @@ export class ApiService {
   {
     return this.http.get(this.dbUrl+"activeDistributorOrders.json");
   }
+
+  public getOrder( area : String,orderedBy:String , orderKey : String) : Observable<any>
+  {
+    return this.http.get(this.dbUrl+"activeDistributorOrders/"+area+"/"+orderedBy+"/"+orderKey+".json");
+  }
 }
