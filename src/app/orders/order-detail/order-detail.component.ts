@@ -108,6 +108,11 @@ export class OrderDetailComponent {
           this.apiService.deleteActiveOrder(orderInformation['area'] , orderInformation['orderedBy'] , this.orderKey).subscribe(()=>{
             this.router.navigate(['/dailyReport']);
             this.isLoading = false;
+            this.toastr.success('Order Accepted!', 'Notification!' , {
+                      timeOut : 4000 ,
+                      closeButton : true , 
+                      positionClass : 'toast-top-left'
+                    });
           });
         })
     });
