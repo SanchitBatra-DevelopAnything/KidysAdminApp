@@ -95,6 +95,23 @@ export class OrderDetailComponent {
     this.dataSource.paginator = this.paginator;
   }
 
+  acceptOrder()
+  {
+    let orderInformation = {...this.orderData};
+    orderInformation['items'] = [...this.billData];
+    console.log("GOING TO API = ");
+    console.log(orderInformation);
+    orderInformation['orderKey'] = this.orderKey;
+    this.isLoading = true;
+    this.apiService.acceptOrderForReporting(orderInformation['area'] , orderInformation['orderedBy'] ,orderInformation).subscribe(()=>{
+        this.apiService.acceptOrderForProcessed(orderInformation['area'] , orderInformation['orderedBy'] , orderInformation).subscribe(()=>{
+          this.apiService.deleteActiveOrder(orderInformation['area'] , orderInformation['orderedBy'] , this.orderKey).subscribe(()=>{
+            this.router.navigate(['/dailyReport']);
+            this.isLoading = false;
+          });
+        })
+    });
+  }
   // sendOrderToChef()
   // {
   //   this.isLoading = true;

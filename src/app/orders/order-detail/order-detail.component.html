@@ -2,7 +2,7 @@
       <div *ngIf = "!isLoading">
       <h3 style = "display: inline-block;">{{orderData['area'] | uppercase}}</h3>
       <div class="spaced-button" style = "display: inline-block;">
-          <button class = "btn btn-primary btn-lg">ACCEPT</button>
+          <button class = "btn btn-primary btn-lg" (click) = "acceptOrder()">ACCEPT</button>
       </div>
       <div>
       <h3 style = "display:inline-block;">Order Id : <span style = "font-weight: bold;">{{orderKey}} , </span></h3>
