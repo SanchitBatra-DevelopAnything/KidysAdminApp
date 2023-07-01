@@ -137,4 +137,9 @@ export class ApiService {
   {
     return this.http.post(this.dbUrl+"processedDistributorOrders/"+area+"/"+orderedBy+".json",orderInformation);
   }
+
+  public deleteActiveOrder(area :String , orderedBy : String , orderKey:String) : Observable<any>
+  {
+    return this.http.delete(this.dbUrl+"activeDistributorOrders/"+area+"/"+orderedBy+"/"+orderKey+".json");
+  }
 }
