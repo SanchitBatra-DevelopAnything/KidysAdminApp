@@ -82,7 +82,7 @@ export class OrderDetailComponent {
     for(let i=0;i<items.length;i++)
     {
       let item = items[i].item;
-      let data = {"Sno" : i+1 , "OrderedQuantity" : items[i].quantity ,"Item" : item ,"DispatchedQuantity" : items[i].quantity , "Price" : items[i].price};
+      let data = {"Sno" : i+1 , "orderedQuantity" : items[i].quantity ,"item" : item ,"dispatchedQuantity" : items[i].quantity , "dispatchedPrice" : items[i].price , "orderedPrice" : items[i].price , "priceOfOne" : items[i].price/items[i].quantity};
       this.billData.push(data);
 
     }
@@ -177,9 +177,9 @@ export class OrderDetailComponent {
   changeDispatchQuantityModal(element:any)
   {
     console.log(element);
-    this.changeDispatchItemOrderedQuantity = element.OrderedQuantity;
-    this.changeDispatchItemName = element.Item;
-    this.changeDispatchItemDispatchedQuantity = element.DispatchedQuantity;
+    this.changeDispatchItemOrderedQuantity = element.orderedQuantity;
+    this.changeDispatchItemName = element.item;
+    this.changeDispatchItemDispatchedQuantity = element.dispatchedQuantity;
     this.changeDispatchItemSerialNumber = element.Sno;
      this.changeDispatchVisible = true;
   }
@@ -193,12 +193,12 @@ export class OrderDetailComponent {
     {
       return;
     }
-    this.billData[this.changeDispatchItemSerialNumber-1]['DispatchedQuantity'] = this.changeDispatchItemDispatchedQuantity;
-    let price:any = this.billData[this.changeDispatchItemSerialNumber-1]['Price'];
-    let orderedQty = this.billData[this.changeDispatchItemSerialNumber-1]['OrderedQuantity'];
-    let newDispatchQuantity = this.billData[this.changeDispatchItemSerialNumber-1]['DispatchedQuantity'];
-    let newPrice = (price/orderedQty)*newDispatchQuantity;
-    this.billData[this.changeDispatchItemSerialNumber-1]['Price'] = newPrice;
+    this.billData[this.changeDispatchItemSerialNumber-1]['dispatchedQuantity'] = this.changeDispatchItemDispatchedQuantity;
+    let price:any = this.billData[this.changeDispatchItemSerialNumber-1]['dispatchedPrice'];
+    let orderedQty = this.billData[this.changeDispatchItemSerialNumber-1]['orderedQuantity'];
+    let newDispatchQuantity = this.billData[this.changeDispatchItemSerialNumber-1]['dispatchedQuantity'];
+    let newPrice = this.billData[this.changeDispatchItemSerialNumber-1]['priceOfOne']*newDispatchQuantity;
+    this.billData[this.changeDispatchItemSerialNumber-1]['dispatchedPrice'] = newPrice;
     //close the dialog.
     this.getUpdatedTotal();
     this.changeDispatchVisible = false;
@@ -209,7 +209,7 @@ export class OrderDetailComponent {
     let total = 0;
     for(let i=0;i<this.billData.length;i++)
     {
-      total = total + this.billData[i]['Price'];
+      total = total + this.billData[i]['dispatchedPrice'];
     }
     this.orderData['totalDispatchPrice'] = total;
   }
@@ -217,9 +217,11 @@ export class OrderDetailComponent {
 }
 
 export interface BillElement {
-  'Item': string;
-  'DispatchedQuantity' : number;
+  'item': string;
+  'dispatchedQuantity' : number;
   'Sno': number;
-  'OrderedQuantity': number;
-  'Price': number;
+  'orderedQuantity': number;
+  'dispatchedPrice': number;
+  'orderedPrice': number;
+  'priceOfOne' : number;
 }
