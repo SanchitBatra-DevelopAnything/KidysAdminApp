@@ -152,4 +152,10 @@ export class ApiService {
   {
     return this.http.delete(this.dbUrl+"Areas/"+key+".json");
   }
+
+  public addDistributorship(params:any) : Observable<any>
+  {
+    console.log(params);
+    return this.http.post(this.dbUrl+"Areas.json" , params);
+  }
 }

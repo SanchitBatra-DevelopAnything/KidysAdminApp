@@ -38,6 +38,7 @@ import { DistributorAreasComponent } from './manage/distributor-areas/distributo
 import { DistributorsListComponent } from './manage/distributors-list/distributors-list.component';
 import { PriceListsNDiscountsComponent } from './manage/price-lists-n-discounts/price-lists-n-discounts.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
+import { AddAreaFormComponent } from './add-area-form/add-area-form.component';
 
 
 const appRoutes : Routes = [
@@ -74,6 +75,7 @@ const appRoutes : Routes = [
     DistributorsListComponent,
     DistributorAreasComponent,
     OrderDetailComponent,
+    AddAreaFormComponent,
   ],
   imports: [
     BrowserModule,
