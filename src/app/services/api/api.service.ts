@@ -158,4 +158,9 @@ export class ApiService {
     console.log(params);
     return this.http.post(this.dbUrl+"Areas.json" , params);
   }
+
+  public getPriceLists() : Observable<any>
+  {
+    return this.http.get(this.dbUrl+"priceLists.json");
+  }
 }

@@ -22,13 +22,31 @@ export class NotificationsComponent implements OnInit {
   ngOnInit()
   {
     this.loadNotifications();
-    this.priceListOptions = [
-      { name: 'DELHI-NCR PRICE LIST', code: 'ncr_delhi_price' },
-      { name: 'WESTERN PRICE LIST', code: 'western_price' },
-      { name: 'OUT STATION PRICE LIST', code: 'out_station_price' },
-      { name: 'SUPER STOCKIST PRICE LIST', code: 'super_stockist_price' },
-      { name: 'MODERN TRADE PRICE LIST', code: 'modern_trade_price' } //code is matched with actual form control name on item. IT MAKES distributor price selection easy.
-  ];
+    this.loadPriceLists();
+  //   this.priceListOptions = [
+  //     { name: 'DELHI-NCR PRICE LIST', code: 'ncr_delhi_price' },
+  //     { name: 'WESTERN PRICE LIST', code: 'western_price' },
+  //     { name: 'OUT STATION PRICE LIST', code: 'out_station_price' },
+  //     { name: 'SUPER STOCKIST PRICE LIST', code: 'super_stockist_price' },
+  //     { name: 'MODERN TRADE PRICE LIST', code: 'modern_trade_price' } //code is matched with actual form control name on item. IT MAKES distributor price selection easy.
+  // ];
+  this.priceListOptions = [];
+  }
+
+  loadPriceLists()
+  {
+    this.isLoading = true;
+    this.apiService.getPriceLists().subscribe((prices:any)=>{
+      if(prices == null)
+      {
+        this.priceListOptions = [];
+        return;
+      }
+      this.priceListOptions = Object.values(prices).map((pl:any)=>{
+        return {"name" : pl['priceList'] , "code" : pl['code']}
+      });
+      this.isLoading = false;
+    });
   }
 
   loadNotifications()
