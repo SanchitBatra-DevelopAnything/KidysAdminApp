@@ -1,1 +1,12 @@
-<p>price-lists-n-discounts works!</p>
+<div class = "loader" *ngIf = "isLoading"></div>
+<div class="container" *ngIf = "!isLoading">
+    <h3 class = "inline-heading">Price Lists And Discounts</h3>
+        <p>Edit your discounts here!</p>
+    <hr>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" style ="height:50px;" *ngFor = "let pl of priceListsData; let i = index;">{{pl.priceList | uppercase}} , <strong>Discount : </strong> Rs.{{pl.discount}} on {{pl.discountQuantity}} ITEMS 
+            <button class = "btn choc-button" style = "float:right;" (click) = "editPriceList(i)">EDIT</button>
+        </li>
+      </ul>
+</div>

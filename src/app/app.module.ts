@@ -75,6 +75,7 @@ const appRoutes : Routes = [
     DistributorsListComponent,
     DistributorAreasComponent,
     OrderDetailComponent,
+    PriceListsNDiscountsComponent,
     AddAreaFormComponent,
   ],
   imports: [
