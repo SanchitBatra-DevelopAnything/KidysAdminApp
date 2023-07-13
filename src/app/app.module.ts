@@ -72,6 +72,7 @@ const appRoutes : Routes = [
     ItemComponent,
     EditItemComponent,
     DistributorsListComponent,
+    DistributorAreasComponent,
     OrderDetailComponent,
   ],
   imports: [

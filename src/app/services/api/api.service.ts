@@ -142,4 +142,14 @@ export class ApiService {
   {
     return this.http.delete(this.dbUrl+"activeDistributorOrders/"+area+"/"+orderedBy+"/"+orderKey+".json");
   }
+
+  public getDistributorships() : Observable<any>
+  {
+    return this.http.get(this.dbUrl+"Areas.json");
+  }
+
+  public deleteDistributorship(key:any) : Observable<any>
+  {
+    return this.http.delete(this.dbUrl+"Areas/"+key+".json");
+  }
 }
