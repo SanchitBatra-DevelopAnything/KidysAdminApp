@@ -163,4 +163,9 @@ export class ApiService {
   {
     return this.http.get(this.dbUrl+"priceLists.json");
   }
+
+  public updatePriceList(key:string , params:any) : Observable<any>
+  {
+    return this.http.patch(this.dbUrl+"priceLists/"+key+".json" , params);
+  }
 }

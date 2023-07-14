@@ -12,13 +12,23 @@
 </div>
 
 <p-dialog header="{{selectedPriceList}}" [(visible)]="editDiscountVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-    <h3>
-        Bulk Quantity : <input type = "number" [(ngModel)] = "bulkQuantity">
-    </h3>
-    <h3>
-        Discount (Rs.) : <input type = "number" [(ngModel)] = "discountValue">
-    </h3>
+    <div *ngIf = "!isLoadingModal">
+        <h3>
+            Bulk Quantity : <input type = "number" [(ngModel)] = "bulkQuantity">
+        </h3>
+        <h3>
+            Discount (Rs.) : <input type = "number" [(ngModel)] = "discountValue">
+        </h3>
+    
+        <button style = "float: right;" class = "btn choc-button" (click) = "saveNewQuantityAndDiscount()">Update</button>
+    </div>
 
-    <button style = "float: right;" class = "btn choc-button" (click) = "editDiscount()">Update</button>
+    <div *ngIf = "isLoadingModal">
+        <div style = "display: block; text-align: center;">
+            <!-- <h3 style = "text-align: center;">Saving..</h3> -->
+            <div class="loader" style ="display: inline-block; text-align: center;"></div>
+        </div>
+    </div>
+   
 
 </p-dialog>

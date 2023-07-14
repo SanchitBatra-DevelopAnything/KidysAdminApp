@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { throws } from 'assert';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 export class PriceListsNDiscountsComponent implements OnInit{
 
   isLoading:boolean = false;
+  isLoadingModal:boolean = false;
   priceListsKeys:any[] = [];
   priceListsData:any[] = [];
 
@@ -52,9 +54,15 @@ export class PriceListsNDiscountsComponent implements OnInit{
     this.editDiscountVisible = true;
   }
 
-  editDiscount()
+  saveNewQuantityAndDiscount()
   {
-    
+    this.isLoadingModal = true;
+    let params = {'discountQuantity' : this.bulkQuantity , 'discount' : this.discountValue};
+    this.apiService.updatePriceList(this.selectedPriceListKey , params).subscribe((_)=>{
+      this.isLoadingModal = false;
+      this.editDiscountVisible = false;
+      this.loadPriceLists();
+    }); 
   }
 
 }
