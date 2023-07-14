@@ -12,6 +12,12 @@ export class PriceListsNDiscountsComponent implements OnInit{
   priceListsKeys:any[] = [];
   priceListsData:any[] = [];
 
+  selectedPriceList = "";
+  selectedPriceListKey = "";
+  editDiscountVisible = false;
+  bulkQuantity:number = 0;
+  discountValue:number = 0;
+
 
   constructor(private apiService:ApiService){}
 
@@ -37,9 +43,18 @@ export class PriceListsNDiscountsComponent implements OnInit{
     });
   }
 
-  editPriceList(i:any)
+  editPriceList(index:any)
   {
+    this.selectedPriceList = this.priceListsData[index]['priceList'];
+    this.selectedPriceListKey = this.priceListsKeys[index];
+    this.bulkQuantity = this.priceListsData[index]['discountQuantity'];
+    this.discountValue = this.priceListsData[index]['discount'];
+    this.editDiscountVisible = true;
+  }
 
+  editDiscount()
+  {
+    
   }
 
 }
