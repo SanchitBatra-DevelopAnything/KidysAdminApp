@@ -154,6 +154,7 @@ export class OrderDetailComponent {
   {
     let orderInformation = {...this.orderData};
     orderInformation['items'] = [...this.billData];
+    orderInformation['acceptedBy'] = sessionStorage.getItem('loggedInUser');
     console.log("GOING TO API = ");
     console.log(orderInformation);
     orderInformation['orderKey'] = this.orderKey;
