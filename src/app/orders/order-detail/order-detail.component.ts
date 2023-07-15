@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { of } from 'rxjs';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -30,6 +31,11 @@ export class OrderDetailComponent {
   changeDispatchItemOrderedQuantity:number = 0;
   changeDispatchItemDispatchedQuantity:number = 0;
   changeDispatchItemSerialNumber:number = -1;
+
+  activeDiscounts:any = {}; //this will store the basic info of discount from price list
+  discount:number = 0; //this will store the calculated discount on this order.
+
+  subTotal:number = 0;
   
   
   
@@ -71,8 +77,57 @@ export class OrderDetailComponent {
       this.orderData['totalDispatchPrice'] = this.orderData['totalPrice'];
       this.orderDate = this.orderData['orderDate'];
       this.formBillData();
-      this.isLoading = false;
+      this.seeDiscountInformation();
     });
+  }
+
+  seeDiscountInformation()
+  {
+    this.apiService.getPriceLists().subscribe((data:any)=>{
+      for(let i=0;i<Object.values(data).length;i++)
+      {
+        let data_array = Object.values(data);
+        let currentPriceList:any = data_array[i];
+        let code = currentPriceList['code'];
+        if(code.trim() == this.orderData['priceList'].trim())
+        {
+          this.activeDiscounts = currentPriceList;
+          break;
+        }
+      }
+      console.log("active discounts : ",this.activeDiscounts);
+      this.calculateDiscountAndSubTotal();
+      this.isLoading = false;
+
+    });
+  }
+
+  calculateDiscountAndSubTotal()
+  {
+    this.discount = 0;
+    this.subTotal = 0;
+    let discount_qty = this.activeDiscounts['discountQuantity'];
+    let disc = this.activeDiscounts['discount'];
+
+    let onQuantity = 0;
+    for(let i=0;i<this.billData.length;i++)
+    {
+      onQuantity += this.billData[i]['dispatchedQuantity']; 
+    }
+
+    let multiple = Math.floor(onQuantity/discount_qty);
+    this.discount = disc*multiple;
+
+    let total = 0;
+    for(let i=0;i<this.billData.length;i++)
+    {
+      total = total + this.billData[i]['dispatchedPrice'];
+    }
+
+    this.subTotal = total - this.discount;
+    this.orderData['discount'] = this.discount;
+    this.orderData['subTotal'] = this.subTotal;
+    this.orderData['totalDispatchPrice'] = total;
   }
 
   formBillData()
@@ -200,19 +255,19 @@ export class OrderDetailComponent {
     let newPrice = this.billData[this.changeDispatchItemSerialNumber-1]['priceOfOne']*newDispatchQuantity;
     this.billData[this.changeDispatchItemSerialNumber-1]['dispatchedPrice'] = newPrice;
     //close the dialog.
-    this.getUpdatedTotal();
+    this.calculateDiscountAndSubTotal();
     this.changeDispatchVisible = false;
   }
 
-  getUpdatedTotal()
-  {
-    let total = 0;
-    for(let i=0;i<this.billData.length;i++)
-    {
-      total = total + this.billData[i]['dispatchedPrice'];
-    }
-    this.orderData['totalDispatchPrice'] = total;
-  }
+  // getUpdatedTotal()
+  // {
+  //   let total = 0;
+  //   for(let i=0;i<this.billData.length;i++)
+  //   {
+  //     total = total + this.billData[i]['dispatchedPrice'];
+  //   }
+  //   this.calculateDiscountAndSubTotal();
+  // }
 
 }
 
