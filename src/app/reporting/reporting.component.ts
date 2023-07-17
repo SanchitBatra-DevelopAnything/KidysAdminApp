@@ -78,7 +78,32 @@ export class ReportingComponent {
         order_copy = order_copy;
       }
 
-      return order_copy; //object with all orders. nesting objects..
+     // return order_copy; //object with all orders. nesting objects..
+
+     
+     order_copy = Object.values(order_copy);
+     console.log(order_copy);
+
+     let person_removed:any = [];
+     for(let i=0;i<order_copy.length;i++)
+     {
+       person_removed.push(...Object.values(order_copy[i]));
+     }
+
+     //abhi ek person ke orders grouped hain , par person ke naam hattgaye.
+
+     let clubbed_orders = [];
+     for(let i=0;i<person_removed.length;i++)
+     {
+        let current_person_orders_object = person_removed[i]; //this is an object.
+        let current_person_orders = Object.values(current_person_orders_object);
+        clubbed_orders.push(current_person_orders);
+     }
+
+     console.log("All clubbed orders = ",clubbed_orders);
+
+     console.log(person_removed);
+
     }
 
     makeKeyForFetch(k:string)
