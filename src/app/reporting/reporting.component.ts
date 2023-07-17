@@ -41,12 +41,44 @@ export class ReportingComponent {
             this.isDataSelected = true;
             return;
           }
-          this.orders = orders;
-          console.log("FETCHED DATA = "+orders);
+          this.orders = this.removeNest(orders,key);
           this.isDataSelected = true;
           this.noOrdersFound = false;
           this.isLoading = false;
         });
+    }
+
+    removeNest(orders:any,key:string)
+    {
+      let key_array = key.split("/");
+      let nesting_level = key_array.length;
+      let order_copy = orders;
+      //4->week level , 3-->Month level , 2-->Quarter level , 1-->year level.
+      
+      if(nesting_level == 1)
+      {
+        order_copy = Object.values(orders);
+        order_copy = Object.values(order_copy[0]);
+        order_copy = Object.values(order_copy[0]);
+        order_copy = order_copy[0];
+      }
+      else if(nesting_level == 2)
+      {
+        order_copy = Object.values(orders);
+        order_copy = Object.values(order_copy[0]);
+        order_copy = order_copy[0];
+      }
+      else if(nesting_level == 3)
+      {
+        order_copy = Object.values(orders);
+        order_copy = order_copy[0];
+      }
+      else if(nesting_level == 4)
+      {
+        order_copy = order_copy;
+      }
+
+      return order_copy; //object with all orders. nesting objects..
     }
 
     makeKeyForFetch(k:string)
