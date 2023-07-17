@@ -77,4 +77,13 @@ body {
       font-size: 24px;
       font-weight: bolder;
   }
-  
+  ::ng-deep .p-sidebar
+  {
+    
+    width: 320px;
+  }
+
+  ::ng-deep .p-sidebar-active
+  {
+    width: 320px;
+  }
