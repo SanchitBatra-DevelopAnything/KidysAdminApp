@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 import { ApiService } from '../services/api/api.service';
 
 import { NodeService } from '../services/treeSelect/node.service';
@@ -97,7 +98,10 @@ export class ReportingComponent {
      {
         let current_person_orders_object = person_removed[i]; //this is an object.
         let current_person_orders = Object.values(current_person_orders_object);
-        clubbed_orders.push(current_person_orders);
+        for(let j=0;j<current_person_orders.length;j++)
+        {
+          clubbed_orders.push(current_person_orders[j]);
+        }
      }
 
      console.log("All clubbed orders = ",clubbed_orders);
