@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { throws } from 'assert';
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 import { ApiService } from '../services/api/api.service';
 
@@ -21,7 +22,10 @@ export class ReportingComponent {
 
     noOrdersFound:boolean = false;
 
-    orders:any = [];
+    orders:any = []; //list of all orders data jiske items analyze karke report banaaunga!
+
+    totalOrderedQuantity = 0;
+    totalDispatchedQuantity = 0;
 
     constructor(private nodeService: NodeService , private apiService: ApiService) {
         this.nodeService.getFiles().then((files) => (this.nodes = files));
@@ -43,6 +47,7 @@ export class ReportingComponent {
             return;
           }
           this.orders = this.removeNest(orders,key);
+          this.analyzeItems(this.orders);
           this.isDataSelected = true;
           this.noOrdersFound = false;
           this.isLoading = false;
@@ -94,11 +99,11 @@ export class ReportingComponent {
      //abhi ek person ke orders grouped hain , par person ke naam hattgaye.
 
      let clubbed_orders = [];
-     for(let i=0;i<person_removed.length;i++)
+     for(let i=0;i<person_removed!.length;i++)
      {
         let current_person_orders_object = person_removed[i]; //this is an object.
         let current_person_orders = Object.values(current_person_orders_object);
-        for(let j=0;j<current_person_orders.length;j++)
+        for(let j=0;j<current_person_orders!.length;j++)
         {
           clubbed_orders.push(current_person_orders[j]);
         }
@@ -106,7 +111,8 @@ export class ReportingComponent {
 
      console.log("All clubbed orders = ",clubbed_orders);
 
-     console.log(person_removed);
+     // ab clubbed_orders ke items ko analyze karna hai for reports! ;)
+     return clubbed_orders;
 
     }
 
@@ -115,7 +121,7 @@ export class ReportingComponent {
       console.log(k);
       let arr = k.split("-");
       let formedString = "";
-      for(let i=0;i<arr.length-1;i++)
+      for(let i=0;i<arr!.length-1;i++)
       {
         formedString+=arr[i]+"/";
       }
@@ -123,6 +129,38 @@ export class ReportingComponent {
 
       console.log("Formed = "+formedString);
       return formedString;
+    }
+
+    analyzeItems(orderList:any)
+    {
+      this.totalOrderedQuantity = 0;
+      this.totalDispatchedQuantity = 0;
+      for(let i=0;i<orderList!.length;i++)
+      {
+        let current_items = orderList[i]['items'];
+        for(let j=0;j<current_items!.length;j++)
+        {
+          this.totalDispatchedQuantity += +current_items[j]['dispatchedQuantity'];
+          this.totalOrderedQuantity+= +current_items[j]['orderedQuantity'];
+        }
+      }
+
+
+      console.log("Total ordered = "+this.totalOrderedQuantity);
+      console.log("Total dispatched = "+this.totalDispatchedQuantity);
+
+      this.basicData = {
+        labels: ['Ordered Qty.' , 'Dispatched Qty.'],
+        datasets: [
+            {
+                label: 'Item Quantity',
+                data: [this.totalOrderedQuantity, this.totalDispatchedQuantity],
+                backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)'],
+                borderWidth: 1
+            }
+        ]
+    };
     }
 
 
@@ -142,7 +180,7 @@ export class ReportingComponent {
             datasets: [
                 {
                     label: 'Item Quantity',
-                    data: [540, 325],
+                    data: [this.totalOrderedQuantity, this.totalDispatchedQuantity],
                     backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)'],
                     borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)'],
                     borderWidth: 1
