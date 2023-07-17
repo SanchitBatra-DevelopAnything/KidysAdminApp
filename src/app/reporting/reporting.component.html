@@ -18,7 +18,11 @@
 
     </div>
 
-    <div class="card" *ngIf = "!isLoading && isDataSelected">
+    <div *ngIf = "!isLoading && isDataSelected && noOrdersFound">
+        <p style = "color: red; text-align: center; font-weight: bold;">No Orders Found! :(</p>
+    </div>
+
+    <div class="card" *ngIf = "!isLoading && isDataSelected && !noOrdersFound">
         <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
     </div>
     

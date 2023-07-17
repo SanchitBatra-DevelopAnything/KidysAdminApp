@@ -169,7 +169,7 @@ export class ApiService {
     return this.http.patch(this.dbUrl+"priceLists/"+key+".json" , params);
   }
 
-  public getOrderForReports(key : string) : Observable<any>
+  public getOrdersForReports(key : string) : Observable<any>
   {
     return this.http.get(this.dbUrl+"reportingDistributorOrders/"+key+".json");
   }

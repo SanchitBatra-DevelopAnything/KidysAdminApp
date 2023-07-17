@@ -1,5 +1,7 @@
 
 import { Component } from '@angular/core';
+import { ApiService } from '../services/api/api.service';
+
 import { NodeService } from '../services/treeSelect/node.service';
 
 @Component({
@@ -16,17 +18,50 @@ export class ReportingComponent {
     isLoading = false;
     isDataSelected = false;
 
-    constructor(private nodeService: NodeService) {
+    noOrdersFound:boolean = false;
+
+    orders:any = [];
+
+    constructor(private nodeService: NodeService , private apiService: ApiService) {
         this.nodeService.getFiles().then((files) => (this.nodes = files));
     }
 
     handle(e:any)
     {
+        this.noOrdersFound = false;
         this.isLoading = true;
-        setTimeout(() => {
+        let key = this.makeKeyForFetch(e['key']);
+        this.orders = [];
+        this.apiService.getOrdersForReports(key).subscribe((orders)=>{
+          if(orders == null)
+          {
+            this.orders = [];
+            this.isLoading = false;
+            this.noOrdersFound = true;
+            this.isDataSelected = true;
+            return;
+          }
+          this.orders = orders;
+          console.log("FETCHED DATA = "+orders);
           this.isDataSelected = true;
+          this.noOrdersFound = false;
           this.isLoading = false;
-        }, 3000);
+        });
+    }
+
+    makeKeyForFetch(k:string)
+    {
+      console.log(k);
+      let arr = k.split("-");
+      let formedString = "";
+      for(let i=0;i<arr.length-1;i++)
+      {
+        formedString+=arr[i]+"/";
+      }
+      formedString+=arr[arr.length-1];
+
+      console.log("Formed = "+formedString);
+      return formedString;
     }
 
 

@@ -32,20 +32,20 @@ export class NodeService {
                   label : "January",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month1"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q1" +"-" + "month1"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month1"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q1" +"-" + "month1"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month1"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q1" +"-" + "month1"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month1"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q1" +"-" + "month1"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -54,20 +54,20 @@ export class NodeService {
                   label : "February",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month2"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q1" +"-" + "month2"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month2"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q1" +"-" + "month2"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month2"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q1" +"-" + "month2"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month2"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q1" +"-" + "month2"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -76,20 +76,20 @@ export class NodeService {
                   label : "March",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month3"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q1" +"-" + "month3"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month3"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q1" +"-" + "month3"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month3"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q1" +"-" + "month3"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month3"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q1" +"-" + "month3"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -104,20 +104,20 @@ export class NodeService {
                   label : "April",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month4"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q2" +"-" + "month4"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month4"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q2" +"-" + "month4"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month4"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q2" +"-" + "month4"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month4"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q2" +"-" + "month4"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -126,20 +126,20 @@ export class NodeService {
                   label : "May",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month5"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q2" +"-" + "month5"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month5"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q2" +"-" + "month5"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month5"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q2" +"-" + "month5"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month5"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q2" +"-" + "month5"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -148,20 +148,20 @@ export class NodeService {
                   label : "June",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month6"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q2" +"-" + "month6"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month6"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q2" +"-" + "month6"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month6"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q2" +"-" + "month6"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month6"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q2" +"-" + "month6"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -176,20 +176,20 @@ export class NodeService {
                   label : "July",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month7"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q3" +"-" + "month7"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month7"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q3" +"-" + "month7"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month7"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q3" +"-" + "month7"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month7"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q3" +"-" + "month7"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -198,20 +198,20 @@ export class NodeService {
                   label : "August",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month8"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q3" +"-" + "month8"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month8"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q3" +"-" + "month8"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month8"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q3" +"-" + "month8"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month8"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q3" +"-" + "month8"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -220,20 +220,20 @@ export class NodeService {
                   label : "September",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month9"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q3" +"-" + "month9"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month9"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q3" +"-" + "month9"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month9"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q3" +"-" + "month9"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month9"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q3" +"-" + "month9"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -248,20 +248,20 @@ export class NodeService {
                   label : "October",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month10"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q4" +"-" + "month10"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month10"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q4" +"-" + "month10"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month10"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q4" +"-" + "month10"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month10"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q4" +"-" + "month10"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -270,20 +270,20 @@ export class NodeService {
                   label : "November",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month11"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q4" +"-" + "month11"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month11"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q4" +"-" + "month11"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month11"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q4" +"-" + "month11"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month11"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q4" +"-" + "month11"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -292,20 +292,20 @@ export class NodeService {
                   label : "December",
                   children : [
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month12"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[0] + "-" + "Q4" +"-" + "month12"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month12"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[0] + "-" + "Q4" +"-" + "month12"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month12"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[0] + "-" + "Q4" +"-" + "month12"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[0] + "-" + "Q1" +"-" + "month12"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[0] + "-" + "Q4" +"-" + "month12"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -329,20 +329,20 @@ export class NodeService {
                   label : "January",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month1"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q1" +"-" + "month1"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month1"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q1" +"-" + "month1"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month1"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q1" +"-" + "month1"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month1"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q1" +"-" + "month1"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -351,20 +351,20 @@ export class NodeService {
                   label : "February",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month2"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q1" +"-" + "month2"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month2"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q1" +"-" + "month2"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month2"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q1" +"-" + "month2"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month2"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q1" +"-" + "month2"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -373,20 +373,20 @@ export class NodeService {
                   label : "March",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month3"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q1" +"-" + "month3"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month3"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q1" +"-" + "month3"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month3"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q1" +"-" + "month3"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month3"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q1" +"-" + "month3"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -401,20 +401,20 @@ export class NodeService {
                   label : "April",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month4"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q2" +"-" + "month4"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month4"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q2" +"-" + "month4"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month4"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q2" +"-" + "month4"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month4"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q2" +"-" + "month4"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -423,20 +423,20 @@ export class NodeService {
                   label : "May",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month5"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q2" +"-" + "month5"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month5"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q2" +"-" + "month5"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month5"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q2" +"-" + "month5"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month5"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q2" +"-" + "month5"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -445,20 +445,20 @@ export class NodeService {
                   label : "June",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month6"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q2" +"-" + "month6"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month6"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q2" +"-" + "month6"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month6"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q2" +"-" + "month6"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month6"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q2" +"-" + "month6"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -473,20 +473,20 @@ export class NodeService {
                   label : "July",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month7"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q3" +"-" + "month7"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month7"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q3" +"-" + "month7"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month7"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q3" +"-" + "month7"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month7"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q3" +"-" + "month7"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -495,20 +495,20 @@ export class NodeService {
                   label : "August",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month8"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q3" +"-" + "month8"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month8"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q3" +"-" + "month8"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month8"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q3" +"-" + "month8"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month8"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q3" +"-" + "month8"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -517,20 +517,20 @@ export class NodeService {
                   label : "September",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month9"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q3" +"-" + "month9"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month9"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q3" +"-" + "month9"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month9"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q3" +"-" + "month9"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month9"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q3" +"-" + "month9"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -545,20 +545,20 @@ export class NodeService {
                   label : "October",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month10"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q4" +"-" + "month10"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month10"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q4" +"-" + "month10"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month10"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q4" +"-" + "month10"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month10"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q4" +"-" + "month10"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -567,20 +567,20 @@ export class NodeService {
                   label : "November",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month11"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q4" +"-" + "month11"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month11"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q4" +"-" + "month11"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month11"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q4" +"-" + "month11"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month11"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q4" +"-" + "month11"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -589,20 +589,20 @@ export class NodeService {
                   label : "December",
                   children : [
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month12"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[1] + "-" + "Q4" +"-" + "month12"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month12"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[1] + "-" + "Q4" +"-" + "month12"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month12"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[1] + "-" + "Q4" +"-" + "month12"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[1] + "-" + "Q1" +"-" + "month12"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[1] + "-" + "Q4" +"-" + "month12"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -627,20 +627,20 @@ export class NodeService {
                   label : "January",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month1"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q1" +"-" + "month1"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month1"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q1" +"-" + "month1"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month1"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q1" +"-" + "month1"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month1"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q1" +"-" + "month1"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -649,20 +649,20 @@ export class NodeService {
                   label : "February",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month2"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q1" +"-" + "month2"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month2"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q1" +"-" + "month2"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month2"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q1" +"-" + "month2"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month2"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q1" +"-" + "month2"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -671,20 +671,20 @@ export class NodeService {
                   label : "March",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month3"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q1" +"-" + "month3"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month3"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q1" +"-" + "month3"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month3"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q1" +"-" + "month3"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month3"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q1" +"-" + "month3"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -699,20 +699,20 @@ export class NodeService {
                   label : "April",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month4"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q2" +"-" + "month4"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month4"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q2" +"-" + "month4"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month4"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q2" +"-" + "month4"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month4"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q2" +"-" + "month4"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -721,20 +721,20 @@ export class NodeService {
                   label : "May",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month5"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q2" +"-" + "month5"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month5"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q2" +"-" + "month5"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month5"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q2" +"-" + "month5"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month5"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q2" +"-" + "month5"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -743,20 +743,20 @@ export class NodeService {
                   label : "June",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month6"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q2" +"-" + "month6"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month6"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q2" +"-" + "month6"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month6"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q2" +"-" + "month6"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month6"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q2" +"-" + "month6"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -771,20 +771,20 @@ export class NodeService {
                   label : "July",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month7"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q3" +"-" + "month7"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month7"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q3" +"-" + "month7"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month7"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q3" +"-" + "month7"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month7"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q3" +"-" + "month7"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -793,20 +793,20 @@ export class NodeService {
                   label : "August",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month8"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q3" +"-" + "month8"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month8"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q3" +"-" + "month8"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month8"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q3" +"-" + "month8"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month8"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q3" +"-" + "month8"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -815,20 +815,20 @@ export class NodeService {
                   label : "September",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month9"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q3" +"-" + "month9"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month9"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q3" +"-" + "month9"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month9"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q3" +"-" + "month9"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month9"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q3" +"-" + "month9"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -843,20 +843,20 @@ export class NodeService {
                   label : "October",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month10"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q4" +"-" + "month10"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month10"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q4" +"-" + "month10"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month10"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q4" +"-" + "month10"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month10"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q4" +"-" + "month10"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -865,20 +865,20 @@ export class NodeService {
                   label : "November",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month11"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q4" +"-" + "month11"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month11"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q4" +"-" + "month11"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month11"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q4" +"-" + "month11"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month11"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q4" +"-" + "month11"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -887,20 +887,20 @@ export class NodeService {
                   label : "December",
                   children : [
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month12"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[2] + "-" + "Q4" +"-" + "month12"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month12"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[2] + "-" + "Q4" +"-" + "month12"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month12"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[2] + "-" + "Q4" +"-" + "month12"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[2] + "-" + "Q1" +"-" + "month12"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[2] + "-" + "Q4" +"-" + "month12"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -908,7 +908,6 @@ export class NodeService {
             }
           ]
         },
-
         
         //year 4 here
 
@@ -925,20 +924,20 @@ export class NodeService {
                   label : "January",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month1"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q1" +"-" + "month1"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month1"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q1" +"-" + "month1"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month1"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q1" +"-" + "month1"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month1"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q1" +"-" + "month1"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -947,20 +946,20 @@ export class NodeService {
                   label : "February",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month2"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q1" +"-" + "month2"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month2"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q1" +"-" + "month2"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month2"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q1" +"-" + "month2"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month2"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q1" +"-" + "month2"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -969,20 +968,20 @@ export class NodeService {
                   label : "March",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month3"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q1" +"-" + "month3"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month3"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q1" +"-" + "month3"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month3"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q1" +"-" + "month3"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month3"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q1" +"-" + "month3"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -997,20 +996,20 @@ export class NodeService {
                   label : "April",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month4"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q2" +"-" + "month4"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month4"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q2" +"-" + "month4"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month4"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q2" +"-" + "month4"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month4"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q2" +"-" + "month4"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -1019,20 +1018,20 @@ export class NodeService {
                   label : "May",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month5"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q2" +"-" + "month5"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month5"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q2" +"-" + "month5"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month5"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q2" +"-" + "month5"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month5"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q2" +"-" + "month5"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -1041,20 +1040,20 @@ export class NodeService {
                   label : "June",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month6"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q2" +"-" + "month6"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month6"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q2" +"-" + "month6"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month6"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q2" +"-" + "month6"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month6"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q2" +"-" + "month6"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -1069,20 +1068,20 @@ export class NodeService {
                   label : "July",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month7"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q3" +"-" + "month7"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month7"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q3" +"-" + "month7"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month7"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q3" +"-" + "month7"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month7"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q3" +"-" + "month7"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -1091,20 +1090,20 @@ export class NodeService {
                   label : "August",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month8"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q3" +"-" + "month8"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month8"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q3" +"-" + "month8"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month8"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q3" +"-" + "month8"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month8"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q3" +"-" + "month8"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -1113,20 +1112,20 @@ export class NodeService {
                   label : "September",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month9"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q3" +"-" + "month9"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month9"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q3" +"-" + "month9"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month9"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q3" +"-" + "month9"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month9"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q3" +"-" + "month9"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
@@ -1141,20 +1140,20 @@ export class NodeService {
                   label : "October",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month10"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q4" +"-" + "month10"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month10"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q4" +"-" + "month10"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month10"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q4" +"-" + "month10"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month10"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q4" +"-" + "month10"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -1163,20 +1162,20 @@ export class NodeService {
                   label : "November",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month11"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q4" +"-" + "month11"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month11"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q4" +"-" + "month11"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month11"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q4" +"-" + "month11"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month11"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q4" +"-" + "month11"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 },
@@ -1185,20 +1184,20 @@ export class NodeService {
                   label : "December",
                   children : [
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month12"+"-"+"Week1",
-                      label : "Week1"
+                      key : years[3] + "-" + "Q4" +"-" + "month12"+"-"+"week1",
+                      label : "week1"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month12"+"-"+"Week2",
-                      label : "Week2"
+                      key : years[3] + "-" + "Q4" +"-" + "month12"+"-"+"week2",
+                      label : "week2"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month12"+"-"+"Week3",
-                      label : "Week3"
+                      key : years[3] + "-" + "Q4" +"-" + "month12"+"-"+"week3",
+                      label : "week3"
                     },
                     {
-                      key : years[3] + "-" + "Q1" +"-" + "month12"+"-"+"Week4",
-                      label : "Week4"
+                      key : years[3] + "-" + "Q4" +"-" + "month12"+"-"+"week4",
+                      label : "week4"
                     }
                   ]
                 }
