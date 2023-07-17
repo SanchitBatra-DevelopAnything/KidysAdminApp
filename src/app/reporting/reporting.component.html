@@ -18,6 +18,8 @@
 
     </div>
 
+    <p *ngIf = "isLoading" style = "position: absolute; top:59%; left:42%;">Generating Reports Might Take A While!</p>
+
     <div *ngIf = "!isLoading && isDataSelected && noOrdersFound">
         <p style = "color: red; text-align: center; font-weight: bold;">No Orders Found! :(</p>
     </div>
