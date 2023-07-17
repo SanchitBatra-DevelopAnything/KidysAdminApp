@@ -16,4 +16,10 @@ export class ReportingComponent {
         this.nodeService.getFiles().then((files) => (this.nodes = files));
     }
 
+    handle(e:any)
+    {
+      console.log(this.selectedNodes);
+      console.log(e);
+    }
+
 }
