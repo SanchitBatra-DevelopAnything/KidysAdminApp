@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { NodeService } from '../services/treeSelect/node.service';
 
@@ -12,14 +13,20 @@ export class ReportingComponent {
     
     selectedNodes: any;
 
+    isLoading = false;
+    isDataSelected = false;
+
     constructor(private nodeService: NodeService) {
         this.nodeService.getFiles().then((files) => (this.nodes = files));
     }
 
     handle(e:any)
     {
-      console.log(this.selectedNodes);
-      console.log(e);
+        this.isLoading = true;
+        setTimeout(() => {
+          this.isDataSelected = true;
+          this.isLoading = false;
+        }, 3000);
     }
 
 
@@ -35,13 +42,13 @@ export class ReportingComponent {
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
         this.basicData = {
-            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+            labels: ['Ordered Qty.' , 'Dispatched Qty.'],
             datasets: [
                 {
-                    label: 'Sales',
-                    data: [540, 325, 702, 620],
-                    backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-                    borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+                    label: 'Item Quantity',
+                    data: [540, 325],
+                    backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                    borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)'],
                     borderWidth: 1
                 }
             ]

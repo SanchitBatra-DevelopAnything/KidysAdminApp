@@ -14,7 +14,11 @@
     </div>
     <hr>
 
-    <div class="card">
+    <div class="loader" style = "position: absolute; top: 50%; left: 50%;" *ngIf= "isLoading">
+
+    </div>
+
+    <div class="card" *ngIf = "!isLoading && isDataSelected">
         <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
     </div>
     
