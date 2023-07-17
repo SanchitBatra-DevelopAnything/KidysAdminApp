@@ -2,7 +2,7 @@
 <hr>
 <div class="container">
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-6">
             <h3 style = "text-align: center;">Choose the time frame : </h3>
         </div>
         <div class="col-xs-6">
@@ -10,15 +10,10 @@
                 <p-treeSelect [(ngModel)]="selectedNodes" [options]="nodes" placeholder="Select Item" (ngModelChange) = "handle($event)"></p-treeSelect>
             </div>
         </div>
-        <div class="col-xs-2">
-            <div class="container">
-                <p>
-                    <button class ="btn choc-button">Generate</button>
-                </p>
-                
-            </div>
-        </div>
+        
     </div>
     <hr>
+
+    <h3 style = "text-align: center;">Select Category For Reporting : </h3>
     
 </div>
