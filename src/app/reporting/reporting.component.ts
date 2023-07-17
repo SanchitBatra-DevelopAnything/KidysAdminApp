@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NodeService } from '../services/treeSelect/node.service';
 
 @Component({
   selector: 'app-reporting',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./reporting.component.scss']
 })
 export class ReportingComponent {
+
+    nodes!:any[];
+    
+    selectedNodes: any;
+
+    constructor(private nodeService: NodeService) {
+        this.nodeService.getFiles().then((files) => (this.nodes = files));
+    }
 
 }
