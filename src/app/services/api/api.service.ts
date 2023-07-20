@@ -16,7 +16,7 @@ export class ApiService {
   }
 
   public getCategories() : Observable<any> {
-    return this.http.get(this.dbUrl+"Categories.json");
+    return this.http.get(this.dbUrl+"onlyCategories.json");
   }
 
   public addItem(value:any , catKey:any) : Observable<any>
