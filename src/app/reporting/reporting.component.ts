@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 import { ApiService } from '../services/api/api.service';
 
 import { NodeService } from '../services/treeSelect/node.service';
@@ -38,13 +39,16 @@ export class ReportingComponent {
     handleCategoryChange(e:any)
     {
       //show items of particular category here whatever is selected!
+      
       console.log(this.selectedCategory);
+      this.analyzeItems(this.orders); //selectedCategory se pakadlega niche
     }
 
     handle(e:any)
     {
         this.noOrdersFound = false;
         this.isLoading = true;
+        this.selectedCategory = {categoryName : "ALL"};
         let key = this.makeKeyForFetch(e['key']);
         this.orders = [];
         this.apiService.getOrdersForReports(key).subscribe((orders)=>{
@@ -150,10 +154,14 @@ export class ReportingComponent {
       for(let i=0;i<orderList!.length;i++)
       {
         let current_items = orderList[i]['items'];
+        
         for(let j=0;j<current_items!.length;j++)
         {
-          this.totalDispatchedQuantity += +current_items[j]['dispatchedQuantity'];
-          this.totalOrderedQuantity+= +current_items[j]['orderedQuantity'];
+          if(this.selectedCategory.categoryName == "ALL" || current_items[j].parentCategory == this.selectedCategory.categoryName)
+          {
+            this.totalDispatchedQuantity += +current_items[j]['dispatchedQuantity'];
+            this.totalOrderedQuantity+= +current_items[j]['orderedQuantity'];
+          }
         }
       }
 
