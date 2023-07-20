@@ -14,6 +14,20 @@
     </div>
     <hr>
 
+    <div class="row" *ngIf = "showCategories">
+        <div class="col-xs-6">
+            <h3 style = "text-align: center;">Choose the Category : </h3>
+        </div>
+        <div class="col-xs-6">
+            <div class="card flex justify-content-center"> 
+                <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" optionLabel="categoryName" (ngModelChange) = "handleCategoryChange($event)"></p-dropdown>
+            </div>
+        </div>
+        
+    </div>
+
+    <hr *ngIf = "showCategories">
+
     <div class="loader" style = "position: absolute; top: 50%; left: 50%;" *ngIf= "isLoading">
 
     </div>

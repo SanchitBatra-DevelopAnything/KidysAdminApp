@@ -1,7 +1,5 @@
 
 import { Component } from '@angular/core';
-import { throws } from 'assert';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 import { ApiService } from '../services/api/api.service';
 
 import { NodeService } from '../services/treeSelect/node.service';
@@ -20,6 +18,8 @@ export class ReportingComponent {
     isLoading = false;
     isDataSelected = false;
 
+    showCategories:boolean = false;
+
     noOrdersFound:boolean = false;
 
     orders:any = []; //list of all orders data jiske items analyze karke report banaaunga!
@@ -27,8 +27,18 @@ export class ReportingComponent {
     totalOrderedQuantity = 0;
     totalDispatchedQuantity = 0;
 
+    categories:any = [];
+    selectedCategory:any = {categoryName : "ALL"};
+
     constructor(private nodeService: NodeService , private apiService: ApiService) {
+      
         this.nodeService.getFiles().then((files) => (this.nodes = files));
+    }
+
+    handleCategoryChange(e:any)
+    {
+      //show items of particular category here whatever is selected!
+      console.log(this.selectedCategory);
     }
 
     handle(e:any)
@@ -44,6 +54,7 @@ export class ReportingComponent {
             this.isLoading = false;
             this.noOrdersFound = true;
             this.isDataSelected = true;
+            this.showCategories = false;
             return;
           }
           this.orders = this.removeNest(orders,key);
@@ -51,6 +62,7 @@ export class ReportingComponent {
           this.isDataSelected = true;
           this.noOrdersFound = false;
           this.isLoading = false;
+          this.showCategories = true;
         });
     }
 
@@ -169,11 +181,29 @@ export class ReportingComponent {
 
     basicOptions: any;
 
+    loadCategories()
+    {
+      this.isLoading = true;
+      this.apiService.getCategories().subscribe((catData)=>{
+        if(catData == null)
+        {
+          this.categories = [];
+          this.selectedCategory = {};
+          this.isLoading = false;
+          return;
+        }
+        this.categories = [{categoryName : "ALL"} , ...Object.values(catData)];
+        this.isLoading = false;
+      });
+    }
+
     ngOnInit() {
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+        this.loadCategories();
 
         this.basicData = {
             labels: ['Ordered Qty.' , 'Dispatched Qty.'],
@@ -194,7 +224,7 @@ export class ReportingComponent {
                     labels: {
                         color: textColor
                     }
-                }
+                } , 
             },
             scales: {
                 y: {
@@ -216,7 +246,7 @@ export class ReportingComponent {
                         drawBorder: false
                     }
                 }
-            }
+            },
         };
     }
 }
