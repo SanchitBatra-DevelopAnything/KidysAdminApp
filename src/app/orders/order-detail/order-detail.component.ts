@@ -137,7 +137,9 @@ export class OrderDetailComponent {
     for(let i=0;i<items.length;i++)
     {
       let item = items[i].item;
-      let data = {"Sno" : i+1 , "orderedQuantity" : items[i].quantity ,"item" : item ,"dispatchedQuantity" : items[i].quantity , "dispatchedPrice" : items[i].price , "orderedPrice" : items[i].price , "priceOfOne" : items[i].price/items[i].quantity};
+      console.log(items[i]);
+      console.log("ORDER ITEM IN CATEGORY : ",items[i]['CategoryName']);
+      let data = {"Sno" : i+1 , "orderedQuantity" : items[i].quantity ,"item" : item ,"dispatchedQuantity" : items[i].quantity , "dispatchedPrice" : items[i].price , "orderedPrice" : items[i].price , "priceOfOne" : items[i].price/items[i].quantity , "parentCategory" : items[i]['CategoryName']};
       this.billData.push(data);
 
     }
@@ -280,4 +282,5 @@ export interface BillElement {
   'dispatchedPrice': number;
   'orderedPrice': number;
   'priceOfOne' : number;
+  'parentCategory' : string,
 }
