@@ -1,6 +1,5 @@
 
 import { Component } from '@angular/core';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 import { ApiService } from '../services/api/api.service';
 
 import { NodeService } from '../services/treeSelect/node.service';
