@@ -15,8 +15,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { TreeSelectModule } from 'primeng/treeselect';
-import { ChartModule } from 'primeng/chart';
+
 import { environment } from 'src/environments/environment';
 
 
@@ -98,8 +97,6 @@ const appRoutes : Routes = [
     MatTableModule , 
     MatPaginatorModule,
     OverlayPanelModule,
-    TreeSelectModule,
-    ChartModule,
     RouterModule.forRoot(appRoutes,{useHash: true}),
   ],
   providers: [DialogService],

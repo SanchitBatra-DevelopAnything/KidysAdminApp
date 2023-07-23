@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable, ObservedValueOf } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -78,14 +79,68 @@ export class ApiService {
     let orderDate = orderInformation['orderTime'].split(' ')[0];
     console.log("Order date = "+orderDate);
     let year = orderDate.split('/')[2];
-    console.log("year = "+year);
-    let quarter = this.getQuarter(orderDate.split('/')[0]);
-    console.log("Quarter = "+quarter);
-    let month = orderDate.split('/')[0];
+    // console.log("year = "+year);
+    // let quarter = this.getQuarter(orderDate.split('/')[0]);
+    // console.log("Quarter = "+quarter);
+    let month = this.processMonth(orderDate.split('/')[0]);
     console.log("Month = "+month);
-    let week = this.getWeek(orderDate.split('/')[1]);
-    console.log("Week = "+week);
-    return this.http.post(this.dbUrl+"reportingDistributorOrders/year"+year+"/Q"+quarter+"/month"+month+"/week"+week+"/"+area+"/"+orderedBy+".json",orderInformation);
+    return this.http.post(this.dbUrl+"reportingDistributorOrders/"+area+"/"+orderedBy+"/"+year+"/"+month+".json" , orderInformation);
+  }
+
+  private processMonth(num:any)
+  {
+    if(num == 1)
+    { 
+      return "JANUARY";
+    }
+    else if(num == 2)
+    {
+      return "FEBRUARY";
+    }
+    else if(num == 3)
+    {
+      return "MARCH";
+    }
+    else if(num == 4)
+    {
+      return "APRIL";
+    }
+    else if(num == 5)
+    {
+      return "MAY";
+    }
+    else if(num == 6)
+    {
+      return "JUNE";
+    }
+    else if(num == 7)
+    {
+      return "JULY";
+    } 
+    else if(num == 8)
+    {
+      return "AUGUST";
+    }
+    else if(num == 9)
+    {
+      return "SEPTEMBER";
+    }
+    else if(num == 10)
+    {
+      return "OCTOBER";
+    }
+    else if(num == 11)
+    {
+      return "NOVEMBER";
+    }
+    else if(num == 12)
+    {
+      return "DECEMBER";
+    }
+    else
+    {
+      return undefined;
+    }
   }
 
   private getWeek(day:String)
