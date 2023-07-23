@@ -1,3 +1,5 @@
 <div class="container">
     <button class = "btn choc-btn" (click) = "exportToExcel(excelOutputData , 'sanchit_orders.xlsx')">DOWNLOAD EXCEL SHEET</button>
 </div>
+
+<div class="loader" *ngIf = "isLoading" style = "position: absolute; top:50%; left: 50%;"></div>

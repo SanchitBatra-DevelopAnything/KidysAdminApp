@@ -47,11 +47,15 @@ export class ReportingComponent implements OnInit{
   }
 
   exportToExcel(data: any[][], filename: string) {
+    this.isLoading = true;
+    setTimeout(()=>{
     const worksheet: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
     const workbook: XLSX.WorkBook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
     const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
     saveAs(blob, filename);
+    this.isLoading = false;
+    },1000);
   }
 
   consolidateDataByItem(data: any): any[] {
