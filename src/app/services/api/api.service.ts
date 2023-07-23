@@ -224,8 +224,8 @@ export class ApiService {
     return this.http.patch(this.dbUrl+"priceLists/"+key+".json" , params);
   }
 
-  public getOrdersForReports(key : string) : Observable<any>
+  public getOrdersForReports(year:any , area:any , distributor:any) : Observable<any>
   {
-    return this.http.get(this.dbUrl+"reportingDistributorOrders/"+key+".json");
+    return this.http.get(this.dbUrl+"reportingDistributorOrders/"+area+"/"+distributor+"/"+year+".json");
   }
 }
