@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { saveAs } from 'file-saver';
 })
 export class ReportingComponent implements OnInit{
 
-  constructor(private apiService:ApiService){}
+  constructor(private apiService:ApiService , private toastr:ToastrService){}
 
   jsonData:any;
   isLoading:boolean = false;
@@ -96,16 +97,26 @@ export class ReportingComponent implements OnInit{
   doWork()
   {
     // Consolidate data for each item across all months
-    const consolidatedData = this.consolidateDataByItem(this.jsonData);
-    const months = Object.keys(this.jsonData);
-
-    // Prepare the data in the format for exporting to Excel
-    const excelData = this.prepareExcelData(consolidatedData,months);
-    this.excelOutputData = excelData;
-
-
-    console.log(excelData);
-    // this.exportToExcel(excelData, 'consolidated_data.xlsx');
+    this.isLoading = true;
+    console.log("params - year = "+this.selectedYear.year + "-" + this.selectedDistributor.area + "-"+ this.selectedDistributor.distributor);
+    this.apiService.getOrdersForReports(this.selectedYear.year , this.selectedDistributor.area , this.selectedDistributor.distributor).subscribe((orders)=>{
+      if(orders == null || orders == undefined)
+      {
+        this.isLoading = false;
+        this.toastr.warning('No Data Found', 'Notification!' , {
+          timeOut : 4000 ,
+          closeButton : true , 
+          positionClass : 'toast-top-right'
+        });
+        return;
+      }
+      this.jsonData = orders;
+      const consolidatedData = this.consolidateDataByItem(this.jsonData);
+      const months = Object.keys(this.jsonData);
+      const excelData = this.prepareExcelData(consolidatedData,months);
+      this.excelOutputData = excelData;
+      this.exportToExcel(excelData, this.buildFileName());
+    });
   }
 
   exportToExcel(data: any[][], filename: string) {
@@ -138,8 +149,9 @@ export class ReportingComponent implements OnInit{
         let items = order.items;
 
         // Apply filtering based on selectedCategory
-        if (this.selectedCategory !== 'ALL') {
-          items = items.filter((item:any) => item.parentCategory === this.selectedCategory);
+        let selectedCategoryName = this.selectedCategory.categoryName;
+        if (selectedCategoryName !== 'ALL') {
+          items = items.filter((item:any) => item.parentCategory === selectedCategoryName);
         }
 
         // Consolidate quantities for each item
