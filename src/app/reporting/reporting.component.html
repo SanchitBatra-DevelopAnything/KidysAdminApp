@@ -1,5 +1,41 @@
-<div class="container">
-    <button class = "btn choc-btn" (click) = "exportToExcel(excelOutputData , 'sanchit_orders.xlsx')">DOWNLOAD EXCEL SHEET</button>
+<div class="container" *ngIf= "!isLoading">
+    <div class="jumbotron">
+        <h3>Welcome To Reporting Module!</h3>
+        <p>Generate your reports here!</p>
+        <hr>
+        <div class="row">
+            <div class="col-xs-3">
+                <h5>Please select year for report : </h5>
+            </div>
+            <div class="col-xs-3">
+                <p-dropdown [options]="yearList" [(ngModel)]="selectedYear" optionLabel="year"></p-dropdown>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <h5>Please select distributor : </h5>
+            </div>
+            <div class="col-xs-3">
+                <p-dropdown [options]="distributorList" [(ngModel)]="selectedDistributor" optionLabel="view"></p-dropdown>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <h5>Please select category : </h5>
+            </div>
+            <div class="col-xs-3">
+                <p-dropdown [options]="categoriesList" [(ngModel)]="selectedCategory" optionLabel="categoryName"></p-dropdown>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <button class = "btn choc-button" (click) = "exportToExcel(excelOutputData , buildFileName())">DOWNLOAD EXCEL SHEET</button>
+    </div>
 </div>
 
-<div class="loader" *ngIf = "isLoading" style = "position: absolute; top:50%; left: 50%;"></div>
+
+
+
+
+<div class="loader" *ngIf = "isLoading" style = "position: absolute; top:50%; left: 50%;">
+</div>

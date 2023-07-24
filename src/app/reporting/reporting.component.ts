@@ -16,22 +16,84 @@ export class ReportingComponent implements OnInit{
 
   jsonData:any;
   isLoading:boolean = false;
-  selectedDistributor = "SANCHIT";
-  selectedArea = "JODHPUR";
-  selectedCategory = "ALL";
+  
+  
+  selectedCategory:any = {};
   excelOutputData:any = [];
-
+  selectedYear : any;
+  yearList:any = [];
+  distributorList:any = [];
+  selectedDistributor:any = {};
+  categoriesList:any = [];
 
   ngOnInit()
   {
-    this.apiService.getOrdersForReports("2023" , this.selectedArea , this.selectedDistributor).subscribe((o)=>{
-      this.jsonData = o;
-      this.isLoading = false;
-      this.doChatGPT();
+    this.formYearList();
+    this.fetchDistributors();
+    this.fetchCategories();
+    // this.apiService.getOrdersForReports("2023" , this.selectedArea , this.selectedDistributor).subscribe((o)=>{
+    //   this.jsonData = o;
+    //   this.isLoading = false;
+    //   this.doWork();
+    // });
+  }
+
+  buildFileName()
+  {
+    let str = "";
+    str+=this.selectedDistributor.view+"--"+this.selectedCategory['categoryName'];
+    return str;
+  }
+
+  fetchCategories()
+  {
+    this.apiService.getCategories().subscribe((catData)=>{
+      if(catData == null)
+      {
+        this.selectedCategory = {"categoryName" : "ERROR"};
+        this.categoriesList.push(this.selectedCategory);
+        return;
+      }
+      this.selectedCategory = {"categoryName" : "ALL"};
+      this.categoriesList = [];
+      this.categoriesList.push(this.selectedCategory);
+      for(let i=0;i<Object.values(catData).length;i++)
+      {
+        this.categoriesList.push(Object.values(catData)[i]);
+      }
     });
   }
 
-  doChatGPT()
+  fetchDistributors()
+  {
+    this.selectedDistributor = {};
+    this.apiService.getDistributors().subscribe((distributors)=>{
+      if(distributors == null)
+      {
+        this.selectedDistributor = {"area" : "ERROR" , "distributor" : "ERROR"};
+        this.distributorList.push(this.selectedDistributor);
+        return;
+      }
+      let dist : any = Object.values(distributors);
+      this.distributorList = [];
+      for(let i=0;i<dist.length;i++)
+      {
+        this.distributorList.push({'view' : dist[i].distributorName + " from "+dist[i].area , 'distributor' : dist[i].distributorName , 'area' : dist[i].area});
+      }
+      this.distributorList.sort((a:any, b:any) => (a.distributor.trim() > b.distributor.trim()) ? 1 : -1)
+    });
+  }
+
+  formYearList()
+  {
+    let curr_year =  new Date().getFullYear();
+    for(let i=0;i<4;i++)
+    {
+      this.yearList.push({'year' : curr_year-i});
+    }
+  }
+
+  doWork()
   {
     // Consolidate data for each item across all months
     const consolidatedData = this.consolidateDataByItem(this.jsonData);
