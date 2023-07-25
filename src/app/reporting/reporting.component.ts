@@ -4,6 +4,7 @@ import { ApiService } from '../services/api/api.service';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs';
 
 
 @Component({
@@ -132,10 +133,7 @@ export class ReportingComponent implements OnInit{
   }
 
   consolidateDataByItem(data: any): any[] {
-    const consolidatedData = [];
-
-    // Initialize a map to store item data
-    const itemMap: { [key: string]: { 'Item Name': string } & { [key: string]: number } } = {};
+    const consolidatedData:any = [];
 
     // Get all available months from the JSON data
     const months = Object.keys(data);
@@ -143,6 +141,7 @@ export class ReportingComponent implements OnInit{
     // Loop through each month's data (e.g., 'JULY', 'AUGUST', etc.)
     months.forEach((month) => {
       const monthData = data[month];
+      let itemMap = new Map();
 
       // Loop through each order within the month
       Object.values(monthData).forEach((order:any) => {
@@ -157,30 +156,35 @@ export class ReportingComponent implements OnInit{
         // Consolidate quantities for each item
         items.forEach((item:any) => {
           const itemId = item.item;
-          if (itemMap[itemId]) {
+          if (itemMap.has(itemId)) {
             // If the item already exists, update the quantities for the current month
-            itemMap[itemId][`${month} - Ordered Qty`] = (itemMap[itemId][`${month} - Ordered Qty`] || 0) + item.orderedQuantity;
-            itemMap[itemId][`${month} - Dispatched Qty`] = (itemMap[itemId][`${month} - Dispatched Qty`] || 0) + item.dispatchedQuantity;
+            let existing_item_data = itemMap.get(itemId);
+            let key1 = month+" - Ordered Qty";
+            let key2 = month+" - Dispatched Qty";
+            existing_item_data[key1] += item.orderedQuantity;
+            existing_item_data[key2] += item.dispatchedQuantity;
+            itemMap.set(itemId , existing_item_data);
           } else {
             // If the item is new, add it to the map with initial quantities for all months as 0
-            const itemData: { 'Item Name': string } & { [key: string]: number } = { 'Item Name': item.item };
-            months.forEach((m) => {
-              itemData[`${m} - Ordered Qty`] = 0;
-              itemData[`${m} - Dispatched Qty`] = 0;
-            });
-            itemData[`${month} - Ordered Qty`] = item.orderedQuantity;
-            itemData[`${month} - Dispatched Qty`] = item.dispatchedQuantity;
-            itemMap[itemId] = itemData;
+              let key1 = month+" - Ordered Qty";
+              let key2 = month+" - Dispatched Qty";
+
+              let curr_item_data:any = {};
+              curr_item_data[key1] = item.orderedQuantity;
+              curr_item_data[key2] = item.dispatchedQuantity;
+              itemMap.set(itemId , curr_item_data);
+              //console.log("INSERTED , ",curr_item_data);
           }
+        });
+         // Convert the map to an array
+         console.log("MAP = ",itemMap);
+         itemMap.forEach((value, key) => {
+          consolidatedData.push({...value , 'Item Name' : key});
         });
       });
     });
 
-    // Convert the map to an array
-    for (const itemId of Object.keys(itemMap)) {
-      consolidatedData.push(itemMap[itemId]);
-    }
-
+    console.log("FORMED FINAL DATA = ",consolidatedData);
     return consolidatedData;
   }
 
