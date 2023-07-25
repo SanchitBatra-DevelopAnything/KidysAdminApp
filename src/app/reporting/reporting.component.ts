@@ -190,10 +190,23 @@ export class ReportingComponent implements OnInit{
 
   prepareExcelData(consolidatedData: any[], months: string[]): any[] {
     // Create headers dynamically based on available months
-    const headers = ['Item Name', ...months.map((month) => `${month} - Ordered Qty`), ...months.map((month) => `${month} - Dispatched Qty`)];
+    //const headers = ['Item Name', ...months.map((month) => `${month} - Ordered Qty`), ...months.map((month) => `${month} - Dispatched Qty`)];
+    const headers = ['Item Name'];
     const excelData = [headers];
 
+    months.forEach((month)=>{
+      headers.push(month+" - Ordered Qty");
+      headers.push(month + " - Dispatched Qty");
+    });
+
+
+
+    console.log("HEADERS ARE = ",headers);
+
+    console.log("ITEMS TO PREPARE EXCEL = ");
     for (const item of consolidatedData) {
+      
+      console.log(item);
       const row = [item['Item Name']];
       // Loop through each month to populate ordered and dispatched quantities
       months.forEach((month) => {
