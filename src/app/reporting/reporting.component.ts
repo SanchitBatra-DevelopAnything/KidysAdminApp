@@ -184,8 +184,35 @@ export class ReportingComponent implements OnInit{
       });
     });
 
-    console.log("FORMED FINAL DATA = ",consolidatedData);
-    return consolidatedData;
+    
+    //make map on itemName basis
+    var main_map = new Map();
+    consolidatedData.forEach((itemData:any)=>{
+      if(main_map.has(itemData['Item Name']))
+      {
+        //matlab july me tha ye item , ab september me fir se hai , to sept ka add karna hai ab
+        let existing_data = main_map.get(itemData['Item Name']);
+        let updated_data = {...existing_data};
+        for(let key in itemData)
+        {
+          if(key!="Item Name")
+          {
+            updated_data[key] = itemData[key];
+          }
+        }
+        main_map.set(itemData['Item Name'] , updated_data);
+      }
+      else
+      {
+        main_map.set(itemData['Item Name'] , itemData);
+      }
+    });
+    
+    let final_map_to_array:any = [];
+    main_map.forEach((value, key) => {
+      final_map_to_array.push(value);
+    });
+    return final_map_to_array;
   }
 
   prepareExcelData(consolidatedData: any[], months: string[]): any[] {
