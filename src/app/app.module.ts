@@ -44,6 +44,7 @@ import { PriceListsNDiscountsComponent } from './manage/price-lists-n-discounts/
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { AddAreaFormComponent } from './add-area-form/add-area-form.component';
 import { OldOrdersComponent } from './orders/old-orders/old-orders.component';
+import { OldOrderDetailComponent } from './orders/old-order-detail/old-order-detail.component';
 
 
 const appRoutes : Routes = [
@@ -84,6 +85,7 @@ const appRoutes : Routes = [
     PriceListsNDiscountsComponent,
     AddAreaFormComponent,
     OldOrdersComponent,
+    OldOrderDetailComponent,
   ],
   imports: [
     BrowserModule,

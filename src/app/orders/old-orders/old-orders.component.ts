@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ApiService } from 'src/app/services/api/api.service';
+import { OldOrderDetailComponent } from '../old-order-detail/old-order-detail.component';
 
 @Component({
   selector: 'app-old-orders',
@@ -14,8 +16,9 @@ export class OldOrdersComponent {
   processedOrderKeys : any;
   isLoading : boolean = false;
   options:any;
+  ref:DynamicDialogRef | undefined;
 
-  constructor(private apiService : ApiService , private router:Router , private route:ActivatedRoute) { }
+  constructor(private dialogService:DialogService,private apiService : ApiService , private router:Router , private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.isLoading = false;
@@ -46,13 +49,17 @@ export class OldOrdersComponent {
     
   }
 
-  showBill(order :any, processedOrderKey:any)
+  showBill(order:any , orderKey:any)
   {
-    let d = new Date(this.selected!);
-    let date = d.getDate();
-    let month = d.getMonth() + 1;
-    let year = d.getFullYear();
-    let selectedDate = date+""+month+""+year;
-    this.router.navigate(['/orderBill/'+order['orderKey']+"/processed?"+processedOrderKey+"/"+selectedDate]);
-  }
+    this.ref = this.dialogService.open(OldOrderDetailComponent, { 
+      data: {
+          key:orderKey,
+          order:order,
+      },
+      header: 'ORDER DETAIL',
+      maximizable:true,
+      height : "800px",
+      width:"600px",
+  });
+}
 }
