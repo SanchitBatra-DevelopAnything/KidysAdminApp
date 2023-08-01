@@ -228,4 +228,9 @@ export class ApiService {
   {
     return this.http.get(this.dbUrl+"reportingDistributorOrders/"+area+"/"+distributor+"/"+year+".json");
   }
+
+  public saveOrdersForSuperAdmins(order:any ,date:string) : Observable<any>
+  {
+    return this.http.post(this.dbUrl+"processedOrdersView/"+date+".json" , order);
+  }
 }
