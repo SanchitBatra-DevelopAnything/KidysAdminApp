@@ -61,6 +61,11 @@ export class OrdersComponent implements OnInit{
     this.router.navigate(['orderBill/'+area+'/'+orderedBy+'/'+orderKey]);
   }
 
+  oldOrderPage()
+  {
+    this.router.navigate(['/processedOrders']);
+  }
+
 
 
 }

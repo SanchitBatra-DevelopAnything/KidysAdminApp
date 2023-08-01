@@ -7,13 +7,16 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ToastrModule } from 'ngx-toastr';
 import { SidebarModule } from 'primeng/sidebar';
+import {MatCardModule} from '@angular/material/card';
 import { DialogModule } from 'primeng/dialog';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatNativeDateModule } from '@angular/material/core';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 import { environment } from 'src/environments/environment';
@@ -40,6 +43,7 @@ import { DistributorsListComponent } from './manage/distributors-list/distributo
 import { PriceListsNDiscountsComponent } from './manage/price-lists-n-discounts/price-lists-n-discounts.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { AddAreaFormComponent } from './add-area-form/add-area-form.component';
+import { OldOrdersComponent } from './orders/old-orders/old-orders.component';
 
 
 const appRoutes : Routes = [
@@ -55,6 +59,7 @@ const appRoutes : Routes = [
     {path:'priceListsAndDiscounts',component:PriceListsNDiscountsComponent}
   ] ,},
   {path : 'reporting' , component : ReportingComponent},
+  {path : 'processedOrders' , component : OldOrdersComponent},
   {path : 'orderBill/:orderArea/:orderedBy/:orderKey' , component : OrderDetailComponent}
 ];
 
@@ -78,6 +83,7 @@ const appRoutes : Routes = [
     OrderDetailComponent,
     PriceListsNDiscountsComponent,
     AddAreaFormComponent,
+    OldOrdersComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +103,9 @@ const appRoutes : Routes = [
     MatTableModule , 
     MatPaginatorModule,
     OverlayPanelModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatCardModule,
     RouterModule.forRoot(appRoutes,{useHash: true}),
   ],
   providers: [DialogService],

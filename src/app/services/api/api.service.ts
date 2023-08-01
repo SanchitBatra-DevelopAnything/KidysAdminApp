@@ -233,4 +233,9 @@ export class ApiService {
   {
     return this.http.post(this.dbUrl+"processedOrdersView/"+date+".json" , order);
   }
+
+  public getProcessedDistributorViewOrders(date:string) : Observable<any>
+  {
+    return this.http.get(this.dbUrl+"processedOrdersView/"+date+".json");
+  }
 }
