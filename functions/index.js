@@ -46,12 +46,14 @@
     try {
       // Extract the device token from the request body
       const { deviceToken } = req.body;
+      const { title } = req.title;
+      const { matter } = req.matter;
   
       // Set the notification payload with sound
       const payload = {
         notification: {
-          title: 'Welcome to Kidys Distributor App',
-          body: 'Please Login to Continue',
+          title: title,
+          body: matter,
           sound: 'default', // You can specify a custom sound file here if needed
         },
       };
