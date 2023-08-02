@@ -18,6 +18,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatNativeDateModule } from '@angular/material/core';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TableModule } from 'primeng/table';
 
 import { environment } from 'src/environments/environment';
 
@@ -108,6 +109,7 @@ const appRoutes : Routes = [
     MatNativeDateModule,
     MatDatepickerModule,
     MatCardModule,
+    TableModule,
     RouterModule.forRoot(appRoutes,{useHash: true}),
   ],
   providers: [DialogService],

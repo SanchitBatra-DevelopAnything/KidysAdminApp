@@ -89,6 +89,7 @@ export class OrderDetailComponent {
         let data_array = Object.values(data);
         let currentPriceList:any = data_array[i];
         let code = currentPriceList['code'];
+        console.log("CODE = ",this.orderData);
         if(code.trim() == this.orderData['priceList'].trim())
         {
           this.activeDiscounts = currentPriceList;
