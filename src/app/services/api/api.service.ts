@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable, ObservedValueOf } from 'rxjs';
+import { Token } from '@angular/compiler';
 
 
 @Injectable({
@@ -237,5 +238,14 @@ export class ApiService {
   public getProcessedDistributorViewOrders(date:string) : Observable<any>
   {
     return this.http.get(this.dbUrl+"processedOrdersView/"+date+".json");
+  }
+
+  public sendPushNotification(title : string , matter:string,token : string) : Observable<any>
+  {
+    return this.http.post("https://us-central1-kidysadminapp.cloudfunctions.net/sendApprovalNotification" , {
+      title : title,
+      matter : matter,
+      deviceToken : token
+    })
   }
 }

@@ -166,13 +166,15 @@ export class OrderDetailComponent {
         this.apiService.acceptOrderForProcessed(orderInformation['area'] , orderInformation['orderedBy'] , orderInformation).subscribe(()=>{
           this.apiService.saveOrdersForSuperAdmins(orderInformation , orderInformation['orderDate']).subscribe((_)=>{
             this.apiService.deleteActiveOrder(orderInformation['area'] , orderInformation['orderedBy'] , this.orderKey).subscribe(()=>{
-              this.router.navigate(['/dailyReport']);
-              this.isLoading = false;
-              this.toastr.success('Order Accepted!', 'Notification!' , {
-                        timeOut : 4000 ,
-                        closeButton : true , 
-                        positionClass : 'toast-top-left'
-                      });
+              this.apiService.sendPushNotification("Order accepted" , "Check My Orders section" , orderInformation['deviceToken']).subscribe((_)=>{
+                this.router.navigate(['/dailyReport']);
+                this.isLoading = false;
+                this.toastr.success('Order Accepted!', 'Notification!' , {
+                          timeOut : 4000 ,
+                          closeButton : true , 
+                          positionClass : 'toast-top-left'
+                        });
+              });  
           });
           });
         })
