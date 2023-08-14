@@ -19,6 +19,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatNativeDateModule } from '@angular/material/core';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TableModule } from 'primeng/table';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 import { environment } from 'src/environments/environment';
 
@@ -113,6 +114,7 @@ const appRoutes : Routes = [
     MatDatepickerModule,
     MatCardModule,
     TableModule,
+    RadioButtonModule,
     RouterModule.forRoot(appRoutes,{useHash: true}),
   ],
   providers: [DialogService],

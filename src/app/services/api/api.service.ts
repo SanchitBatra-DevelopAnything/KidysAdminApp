@@ -248,4 +248,10 @@ export class ApiService {
       deviceToken : token
     })
   }
+
+  public signup(data:any ,selectedAdminType:any):Observable<any>
+  {
+    data['type'] = selectedAdminType;
+    return this.http.post(this.dbUrl+"admins.json",data);
+  }
 }
