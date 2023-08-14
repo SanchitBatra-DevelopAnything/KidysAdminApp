@@ -46,6 +46,7 @@ import { OrderDetailComponent } from './orders/order-detail/order-detail.compone
 import { AddAreaFormComponent } from './add-area-form/add-area-form.component';
 import { OldOrdersComponent } from './orders/old-orders/old-orders.component';
 import { OldOrderDetailComponent } from './orders/old-order-detail/old-order-detail.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 
 const appRoutes : Routes = [
@@ -62,7 +63,8 @@ const appRoutes : Routes = [
   ] ,},
   {path : 'reporting' , component : ReportingComponent},
   {path : 'processedOrders' , component : OldOrdersComponent},
-  {path : 'orderBill/:orderArea/:orderedBy/:orderKey' , component : OrderDetailComponent}
+  {path : 'orderBill/:orderArea/:orderedBy/:orderKey' , component : OrderDetailComponent},
+  {path : 'signup' , component : SignupFormComponent},
 ];
 
 @NgModule({
@@ -87,6 +89,7 @@ const appRoutes : Routes = [
     AddAreaFormComponent,
     OldOrdersComponent,
     OldOrderDetailComponent,
+    SignupFormComponent,
   ],
   imports: [
     BrowserModule,
