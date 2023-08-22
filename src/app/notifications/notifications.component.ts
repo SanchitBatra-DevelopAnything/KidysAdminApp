@@ -83,11 +83,13 @@ export class NotificationsComponent implements OnInit {
     this.isLoading = true;
     this.apiService.deleteNotification(this.notificationKeys[index]).subscribe((_)=>{
       this.apiService.makeDistributor(this.notificationData[index]).subscribe((_)=>{
-        this.loadNotifications();
-        this.toastr.success('Request Approved Successfully!', 'Notification!' , {
-          timeOut : 4000 ,
-          closeButton : true , 
-          positionClass : 'toast-top-right'
+        this.apiService.sendPushNotification("Your request has been approved." , "Please login." , this.notificationData[index]['deviceToken']).subscribe((_)=>{
+          this.loadNotifications();
+          this.toastr.success('Request Approved Successfully!', 'Notification!' , {
+            timeOut : 4000 ,
+            closeButton : true , 
+            positionClass : 'toast-top-right'
+          });
         });
       });
     });
