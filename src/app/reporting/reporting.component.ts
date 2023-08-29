@@ -161,17 +161,21 @@ export class ReportingComponent implements OnInit{
             let existing_item_data = itemMap.get(itemId);
             let key1 = month+" - Ordered Qty";
             let key2 = month+" - Dispatched Qty";
+            let key3 = month+" - Amount"
             existing_item_data[key1] += item.orderedQuantity;
             existing_item_data[key2] += item.dispatchedQuantity;
+            existing_item_data[key3] +=item.dispatchedPrice;
             itemMap.set(itemId , existing_item_data);
           } else {
             // If the item is new, add it to the map with initial quantities for all months as 0
               let key1 = month+" - Ordered Qty";
               let key2 = month+" - Dispatched Qty";
+              let key3 = month+" - Amount"
 
               let curr_item_data:any = {};
               curr_item_data[key1] = item.orderedQuantity;
               curr_item_data[key2] = item.dispatchedQuantity;
+              curr_item_data[key3] = item.dispatchedPrice;
               itemMap.set(itemId , curr_item_data);
               //console.log("INSERTED , ",curr_item_data);
           }
@@ -224,6 +228,7 @@ export class ReportingComponent implements OnInit{
     months.forEach((month)=>{
       headers.push(month+" - Ordered Qty");
       headers.push(month + " - Dispatched Qty");
+      headers.push(month +" - Amount");
     });
 
 
@@ -237,7 +242,7 @@ export class ReportingComponent implements OnInit{
       const row = [item['Item Name']];
       // Loop through each month to populate ordered and dispatched quantities
       months.forEach((month) => {
-        row.push(item[`${month} - Ordered Qty`] || 0, item[`${month} - Dispatched Qty`] || 0);
+        row.push(item[`${month} - Ordered Qty`] || 0, item[`${month} - Dispatched Qty`] || 0 , item[`${month} - Amount`] || 0);
       });
 
       excelData.push(row);
