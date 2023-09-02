@@ -9,8 +9,8 @@
       <h3 style = "display:inline-block;">Ordered By : <span style = "font-weight: bold;">{{orderData['orderedBy']}} , </span></h3>
       <h3 style = "display:inline-block;">Order Placed : <span style = "font-weight: bold;">{{orderData['orderTime']}} , </span></h3>
       <h3 style = "display:inline-block;">Dispatch Requested On : <span style = "font-weight: bold;"> {{orderData['dispatchDate']}}</span></h3>
-      <h3> Order Estimate : Rs.{{orderData['totalPrice']}}</h3>
-      <h3> Dispatch Estimate : Rs. {{orderData['totalDispatchPrice']}}</h3>
+      <h3> Order Estimate : Rs.{{orderData['totalPrice'].toFixed(2)}}</h3>
+      <h3> Dispatch Estimate : Rs. {{orderData['totalDispatchPrice'].toFixed(2)}}</h3>
       <h3 style = "display: inline-block;">Discount : Rs.{{discount}}</h3> <h4 style = "display: inline-block; margin-left: 10px; color: red;">({{orderData['priceList']}})</h4>
       <h3>Sub total : Rs.{{subTotal}}</h3>
       </div>
@@ -34,18 +34,20 @@
               <th mat-header-cell *matHeaderCellDef style = "font-size:10px;" class = "mat-cell"> No. </th>
               <td mat-cell *matCellDef="let element" style = "font-size: 10px;" class = "mat-cell"> {{element.Sno}} </td>
             </ng-container>
-        
-            <!-- Name Column -->
-            <ng-container matColumnDef="OrderedQuantity">
-              <th mat-header-cell *matHeaderCellDef style = "font-size:15px;" class = "mat-cell">Qty.</th>
-              <td mat-cell *matCellDef="let element" style = "font-size: 15px;" class = "mat-cell"> {{element.orderedQuantity}} </td>
-            </ng-container>
-        
-            <!-- Weight Column -->
+
             <ng-container matColumnDef="Item">
               <th mat-header-cell *matHeaderCellDef style = "font-size:15px;" class = "mat-cell"> Item </th>
               <td mat-cell *matCellDef="let element" style = "font-size: 18px; font-weight: bold;" class = "mat-cell"> {{element.item}} </td>
             </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="OrderedQuantity">
+              <th mat-header-cell *matHeaderCellDef style = "font-size:15px;" class = "mat-cell">Qty. Ordered</th>
+              <td mat-cell *matCellDef="let element" style = "font-size: 15px;" class = "mat-cell"> {{element.orderedQuantity}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            
 
             <ng-container matColumnDef="DispatchedQuantity">
               <th mat-header-cell *matHeaderCellDef style = "font-size:15px;" class = "mat-cell">Dispatch Qty.</th>
@@ -56,7 +58,14 @@
             <ng-container matColumnDef="Price">
               <th mat-header-cell *matHeaderCellDef style = "font-size:15px;" class = "mat-cell"> Amt. </th>
               
-              <td mat-cell *matCellDef="let element" style = "font-size:15px;" class = "mat-cell"> {{element.dispatchedPrice}} </td>
+              <td mat-cell *matCellDef="let element" style = "font-size:15px;" class = "mat-cell"> {{element.dispatchedPrice.toFixed(2)}} </td>
+              <!-- <td mat-cell *matCellDef="let element" style = "font-size:35px;" *ngIf = "!showPrices"> ----- </td> -->
+            </ng-container>
+
+            <ng-container matColumnDef="Lot No.">
+              <th mat-header-cell *matHeaderCellDef style = "font-size:15px;" class = "mat-cell"> Lot No. </th>
+              
+              <td mat-cell *matCellDef="let element" style = "font-size:15px;" class = "mat-cell">______</td>
               <!-- <td mat-cell *matCellDef="let element" style = "font-size:35px;" *ngIf = "!showPrices"> ----- </td> -->
             </ng-container>
         

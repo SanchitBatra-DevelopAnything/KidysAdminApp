@@ -53,7 +53,7 @@ export class OrderDetailComponent {
     this.orderKey = this.route.snapshot.params['orderKey'];
     this.orderedBy = this.route.snapshot.params['orderedBy'];
     this.orderArea = this.route.snapshot.params['orderArea'];
-    this.displayedColumns = ['Sno' , 'OrderedQuantity' , 'Item' , 'DispatchedQuantity' , 'Price'];
+    this.displayedColumns = ['Sno' , 'Item','OrderedQuantity' ,   'DispatchedQuantity' , 'Price' , 'Lot No.'];
     this.getOrderItems();
   }
 
