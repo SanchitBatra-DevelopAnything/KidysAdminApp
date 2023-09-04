@@ -42,6 +42,7 @@ export class OrderDetailComponent {
   
 
   showPrices:boolean = true;
+  sureRejectVisible:boolean = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
@@ -60,6 +61,14 @@ export class OrderDetailComponent {
   goBackToOrders()
   {
     this.router.navigate(['/dailyReport']);
+  }
+
+  deleteOrder()
+  {
+    this.apiService.deleteActiveOrder(this.orderArea , this.orderedBy , this.orderKey).subscribe((_)=>{
+      this.sureRejectVisible = false;
+      this.router.navigate(['/dailyReport']);
+    });
   }
 
   getOrderItems()
