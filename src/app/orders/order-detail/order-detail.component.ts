@@ -112,6 +112,12 @@ export class OrderDetailComponent {
     });
   }
 
+  transformDate(d:string)
+  {
+    let arr  = d.split("/");
+    return arr[1]+"-"+arr[0]+"-"+arr[2];
+  }
+
   calculateDiscountAndSubTotal()
   {
     this.discount = 0;
