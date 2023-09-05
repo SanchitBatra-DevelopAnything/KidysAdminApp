@@ -118,6 +118,17 @@ export class OrderDetailComponent {
     return arr[1]+"-"+arr[0]+"-"+arr[2];
   }
 
+  getTotalCB(list:any)
+  {
+    let totalCB = 0;
+    for(let i=0;i<list.length;i++)
+    {
+      totalCB+=list[i]['quantity'];
+    }
+
+    return totalCB;
+  }
+
   calculateDiscountAndSubTotal()
   {
     this.discount = 0;
