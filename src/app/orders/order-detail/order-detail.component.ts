@@ -157,7 +157,6 @@ export class OrderDetailComponent {
       console.log("ORDER ITEM IN CATEGORY : ",items[i]['CategoryName']);
       let data = {"Sno" : i+1 , "orderedQuantity" : items[i].quantity ,"item" : item ,"dispatchedQuantity" : items[i].quantity , "dispatchedPrice" : items[i].price , "orderedPrice" : items[i].price , "priceOfOne" : items[i].price/items[i].quantity , "parentCategory" : items[i]['CategoryName']};
       this.billData.push(data);
-
     }
     this.dataSource = new MatTableDataSource<BillElement>(this.billData);
     this.setPaginator();
