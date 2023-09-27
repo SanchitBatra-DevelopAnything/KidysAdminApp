@@ -254,4 +254,9 @@ export class ApiService {
     data['type'] = selectedAdminType;
     return this.http.post(this.dbUrl+"admins.json",data);
   }
+
+  public checkMaintenance() : Observable<any>
+  {
+    return this.http.get(this.dbUrl+"maintenance/-NfL2-nXXnqVLMMwUpVa.json");
+  }
 }

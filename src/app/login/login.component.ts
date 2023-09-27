@@ -11,6 +11,9 @@ import { UtilityService } from '../services/utility/utility.service';
 })
 export class LoginComponent implements OnInit {
   isLoading:boolean = false;
+  isMaintenanceWindow:boolean = false;
+  isLoginWindow:boolean = false;
+  activeSkipButton:boolean = false;
   admins : any = [];
   loginForm:UntypedFormGroup = new UntypedFormGroup({
 
@@ -24,8 +27,28 @@ export class LoginComponent implements OnInit {
       'username' : new UntypedFormControl(null), 
       'password' : new UntypedFormControl(null)
     });
+    this.isLoading = true;
     this.getAdmins();
+    this.getMaintenanceInformation();
   } 
+
+  getMaintenanceInformation()
+  {
+    this.apiService.checkMaintenance().subscribe((data)=>{
+      if(data == null)
+      {
+        this.isLoginWindow = true;
+        this.isMaintenanceWindow = false;
+        this.activeSkipButton = false;
+        this.isLoading = false;
+        return;
+      }
+      this.activeSkipButton = data['showMessage'];
+      this.isMaintenanceWindow = data['off'];
+      this.isLoginWindow = !data['off'];
+      this.isLoading = false;
+    });
+  }
 
   getAdmins() : void
   {

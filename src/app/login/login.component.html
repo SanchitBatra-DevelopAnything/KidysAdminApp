@@ -1,4 +1,4 @@
-<div class="login-container">
+<div class="login-container" *ngIf = "isLoginWindow">
     <div class="background-image"></div>
     <div class="card">
       <img src="../../assets/kidys logo-17.png" alt="Brand Logo" class="brand-image">
@@ -19,4 +19,6 @@
       </div>
     </div>
   </div>
+
+<app-payment-collection-maintenance *ngIf = "isMaintenanceWindow"></app-payment-collection-maintenance>
   

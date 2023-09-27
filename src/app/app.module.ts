@@ -48,6 +48,7 @@ import { AddAreaFormComponent } from './add-area-form/add-area-form.component';
 import { OldOrdersComponent } from './orders/old-orders/old-orders.component';
 import { OldOrderDetailComponent } from './orders/old-order-detail/old-order-detail.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { PaymentCollectionMaintenanceComponent } from './payment-collection-maintenance/payment-collection-maintenance.component';
 
 
 const appRoutes : Routes = [
@@ -91,6 +92,7 @@ const appRoutes : Routes = [
     OldOrdersComponent,
     OldOrderDetailComponent,
     SignupFormComponent,
+    PaymentCollectionMaintenanceComponent,
   ],
   imports: [
     BrowserModule,
