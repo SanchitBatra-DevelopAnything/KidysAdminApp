@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ApiService } from '../services/api/api.service';
 import { UtilityService } from '../services/utility/utility.service';
 
@@ -9,12 +10,13 @@ import { UtilityService } from '../services/utility/utility.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit,OnDestroy {
   isLoading:boolean = false;
   isMaintenanceWindow:boolean = false;
   isLoginWindow:boolean = false;
   activeSkipButton:boolean = false;
   admins : any = [];
+  skipMaintenanceSub:Subscription = new Subscription();
   loginForm:UntypedFormGroup = new UntypedFormGroup({
 
   });
@@ -30,6 +32,11 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.getAdmins();
     this.getMaintenanceInformation();
+    this.skipMaintenanceSub = this.utilityService.skippedMaintenance.subscribe((data)=>{
+      this.isMaintenanceWindow = !data;
+      this.isLoginWindow = data;
+      this.activeSkipButton = false;
+    });
   } 
 
   getMaintenanceInformation()
@@ -104,6 +111,11 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem("loggedIn" , "true");
     this.utilityService.userLoggedIn.next(true); //inform app component ki header on kardo.
     this.router.navigate(['/categories']);
+  }
+
+  ngOnDestroy()
+  {
+    this.skipMaintenanceSub.unsubscribe();
   }
 
 
