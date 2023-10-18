@@ -20,11 +20,13 @@ export class OrderDetailComponent {
   orderData : any = {};
   billData : BillElement[] = [];
   
+  
   orderedBy : string = "";
   orderArea:string = "";
 
   displayedColumns : string[] = [];
   dataSource:any;
+  
 
   changeDispatchVisible:boolean =false;
   changeDispatchItemName:string = "";
@@ -36,6 +38,8 @@ export class OrderDetailComponent {
   discount:number = 0; //this will store the calculated discount on this order.
 
   subTotal:number = 0;
+
+  isDispatchHidden:any;
   
   
   
@@ -55,6 +59,7 @@ export class OrderDetailComponent {
     this.orderedBy = this.route.snapshot.params['orderedBy'];
     this.orderArea = this.route.snapshot.params['orderArea'];
     this.displayedColumns = ['Sno' , 'Item','OrderedQuantity' ,   'DispatchedQuantity' , 'Price' , 'Lot No.'];
+    this.isDispatchHidden = false;
     this.getOrderItems();
   }
 
@@ -69,6 +74,11 @@ export class OrderDetailComponent {
       this.sureRejectVisible = false;
       this.router.navigate(['/dailyReport']);
     });
+  }
+
+  toggleDispatchHide(e:any)
+  {
+      this.isDispatchHidden = !this.isDispatchHidden;
   }
 
   getOrderItems()
@@ -314,3 +324,5 @@ export interface BillElement {
   'priceOfOne' : number;
   'parentCategory' : string,
 }
+
+
