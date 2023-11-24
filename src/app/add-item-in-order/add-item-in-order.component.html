@@ -1,14 +1,22 @@
 <h6>Order : {{orderKey}}</h6>
 <h6>By : {{orderedBy}} , {{orderArea}}</h6>
 
-<hr>
-<h6>Please select category : </h6>
-<p-dropdown [options]="categoriesOptions" optionLabel="name" (onChange) = "selectCategory($event)"></p-dropdown>
+<div *ngIf = "!isLoading"> 
+    <h6>Please select category : </h6>
+<p-dropdown [options]="categoriesOptions" optionLabel="categoryName" (onChange) = "selectCategory($event)" [filter]="true" filterBy="categoryName"></p-dropdown>
 
 <h6>Please select Item : </h6>
-<p-dropdown [options]="itemOptions" optionLabel="name" (onChange) = "selectItem($event)"></p-dropdown>
+<p-dropdown [options]="itemOptions" optionLabel="itemName" (onChange) = "selectItem($event)" [filter]="true" filterBy="itemName"></p-dropdown>
 
 <h6>Enter quantity : </h6>
 <input type = "number" [(ngModel)]="quantity">
 <hr>
-<button class = "btn btn-success">Add</button>
+<button class = "btn btn-success" (click) = "addItem()">Add</button>
+</div>
+
+<div *ngIf = "isLoading">
+    <div class="loader">
+
+    </div>
+</div>
+
