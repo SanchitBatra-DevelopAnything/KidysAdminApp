@@ -311,7 +311,8 @@ export class OrderDetailComponent {
       data: {
           orderedBy : this.orderedBy,
           orderArea : this.orderArea,
-          orderKey : this.orderKey
+          orderKey : this.orderKey,
+          itemPriceList:this.activeDiscounts['code'],
       },
       header: 'Add an item',
       maximizable:false,

@@ -17,6 +17,7 @@ export class AddItemInOrderComponent implements OnInit {
 
   categoriesOptions:any;
   itemOptions:any;
+  itemPriceList:any;
 
   quantity:number=1;
   selectedCategory:any;
@@ -31,6 +32,7 @@ export class AddItemInOrderComponent implements OnInit {
     this.orderedBy = this.fullConfig["data"]["orderedBy"];
     this.orderArea = this.fullConfig["data"]["orderArea"];
     this.orderKey = this.fullConfig["data"]["orderKey"];
+    this.itemPriceList = this.fullConfig["data"]["itemPriceList"];
     this.getCategories();
   }
 
@@ -73,10 +75,12 @@ export class AddItemInOrderComponent implements OnInit {
 
   addItem()
   {
-    this.isLoading = true;
-    setTimeout(()=>{
-      this.isLoading = false;
-    },3000);
+    let formed_item = this.formItem();
+    console.log(formed_item);
   }
-  
+
+  formItem()
+  {
+    return {"CategoryName" : this.selectedCategory['categoryName'] , "imageUrl" : this.selectedItem['imgUrl'] , "item" : this.selectedItem['itemName'] , "price" : this.selectedItem[this.itemPriceList] , "quantity" : this.quantity};
+  }
 }
