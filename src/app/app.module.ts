@@ -49,6 +49,7 @@ import { OldOrdersComponent } from './orders/old-orders/old-orders.component';
 import { OldOrderDetailComponent } from './orders/old-order-detail/old-order-detail.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { PaymentCollectionMaintenanceComponent } from './payment-collection-maintenance/payment-collection-maintenance.component';
+import { AddItemInOrderComponent } from './add-item-in-order/add-item-in-order.component';
 
 
 const appRoutes : Routes = [
@@ -93,6 +94,7 @@ const appRoutes : Routes = [
     OldOrderDetailComponent,
     SignupFormComponent,
     PaymentCollectionMaintenanceComponent,
+    AddItemInOrderComponent,
   ],
   imports: [
     BrowserModule,

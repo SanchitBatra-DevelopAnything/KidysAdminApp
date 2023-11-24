@@ -3,7 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { of } from 'rxjs';
+import { AddItemInOrderComponent } from 'src/app/add-item-in-order/add-item-in-order.component';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -14,6 +16,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 export class OrderDetailComponent {
 
 
+  ref:DynamicDialogRef | undefined;
   orderKey : string = "";
   orderDate:string = "";
   isLoading : boolean = false;
@@ -51,7 +54,7 @@ export class OrderDetailComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
 
-  constructor(private route : ActivatedRoute , private router : Router,private apiService : ApiService , private toastr : ToastrService) { }
+  constructor(private dialogService:DialogService,private route : ActivatedRoute , private router : Router,private apiService : ApiService , private toastr : ToastrService) { }
 
   ngOnInit(): void {
     this.isLoading = false;
@@ -300,6 +303,21 @@ export class OrderDetailComponent {
     //close the dialog.
     this.calculateDiscountAndSubTotal();
     this.changeDispatchVisible = false;
+  }
+
+  openAddItemDialog()
+  {
+    this.ref = this.dialogService.open(AddItemInOrderComponent, { 
+      data: {
+          orderedBy : this.orderedBy,
+          orderArea : this.orderArea,
+          orderKey : this.orderKey
+      },
+      header: 'Add an item',
+      maximizable:false,
+      height : "400px",
+      width:"600px",
+  });
   }
 
   // getUpdatedTotal()

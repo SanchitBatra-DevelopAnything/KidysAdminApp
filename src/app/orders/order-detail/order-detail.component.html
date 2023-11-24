@@ -29,7 +29,7 @@
       
       <div class="jumbotron">
         <div class="row">
-          <div class="col-xs-4">
+          <div class="col-xs-3">
             <div class="container">
               <div *ngIf = "isDispatchHidden">
                 <button class = "btn btn-success btn-lg" (click) = "toggleDispatchHide('$event')">SHOW DISPATCH COLUMN</button>
@@ -41,16 +41,22 @@
             </div>
           </div>
 
-          <div class="col-xs-4">
+          <div class="col-xs-3">
             <div class = "container">
               <button class = "btn btn-danger btn-lg" (click) = "sureRejectVisible = true;">REJECT THIS ORDER</button>
             </div>
           </div>
 
-          <div class="col-xs-4">
+          <div class="col-xs-3">
             <div class = "container">
               <button class = "btn btn-primary btn-lg" (click) = "acceptOrder()">ACCEPT</button>
           </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div class="container">
+              <button class = "btn btn-lg btn-success" (click) = "openAddItemDialog()">Add More Items</button>
+            </div>
           </div>
 
         </div>
