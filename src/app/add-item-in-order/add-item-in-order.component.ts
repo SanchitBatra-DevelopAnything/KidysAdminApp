@@ -14,6 +14,13 @@ export class AddItemInOrderComponent implements OnInit {
   orderArea:any;
   fullConfig:any;
 
+  categoriesOptions:any;
+  itemOptions:any;
+
+  quantity:number=1;
+  selectedCategory:any;
+  selectedItem:any;
+
   constructor(private config:DynamicDialogConfig){}
 
   ngOnInit()
@@ -22,9 +29,20 @@ export class AddItemInOrderComponent implements OnInit {
     this.orderedBy = this.fullConfig["data"]["orderedBy"];
     this.orderArea = this.fullConfig["data"]["orderArea"];
     this.orderKey = this.fullConfig["data"]["orderKey"];
+    this.getCategories();
 
-    
   }
+
+  selectCategory(e:any)
+  {
+
+  }
+
+  selectItem(e:any)
+  {
+
+  }
+  
 
 
 
