@@ -23,6 +23,7 @@ export class AddItemInOrderComponent implements OnInit {
   selectedCategory:any;
   selectedItem:any;
   isLoading:boolean = false;
+  isError:boolean = false;
 
   constructor(private config:DynamicDialogConfig , private apiService:ApiService){}
 
@@ -75,8 +76,30 @@ export class AddItemInOrderComponent implements OnInit {
 
   addItem()
   {
+    this.isError = false;
     let formed_item = this.formItem();
     console.log(formed_item);
+    this.isLoading = true;
+    this.apiService.getOrderItemsLength(this.orderArea , this.orderedBy , this.orderKey).subscribe((data:any)=>{
+      if(data==null)
+      {
+        this.isLoading = false;
+        this.isError = true;
+        return;
+      }
+      else
+      {
+        let dataKeys = Object.keys(data);
+        let indexToGoNow = dataKeys.length; //0- based indexing
+        this.apiService.addItemToExistingOrder(this.orderArea , this.orderedBy , this.orderKey , indexToGoNow , formed_item).subscribe((_)=>{
+          this.isError = false;
+          this.isLoading = false;
+        }),((error:any)=>{
+          this.isError = true;
+          this.isLoading = false;
+        });
+      }
+    });
   }
 
   formItem()

@@ -15,8 +15,15 @@
 </div>
 
 <div *ngIf = "isLoading">
-    <div class="loader">
+    <div class="loader" style = "position: absolute; top:50%; left: 50%;">
 
+    </div>
+</div>
+
+<div *ngIf = "isError">
+    <div style = "position: absolute; top:50%; left:50%;">
+        <p style = "color: red;">Some error occured , Please contact developer.</p>
+        <p style = "color: red;">Mention what you tried , so we can improve it.</p>
     </div>
 </div>
 

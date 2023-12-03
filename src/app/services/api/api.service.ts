@@ -259,4 +259,14 @@ export class ApiService {
   {
     return this.http.get(this.dbUrl+"maintenance/-NfL2-nXXnqVLMMwUpVa.json");
   }
+
+  public getOrderItemsLength(orderPlace:string , orderedBy:string , orderKey:string) : Observable<any>
+  {
+    return this.http.get(this.dbUrl+"/activeDistributorOrders/"+orderPlace+"/"+orderedBy+"/"+orderKey+"/items.json?shallow=true");
+  }
+
+  public addItemToExistingOrder(orderPlace:string , orderedBy : string , orderKey:string , index:any , itemToBeAdded:any) : Observable<any>
+  {
+    return this.http.put(this.dbUrl+"/activeDistributorOrders/"+orderPlace+"/"+orderedBy+"/"+orderKey+"/items/"+index+".json" , itemToBeAdded);
+  }
 }
