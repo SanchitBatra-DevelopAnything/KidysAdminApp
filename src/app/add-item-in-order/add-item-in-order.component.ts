@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ApiService } from '../services/api/api.service';
+import { UtilityService } from '../services/utility/utility.service';
 
 @Component({
   selector: 'app-add-item-in-order',
@@ -25,7 +27,7 @@ export class AddItemInOrderComponent implements OnInit {
   isLoading:boolean = false;
   isError:boolean = false;
 
-  constructor(private config:DynamicDialogConfig , private apiService:ApiService){}
+  constructor(private config:DynamicDialogConfig , private apiService:ApiService , private toastr:ToastrService,private utilityService:UtilityService){}
 
   ngOnInit()
   {
@@ -94,6 +96,12 @@ export class AddItemInOrderComponent implements OnInit {
         this.apiService.addItemToExistingOrder(this.orderArea , this.orderedBy , this.orderKey , indexToGoNow , formed_item).subscribe((_)=>{
           this.isError = false;
           this.isLoading = false;
+          this.utilityService.itemAddedInExistingOrder.next(true);
+          this.toastr.success('Item Added Successfully!', 'Notification!' , {
+            timeOut : 4000 ,
+            closeButton : true , 
+            positionClass : 'toast-top-right'
+          });
         }),((error:any)=>{
           this.isError = true;
           this.isLoading = false;

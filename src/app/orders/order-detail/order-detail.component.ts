@@ -4,9 +4,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { of } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { AddItemInOrderComponent } from 'src/app/add-item-in-order/add-item-in-order.component';
 import { ApiService } from 'src/app/services/api/api.service';
+import { UtilityService } from 'src/app/services/utility/utility.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -51,10 +52,12 @@ export class OrderDetailComponent {
   showPrices:boolean = true;
   sureRejectVisible:boolean = false;
 
+  pageRefreshSub:Subscription|undefined;
+
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
 
-  constructor(private dialogService:DialogService,private route : ActivatedRoute , private router : Router,private apiService : ApiService , private toastr : ToastrService) { }
+  constructor(private dialogService:DialogService,private route : ActivatedRoute , private router : Router,private apiService : ApiService , private toastr : ToastrService , private utilityService:UtilityService) { }
 
   ngOnInit(): void {
     this.isLoading = false;
@@ -64,6 +67,10 @@ export class OrderDetailComponent {
     this.displayedColumns = ['Sno' , 'Item','OrderedQuantity' ,   'DispatchedQuantity' , 'Price' , 'Lot No.'];
     this.isDispatchHidden = false;
     this.getOrderItems();
+    this.pageRefreshSub = this.utilityService.itemAddedInExistingOrder.subscribe((_)=>{
+      this.ref?.close();
+      this.getOrderItems();
+    });
   }
 
   goBackToOrders()
