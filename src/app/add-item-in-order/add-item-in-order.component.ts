@@ -104,6 +104,6 @@ export class AddItemInOrderComponent implements OnInit {
 
   formItem()
   {
-    return {"CategoryName" : this.selectedCategory['categoryName'] , "imageUrl" : this.selectedItem['imgUrl'] , "item" : this.selectedItem['itemName'] , "price" : this.selectedItem[this.itemPriceList] , "quantity" : this.quantity};
+    return {"CategoryName" : this.selectedCategory['categoryName'] , "imageUrl" : this.selectedItem['imgUrl'] , "item" : this.selectedItem['itemName'] , "price" : this.selectedItem[this.itemPriceList] * this.quantity , "quantity" : this.quantity};
   }
 }
