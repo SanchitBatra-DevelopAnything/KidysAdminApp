@@ -31,7 +31,7 @@ export class OrdersComponent implements OnInit{
       {
         return;
       }
-      if(data['off'])
+      if(data['off'] && !data['showMessage'])
       {
         this.router.navigate(['']);
       }
