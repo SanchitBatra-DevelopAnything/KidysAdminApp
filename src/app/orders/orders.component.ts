@@ -20,7 +20,22 @@ export class OrdersComponent implements OnInit{
 
   ngOnInit() : void{
     this.isLoading = true;
+    this.getMaintenanceInfo();
     this.getActiveOrders();
+  }
+
+  getMaintenanceInfo()
+  {
+    this.apiService.checkMaintenance().subscribe((data)=>{
+      if(data == null)
+      {
+        return;
+      }
+      if(data['off'])
+      {
+        this.router.navigate(['']);
+      }
+    }); 
   }
 
   getActiveOrders()
