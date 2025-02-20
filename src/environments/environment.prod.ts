@@ -1,13 +1,13 @@
 export const environment = {
-  production: true,
-  firebaseConfig :{
-    apiKey: "AIzaSyDoesz7Fmj049wMDu1vCYKJZ1mVmMCA5Eg",
-    authDomain: "kidysadminapp.firebaseapp.com",
-    databaseURL: "https://kidysadminapp-default-rtdb.firebaseio.com",
-    projectId: "kidysadminapp",
-    storageBucket: "kidysadminapp.appspot.com",
-    messagingSenderId: "547907905586",
-    appId: "1:547907905586:web:0b497b8583d0b8d071342b",
-    measurementId: "G-QGRPP9RBFG"
-  }
-};
+    production: true,
+    firebaseConfig :{
+        apiKey: "AIzaSyDNS-DfA7oMCjRKi9vBupRHVeo7LCqoN9I",
+        authDomain: "odo-admin-app.firebaseapp.com",
+        databaseURL: "https://odo-admin-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "odo-admin-app",
+        storageBucket: "odo-admin-app.firebasestorage.app",
+        messagingSenderId: "687289513529",
+        appId: "1:687289513529:web:d4f360e16a394900f8bfe8",
+        measurementId: "G-2K8G8W2GNY"
+    }
+  };

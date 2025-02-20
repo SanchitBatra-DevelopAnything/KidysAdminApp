@@ -7,11 +7,9 @@ import { UtilityService } from '../services/utility/utility.service';
 @Component({
   selector: 'app-category-item',
   templateUrl: './category-item.component.html',
-  styleUrls: ['./category-item.component.scss'],
-  providers : [DialogService]
+  styleUrls: ['./category-item.component.scss']
 })
 export class CategoryItemComponent implements OnInit {
-
   @Input()
   category : any;
 
@@ -48,5 +46,4 @@ export class CategoryItemComponent implements OnInit {
   {
     this.router.navigate(['itemsOf/'+this.categoryKeyInDb+"/"+this.getCategoryName()]);
   }
-
 }

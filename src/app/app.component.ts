@@ -7,14 +7,12 @@ import { UtilityService } from './services/utility/utility.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit , OnDestroy{
-  title = 'kidysAdmin';
+export class AppComponent {
+  title = 'odo-admin';
   showHeaderSub:Subscription = new Subscription();
   showHeader:boolean = true;
 
-  constructor(private utilityService : UtilityService){
-    
-  }
+  constructor(private utilityService:UtilityService){}
 
   ngOnInit()
   {

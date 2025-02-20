@@ -20,11 +20,11 @@
     <a for="navbar-toggle" class="navbar-icon" (click) = "toggleDrawer()">&#9776;</a>
 
     <div class="navbar-header">
-        <img src = "../../assets/kidys logo-17.png" class = "navbar-brand">
+        <img src = "../../assets/odo.jpeg" class = "navbar-brand">
     </div>
 
 
-    <h4 style = "color:white;" class = "pangolin">Welcome to Kidy's Bakery Admin Portal</h4>
+    <h4 style = "color:white;" class = "pangolin">Welcome to ODO Admin Portal</h4>
     <nav class="navbar-menu">
       <ul class = "navbar-right">
         <li *ngIf = "loggedIn"><a routerLink = "/" (click) = "onLogout()">Logout</a></li>
@@ -34,7 +34,7 @@
 
   <p-sidebar [(visible)]="openDrawer" (onHide) = "openDrawer = false;">
     <ng-template pTemplate="header">
-        <img src = "../../assets/kidys logo-17.png" class = "img img-responsive">
+        <img src = "../../assets/odo.jpeg" class = "img img-responsive">
     </ng-template>
     <hr class = "custom-hr">
     <ng-template pTemplate="content">
@@ -46,6 +46,5 @@
         <hr class = "custom-hr">
         <h4 class = "pangolin option"><a routerLink = "/manage" routerLinkActive = "active-link" (click) = "openDrawer = false;">MANAGE</a></h4>
         <hr class = "custom-hr">
-        <h4 class = "pangolin option"><a routerLink = "/reporting" routerLinkActive = "active-link" (click) = "openDrawer = false;">REPORTING</a></h4>
     </ng-template>
 </p-sidebar>

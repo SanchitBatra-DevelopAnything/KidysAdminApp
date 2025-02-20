@@ -24,33 +24,48 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { environment } from 'src/environments/environment';
 
 
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+// import { CategoriesListComponent } from './categories-list/categories-list.component';
+// import { CategoryItemComponent } from './category-item/category-item.component';
+// import { AddItemComponent } from './add-item/add-item.component';
+// import { ManageComponent } from './manage/manage.component';
+// import { NotificationsComponent } from './notifications/notifications.component';
+// import { OrdersComponent } from './orders/orders.component';
+// import { ReportingComponent } from './reporting/reporting.component';
+// import { ItemListComponent } from './item-list/item-list.component';
+// import { ItemComponent } from './item/item.component';
+
+ import { SpeedDialModule } from 'primeng/speeddial';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { CategoryItemComponent } from './category-item/category-item.component';
 import { AddItemComponent } from './add-item/add-item.component';
-import { ManageComponent } from './manage/manage.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { OrdersComponent } from './orders/orders.component';
-import { ReportingComponent } from './reporting/reporting.component';
+import { BrandOnboardComponent } from './brand-onboard/brand-onboard.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemComponent } from './item/item.component';
-
-import { SpeedDialModule } from 'primeng/speeddial';
 import { EditItemComponent } from './edit-item/edit-item.component';
-import { DistributorAreasComponent } from './manage/distributor-areas/distributor-areas.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ManageComponent } from './manage/manage.component';
 import { DistributorsListComponent } from './manage/distributors-list/distributors-list.component';
-import { PriceListsNDiscountsComponent } from './manage/price-lists-n-discounts/price-lists-n-discounts.component';
+import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
-import { AddAreaFormComponent } from './add-area-form/add-area-form.component';
 import { OldOrdersComponent } from './orders/old-orders/old-orders.component';
 import { OldOrderDetailComponent } from './orders/old-order-detail/old-order-detail.component';
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { PaymentCollectionMaintenanceComponent } from './payment-collection-maintenance/payment-collection-maintenance.component';
-import { AddItemInOrderComponent } from './add-item-in-order/add-item-in-order.component';
+import { DistributorAreasComponent } from './manage/distributor-areas/distributor-areas.component';
+import { AddAreaFormComponent } from './add-area-form/add-area-form.component';
 
+// import { EditItemComponent } from './edit-item/edit-item.component';
+// import { DistributorAreasComponent } from './manage/distributor-areas/distributor-areas.component';
+// import { DistributorsListComponent } from './manage/distributors-list/distributors-list.component';
+// import { PriceListsNDiscountsComponent } from './manage/price-lists-n-discounts/price-lists-n-discounts.component';
+// import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
+// import { AddAreaFormComponent } from './add-area-form/add-area-form.component';
+// import { OldOrdersComponent } from './orders/old-orders/old-orders.component';
+// import { OldOrderDetailComponent } from './orders/old-order-detail/old-order-detail.component';
+// import { SignupFormComponent } from './signup-form/signup-form.component';
+// import { PaymentCollectionMaintenanceComponent } from './payment-collection-maintenance/payment-collection-maintenance.component';
+// import { AddItemInOrderComponent } from './add-item-in-order/add-item-in-order.component';
 
 const appRoutes : Routes = [
   {path: '' , component:LoginComponent , pathMatch:"full"},
@@ -60,41 +75,35 @@ const appRoutes : Routes = [
   {path : 'dailyReport' , component : OrdersComponent},
   {path : 'manage' , component : ManageComponent},
   {path : 'manage' , component : ManageComponent , children:[
-    {path : 'areas', component : DistributorAreasComponent},
     {path : 'distributors', component : DistributorsListComponent},
-    {path:'priceListsAndDiscounts',component:PriceListsNDiscountsComponent}
+    {path : 'areas', component : DistributorAreasComponent},
   ] ,},
-  {path : 'reporting' , component : ReportingComponent},
   {path : 'processedOrders' , component : OldOrdersComponent},
-  {path : 'orderBill/:orderArea/:orderedBy/:orderKey' , component : OrderDetailComponent},
-  {path : 'signup' , component : SignupFormComponent},
+  {path : 'orderBill/:orderKey' , component : OrderDetailComponent},
 ];
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HeaderComponent,
+    LoginComponent,
     CategoriesListComponent,
     CategoryItemComponent,
     AddItemComponent,
-    ManageComponent,
-    NotificationsComponent,
-    OrdersComponent,
-    ReportingComponent,
+    BrandOnboardComponent,
     ItemListComponent,
     ItemComponent,
     EditItemComponent,
+    NotificationsComponent,
+    ManageComponent,
     DistributorsListComponent,
-    DistributorAreasComponent,
+    OrdersComponent,
     OrderDetailComponent,
-    PriceListsNDiscountsComponent,
-    AddAreaFormComponent,
     OldOrdersComponent,
     OldOrderDetailComponent,
-    SignupFormComponent,
-    PaymentCollectionMaintenanceComponent,
-    AddItemInOrderComponent,
+    DistributorAreasComponent,
+    AddAreaFormComponent,
   ],
   imports: [
     BrowserModule,

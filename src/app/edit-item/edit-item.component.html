@@ -5,57 +5,104 @@
   
     <form [formGroup]="editItemForm" (ngSubmit) = "onSubmit(editItemForm.value)">
      
-   <div class="form-group">
-    <label for="photo">Photo Upload</label>
-    <div class="file-input-container">
-      <input type="file" id="photo" class="file-input" (change)="onFileChange($event)" accept="image/*">
-      <label class="file-input-label button-blue" for="photo" style = "font-size: 15px;">Choose a file</label>
-    </div>
-    <div class="photo-preview" *ngIf="photoPreview">
-      <img [src]="photoPreview" alt="Photo Preview">
-    </div>
-  </div>
-      <div class="form-group">
-        <label for="name">ITEM NAME</label>
-        <input type="text" id="name" formControlName="itemName" class = "form-control">
-      </div>
-      
-      <div>
-          <p style = "text-align: center; font-size: 12px; font-weight: bold; color: red;">Please include GST as applicable in the prices!</p>
-      </div>
-      <div class="form-group">
-        <label for="delhi_ncr_price">DELHI-NCR-PRICE</label>
-        <input type="number" id="delhi_ncr_price" formControlName="delhi_ncr_price" class = "form-control">
-      </div>
-  
-      <div class="form-group">
-        <label for="height">OUT-STATION-PRICE</label>
-        <input type="number" id="out_station_price" formControlName="out_station_price" class = "form-control">
-      </div>
-  
-      <div class="form-group">
-        <label for="weight">WESTERN-PRICE</label>
-        <input type="number" id="western_price" formControlName="western_price" class = "form-control">
-      </div>
-  
-      <div class="form-group">
-        <label for="salary">SUPER-STOCKIST-PRICE</label>
-        <input type="number" id="super_stockist_price" formControlName="super_stockist_price" class = "form-control">
-      </div>
-  
-      <div class="form-group">
-        <label for="rating">MODERN-TRADE-PRICE</label>
-        <input type="number" id="modern_trade_price" formControlName="modern_trade_price" class = "form-control">
-      </div>
-
-      <div class="form-group">
-        <label for="rating">DETAILS (if any)</label>
-        <textarea rows="5" cols="60" name="text" placeholder="Enter Details for this item" formControlName = "details" class = "form-control"></textarea>
-      </div>
-  
-      <button type="submit" class = "btn choc-button">Submit</button>
-    </form>
-  </div>
+        <div class="form-group">
+            <label for="photo">Photo Upload</label>
+            <div class="file-input-container">
+              <input type="file" id="photo" class="file-input" (change)="onFileChange($event)" accept="image/*">
+              <label class="file-input-label button-blue" for="photo" style = "font-size: 15px;">Choose a file</label>
+            </div>
+            <div class="photo-preview" *ngIf="photoPreview">
+              <img [src]="photoPreview" alt="Photo Preview">
+            </div>
+          </div>
+              <div class="form-group">
+                <label for="name">ITEM NAME</label>
+                <input type="text" id="name" formControlName="itemName" class = "form-control">
+              </div>
+              <div class="form-group">
+                <label for="itemPrice">PRICE</label>
+                <input type="number" id="itemPrice" formControlName="itemPrice" class = "form-control">
+              </div>
+              <hr>
+              <div>
+                <p style = "text-align: center; font-size: 12px; font-weight: bold; color: red;">Set upto 3 discount slabs , ignore if not needed!</p>
+              </div>
+              <div class="col">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="name">Slab 1 Start At : </label>
+                        <input type="number" id="slab_1_start" formControlName="slab_1_start" class = "form-control">
+                      </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="name">Slab 1 End At : </label>
+                        <input type="number" id="slab_1_end" formControlName="slab_1_end" class = "form-control">
+                      </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="name">Discount %</label>
+                        <input type="number" id="slab_1_discount" formControlName="slab_1_discount" class = "form-control">
+                      </div>
+                </div>
+              </div>
+        
+        
+              <div class="col">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="name">Slab 2 Start At : </label>
+                        <input type="number" id="slab_2_start" formControlName="slab_2_start" class = "form-control">
+                      </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="name">Slab 2 End At : </label>
+                        <input type="number" id="slab_2_end" formControlName="slab_2_end" class = "form-control">
+                      </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="name">Discount %</label>
+                        <input type="number" id="slab_2_discount" formControlName="slab_2_discount" class = "form-control">
+                      </div>
+                </div>
+              </div>
+        
+              <div class="col">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="name">Slab 3 Start At : </label>
+                        <input type="number" id="slab_3_start" formControlName="slab_3_start" class = "form-control">
+                      </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="name">Slab 3 End At : </label>
+                        <input type="number" id="slab_3_end" formControlName="slab_3_end" class = "form-control">
+                      </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="name">Discount %</label>
+                        <input type="number" id="slab_3_discount" formControlName="slab_3_discount" class = "form-control">
+                      </div>
+                </div>
+              </div>
+              <hr>
+              <h6 style = "color: red;">Enter prices area wise , leave if you need MRP on that area.</h6>
+              <div class="row">
+                <div formArrayName="areaPrices">
+                  <div class ="col-xs-4" *ngFor="let areaCtrl of areaPricesControls; let i = index" [formGroupName]="i">
+                    <label>{{ areaCtrl.value.areaName }} Price:</label>
+                    <input class = "form-control" type="number" formControlName="price" />
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class = "btn choc-button">Submit</button>
+            </form>
+          </div>
 
   <div class="loader center" *ngIf = "isLoading"></div>
   

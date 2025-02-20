@@ -4,8 +4,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { of, Subscription } from 'rxjs';
-import { AddItemInOrderComponent } from 'src/app/add-item-in-order/add-item-in-order.component';
 import { ApiService } from 'src/app/services/api/api.service';
 import { UtilityService } from 'src/app/services/utility/utility.service';
 
@@ -23,36 +21,11 @@ export class OrderDetailComponent {
   isLoading : boolean = false;
   orderData : any = {};
   billData : BillElement[] = [];
-  
-  
   orderedBy : string = "";
-  orderArea:string = "";
-
   displayedColumns : string[] = [];
   dataSource:any;
-  
-
-  changeDispatchVisible:boolean =false;
-  changeDispatchItemName:string = "";
-  changeDispatchItemOrderedQuantity:number = 0;
-  changeDispatchItemDispatchedQuantity:number = 0;
-  changeDispatchItemSerialNumber:number = -1;
-
-  activeDiscounts:any = {}; //this will store the basic info of discount from price list
-  discount:number = 0; //this will store the calculated discount on this order.
-
+  discount:number = 0;
   subTotal:number = 0;
-
-  isDispatchHidden:any;
-  
-  
-  
-  
-
-  showPrices:boolean = true;
-  sureRejectVisible:boolean = false;
-
-  pageRefreshSub:Subscription|undefined;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
@@ -62,15 +35,8 @@ export class OrderDetailComponent {
   ngOnInit(): void {
     this.isLoading = false;
     this.orderKey = this.route.snapshot.params['orderKey'];
-    this.orderedBy = this.route.snapshot.params['orderedBy'];
-    this.orderArea = this.route.snapshot.params['orderArea'];
-    this.displayedColumns = ['Sno' , 'Item','OrderedQuantity' ,   'DispatchedQuantity' , 'Price' , 'Lot No.'];
-    this.isDispatchHidden = false;
+    this.displayedColumns = ['Sno' , 'Item','Quantity'  , 'Price' , 'Discount', 'Discounted Price'];
     this.getOrderItems();
-    this.pageRefreshSub = this.utilityService.itemAddedInExistingOrder.subscribe((_)=>{
-      this.ref?.close();
-      this.getOrderItems();
-    });
   }
 
   goBackToOrders()
@@ -78,23 +44,18 @@ export class OrderDetailComponent {
     this.router.navigate(['/dailyReport']);
   }
 
-  deleteOrder()
-  {
-    this.apiService.deleteActiveOrder(this.orderArea , this.orderedBy , this.orderKey).subscribe((_)=>{
-      this.sureRejectVisible = false;
-      this.router.navigate(['/dailyReport']);
-    });
-  }
-
-  toggleDispatchHide(e:any)
-  {
-      this.isDispatchHidden = !this.isDispatchHidden;
-  }
+  // deleteOrder()
+  // {
+  //   this.apiService.deleteActiveOrder(this.orderArea , this.orderedBy , this.orderKey).subscribe((_)=>{
+  //     this.sureRejectVisible = false;
+  //     this.router.navigate(['/dailyReport']);
+  //   });
+  // }
 
   getOrderItems()
   {
     this.isLoading = true;
-    this.apiService.getOrder(this.orderArea , this.orderedBy , this.orderKey).subscribe((orderDetail:any)=>{
+    this.apiService.getOrder(this.orderKey).subscribe((orderDetail:any)=>{
       if(orderDetail == null)
       {
         this.orderData = {};
@@ -103,32 +64,7 @@ export class OrderDetailComponent {
         return;
       }
       this.orderData = orderDetail;
-      this.orderData['totalDispatchPrice'] = this.orderData['totalPrice'];
-      this.orderDate = this.orderData['orderDate'];
       this.formBillData();
-      this.seeDiscountInformation();
-    });
-  }
-
-  seeDiscountInformation()
-  {
-    this.apiService.getPriceLists().subscribe((data:any)=>{
-      for(let i=0;i<Object.values(data).length;i++)
-      {
-        let data_array = Object.values(data);
-        let currentPriceList:any = data_array[i];
-        let code = currentPriceList['code'];
-        console.log("CODE = ",this.orderData);
-        if(code.trim() == this.orderData['priceList'].trim())
-        {
-          this.activeDiscounts = currentPriceList;
-          break;
-        }
-      }
-      console.log("active discounts : ",this.activeDiscounts);
-      this.calculateDiscountAndSubTotal();
-      this.isLoading = false;
-
     });
   }
 
@@ -138,45 +74,6 @@ export class OrderDetailComponent {
     return arr[1]+"-"+arr[0]+"-"+arr[2];
   }
 
-  getTotalCB(list:any)
-  {
-    let totalCB = 0;
-    for(let i=0;i<list.length;i++)
-    {
-      totalCB+=list[i]['quantity'];
-    }
-
-    return totalCB;
-  }
-
-  calculateDiscountAndSubTotal()
-  {
-    this.discount = 0;
-    this.subTotal = 0;
-    let discount_qty = this.activeDiscounts['discountQuantity'];
-    let disc = this.activeDiscounts['discount'];
-
-    let onQuantity = 0;
-    for(let i=0;i<this.billData.length;i++)
-    {
-      onQuantity += this.billData[i]['dispatchedQuantity']; 
-    }
-
-    let multiple = Math.floor(onQuantity/discount_qty);
-    this.discount = disc*multiple;
-
-    let total = 0;
-    for(let i=0;i<this.billData.length;i++)
-    {
-      total = total + this.billData[i]['dispatchedPrice'];
-    }
-
-    this.subTotal = total - this.discount;
-    this.orderData['discount'] = this.discount;
-    this.orderData['subTotal'] = this.subTotal;
-    this.orderData['totalDispatchPrice'] = total;
-  }
-
   formBillData()
   {
     let items = this.orderData['items'];
@@ -184,12 +81,11 @@ export class OrderDetailComponent {
     for(let i=0;i<items.length;i++)
     {
       let item = items[i].item;
-      console.log(items[i]);
-      console.log("ORDER ITEM IN CATEGORY : ",items[i]['CategoryName']);
-      let data = {"Sno" : i+1 , "orderedQuantity" : items[i].quantity ,"item" : item ,"dispatchedQuantity" : items[i].quantity , "dispatchedPrice" : items[i].price , "orderedPrice" : items[i].price , "priceOfOne" : items[i].price/items[i].quantity , "parentCategory" : items[i]['CategoryName']};
+      let data = {"Sno" : i+1 , "Quantity" : items[i].quantity ,"Item" : item ,"Price" : items[i].price , "Discount" : items[i].discount_percentage , "Discounted Price" : items[i].priceAfterDiscount};
       this.billData.push(data);
     }
     this.dataSource = new MatTableDataSource<BillElement>(this.billData);
+    this.isLoading=false;
     this.setPaginator();
   }
 
@@ -201,154 +97,48 @@ export class OrderDetailComponent {
   acceptOrder()
   {
     let orderInformation = {...this.orderData};
-    orderInformation['items'] = [...this.billData];
+    //orderInformation['items'] = [...this.billData];
     orderInformation['acceptedBy'] = sessionStorage.getItem('loggedInUser');
     console.log("GOING TO API = ");
     console.log(orderInformation);
     orderInformation['orderKey'] = this.orderKey;
     this.isLoading = true;
-    this.apiService.acceptOrderForReporting(orderInformation['area'] , orderInformation['orderedBy'] ,orderInformation).subscribe(()=>{
-        this.apiService.acceptOrderForProcessed(orderInformation['area'] , orderInformation['orderedBy'] , orderInformation).subscribe(()=>{
-          this.apiService.saveOrdersForSuperAdmins(orderInformation , orderInformation['orderDate']).subscribe((_)=>{
-            this.apiService.deleteActiveOrder(orderInformation['area'] , orderInformation['orderedBy'] , this.orderKey).subscribe(()=>{
-              this.apiService.sendPushNotification("Order accepted" , "Check My Orders section" , orderInformation['deviceToken']).subscribe((_)=>{
-                this.router.navigate(['/dailyReport']);
-                this.isLoading = false;
-                this.toastr.success('Order Accepted!', 'Notification!' , {
-                          timeOut : 4000 ,
-                          closeButton : true , 
-                          positionClass : 'toast-top-left'
-                        });
-              });  
-          });
-          });
-        })
+    this.apiService.acceptOrderForProcessed(orderInformation).subscribe((_)=>{
+      this.apiService.deleteActiveOrder(this.orderKey).subscribe((_)=>{
+        this.isLoading = false;
+        this.router.navigate(['/dailyReport']);
+        this.toastr.success('Order Accepted!' , 'Notitfication!' , {
+        timeOut : 4000,
+        closeButton : true,
+        positionClass : 'toast-top-right'
+      });
+      })
+    })
+  }
+
+  deleteOrder()
+  {
+    this.isLoading = true;
+    this.apiService.deleteActiveOrder(this.orderKey).subscribe((_)=>{
+      this.isLoading = false;
+      this.router.navigate(['/dailyReport']);
+      this.toastr.success('Order Rejected!' , 'Notitfication!' , {
+        timeOut : 4000,
+        closeButton : true,
+        positionClass : 'toast-top-right'
+      });
     });
   }
-  // sendOrderToChef()
-  // {
-  //   this.isLoading = true;
-  //   let orderInformation = {...this.orderData};
-  //   let modifiedItemList = [];
-  //   for(let i=0;i<orderInformation['items'].length;i++)
-  //   {
-  //     let item = orderInformation['items'][i];
-  //     item['status'] = 'Being Prepared';
-  //     item['yetToPrepare']  = item['quantity'];
-  //     modifiedItemList.push(item);
-  //   }
-  //   orderInformation['items'] = modifiedItemList;
-  //   orderInformation['orderKey'] = this.orderKey;
-    
-  //   console.log( " Going to Chef = ",orderInformation);
-  //   this.apiService.makeOrderForChef(orderInformation , this.orderDate , this.orderedBy).subscribe((_)=>{
-  //     this.apiService.deleteActiveOrder(this.orderKey , this.orderedBy).subscribe((_)=>{
-  //       this.toastr.success('Order Given To Chefs Successfully', 'Notification!' , {
-  //         timeOut : 4000 ,
-  //         closeButton : true , 
-  //         positionClass : 'toast-bottom-right'
-  //       });
-  //       if(this.orderedBy == "retailer")
-  //       {
-  //         this.router.navigate(['/dailyReport']);
-  //       }
-  //       else
-  //       {
-  //         this.router.navigate(['/dailyDistributorReport']);
-  //       }
-        
-  //       this.isLoading = false;
-  //     });
-  //   });
-  //   let deviceToken = "";
-  //   console.log("FINDING TOKEN");
-  //   let shopAddress = orderInformation['shopAddress'];
-  //   if(this.orderedBy.toLowerCase() == "distributor")
-  //   {
-  //     shopAddress = "DISTRIBUTOR-"+shopAddress;
-  //   }
-  //   this.apiService.findToken(orderInformation['orderedBy'],shopAddress).subscribe((token)=>{
-  //     console.log("FOUND TOKEN = "+token['token']);
-  //     deviceToken = token['token'];  
-  //     this.apiService.sendNotificationToParticularDevice("Check details in my orders.","REGULAR ORDER ACCEPTED!",deviceToken).subscribe((_)=>{
-  //       console.log("SENT NOTIFICATION");
-  //       this.toastr.success('Sent notification successfull!', 'Notification!' , {
-  //         timeOut : 4000 ,
-  //         closeButton : true , 
-  //         positionClass : 'toast-bottom-right'
-  //       });
-  //     });
-  //   });
-    
-  // }
-
-  changeDispatchQuantityModal(element:any)
-  {
-    console.log(element);
-    this.changeDispatchItemOrderedQuantity = element.orderedQuantity;
-    this.changeDispatchItemName = element.item;
-    this.changeDispatchItemDispatchedQuantity = element.dispatchedQuantity;
-    this.changeDispatchItemSerialNumber = element.Sno;
-     this.changeDispatchVisible = true;
-  }
-
-  changeDispatchQuantity()
-  {
-    console.log(this.changeDispatchItemDispatchedQuantity);
-    //changeDispatchItemDispatchedQuantity update hogyi ngModel se.
-    //update BillData with selectedSerialNumber , update Quantity and total for it.
-    if(this.changeDispatchItemSerialNumber == -1)
-    {
-      return;
-    }
-    this.billData[this.changeDispatchItemSerialNumber-1]['dispatchedQuantity'] = this.changeDispatchItemDispatchedQuantity;
-    let price:any = this.billData[this.changeDispatchItemSerialNumber-1]['dispatchedPrice'];
-    let orderedQty = this.billData[this.changeDispatchItemSerialNumber-1]['orderedQuantity'];
-    let newDispatchQuantity = this.billData[this.changeDispatchItemSerialNumber-1]['dispatchedQuantity'];
-    let newPrice = this.billData[this.changeDispatchItemSerialNumber-1]['priceOfOne']*newDispatchQuantity;
-    this.billData[this.changeDispatchItemSerialNumber-1]['dispatchedPrice'] = newPrice;
-    //close the dialog.
-    this.calculateDiscountAndSubTotal();
-    this.changeDispatchVisible = false;
-  }
-
-  openAddItemDialog()
-  {
-    this.ref = this.dialogService.open(AddItemInOrderComponent, { 
-      data: {
-          orderedBy : this.orderedBy,
-          orderArea : this.orderArea,
-          orderKey : this.orderKey,
-          itemPriceList:this.activeDiscounts['code'],
-      },
-      header: 'Add an item',
-      maximizable:false,
-      height : "400px",
-      width:"600px",
-  });
-  }
-
-  // getUpdatedTotal()
-  // {
-  //   let total = 0;
-  //   for(let i=0;i<this.billData.length;i++)
-  //   {
-  //     total = total + this.billData[i]['dispatchedPrice'];
-  //   }
-  //   this.calculateDiscountAndSubTotal();
-  // }
 
 }
 
 export interface BillElement {
-  'item': string;
-  'dispatchedQuantity' : number;
+  'Item': string;
+  'Quantity' : number;
   'Sno': number;
-  'orderedQuantity': number;
-  'dispatchedPrice': number;
-  'orderedPrice': number;
-  'priceOfOne' : number;
-  'parentCategory' : string,
+  'Price': number;
+  'Discount': number;
+  'Discounted Price' : number;
 }
 
 

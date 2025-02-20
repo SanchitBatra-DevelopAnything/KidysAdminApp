@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { finalize } from 'rxjs';
 import { ApiService } from '../services/api/api.service';
-import { UtilityService } from '../services/utility/utility.service';
+
 
 @Component({
   selector: 'app-add-item',
@@ -26,6 +25,7 @@ export class AddItemComponent implements OnInit{
   });
   photoPreview: string | undefined;
   selectedImage:any;
+  areas:any;
 
   constructor(private config:DynamicDialogConfig , private formBuilder:FormBuilder , private storage:AngularFireStorage , private apiService:ApiService , private toastr:ToastrService){}
   
@@ -37,13 +37,49 @@ export class AddItemComponent implements OnInit{
 
     this.addItemForm = this.formBuilder.group({
       itemName: ['', Validators.required],
-      delhi_ncr_price: ['', Validators.required],
-      out_station_price: ['', Validators.required],
-      western_price: ['', Validators.required],
-      super_stockist_price: ['', Validators.required],
-      modern_trade_price: ['', Validators.required],
-      details : [''],
+      itemPrice: ['', Validators.required],
+      slab_1_start: [],
+      slab_1_end:[],
+      slab_1_discount:[],
+      slab_2_start: [],
+      slab_2_end:[],
+      slab_2_discount:[],
+      slab_3_start: [],
+      slab_3_end:[],
+      slab_3_discount:[],
+      areaPrices: this.formBuilder.array([])
     });
+
+    this.fetchAreas();
+  }
+
+  fetchAreas()
+  {
+    this.isLoading = true;
+    this.apiService.getDistributorships().subscribe((data)=>{
+      if (data) {
+        this.areas = Object.values(data).map((area:any) => area.areaName);
+        this.initializeAreaPrices();
+      }
+      this.isLoading = false;
+    });
+
+  }
+
+  initializeAreaPrices(): void {
+    const areaPricesArray = this.addItemForm.get('areaPrices') as FormArray;
+    this.areas.forEach((area:any) => {
+      areaPricesArray.push(
+        this.formBuilder.group({
+          areaName: [area.toLowerCase().trim()],
+          price: ['']
+        })
+      );
+    });
+  }
+
+  get areaPricesControls() {
+    return (this.addItemForm.get('areaPrices') as FormArray).controls;
   }
 
 
@@ -73,7 +109,19 @@ export class AddItemComponent implements OnInit{
       this.task = this.storage.upload(filePath,this.selectedImage);
       (await this.task).ref.getDownloadURL().then((url:any) => {
           formValue["imgUrl"] = url;
-          this.apiService.addItem(formValue , this.categoryKey).subscribe(()=>{
+          const formData = this.addItemForm.value;
+
+    // Convert areaPrices FormArray to a map
+    const areaPricesMap: { [key: string]: string | number } = {};
+    formData.areaPrices.forEach((area:any) => {
+      areaPricesMap[area.areaName] = area.price;
+    });
+
+    const requestBody = {
+      ...formData,
+      areaPrices: areaPricesMap
+    };
+          this.apiService.addItem(requestBody , this.categoryKey).subscribe(()=>{
             this.isLoading = false;
             this.toastr.success('Item Added Successfully!', 'Notification!' , {
               timeOut : 4000 ,
@@ -85,6 +133,7 @@ export class AddItemComponent implements OnInit{
        });
     } else {
       // Display validation errors or take appropriate action
+      console.log("Form is not valid");
     }
   }
 
@@ -93,6 +142,11 @@ export class AddItemComponent implements OnInit{
     this.addItemForm.reset();
     this.photoPreview = undefined;
     this.selectedImage = null;
+  }
+
+  dummySubmit()
+  {
+    console.log(this.addItemForm.value);
   }
 }
 

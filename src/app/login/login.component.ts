@@ -10,7 +10,8 @@ import { UtilityService } from '../services/utility/utility.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit,OnDestroy {
+export class LoginComponent {
+
   isLoading:boolean = false;
   isMaintenanceWindow:boolean = false;
   isLoginWindow:boolean = false;
@@ -117,7 +118,5 @@ export class LoginComponent implements OnInit,OnDestroy {
   {
     this.skipMaintenanceSub.unsubscribe();
   }
-
-
 
 }

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable, ObservedValueOf } from 'rxjs';
-import { Token } from '@angular/compiler';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  dbUrl = "https://kidysadminapp-default-rtdb.firebaseio.com/";
+  //category can be considered a brand in ODO's scenario.
+
+  dbUrl = "https://odo-admin-app-default-rtdb.asia-southeast1.firebasedatabase.app/";
   constructor(private http:HttpClient) { }
 
   public getAdmins() : Observable<any>
@@ -41,12 +41,12 @@ export class ApiService {
     return this.http.put(this.dbUrl+"Categories/" + categoryKey + "/items/" + itemKey+".json" , updatedItem);
   }
 
-  public getDistributorRequests() : Observable<any>
+  public getNotificationRequests() : Observable<any>
   {
     return this.http.get(this.dbUrl+"DistributorNotifications.json");
   }
 
-  public makeDistributor(data:any) : Observable<any>
+  public makeUser(data:any) : Observable<any>
   {
     return this.http.post(this.dbUrl+"Distributors.json" , data);
   }
@@ -70,9 +70,9 @@ export class ApiService {
     return this.http.get(this.dbUrl+"activeDistributorOrders.json");
   }
 
-  public getOrder( area : String,orderedBy:String , orderKey : String) : Observable<any>
+  public getOrder(orderKey : String) : Observable<any>
   {
-    return this.http.get(this.dbUrl+"activeDistributorOrders/"+area+"/"+orderedBy+"/"+orderKey+".json");
+    return this.http.get(this.dbUrl+"activeDistributorOrders/"+orderKey+".json");
   }
 
   public acceptOrderForReporting(area:String , orderedBy:String , orderInformation:any) : Observable<any>
@@ -189,14 +189,15 @@ export class ApiService {
     }
   }
 
-  public acceptOrderForProcessed(area:String , orderedBy:String , orderInformation:any) : Observable<any>
+  public acceptOrderForProcessed(orderInformation:any) : Observable<any>
   {
-    return this.http.post(this.dbUrl+"processedDistributorOrders/"+area+"/"+orderedBy+".json",orderInformation);
+    let date = orderInformation['orderDate'];
+    return this.http.post(this.dbUrl+"processedDistributorOrders/"+date+".json",orderInformation);
   }
 
-  public deleteActiveOrder(area :String , orderedBy : String , orderKey:String) : Observable<any>
+  public deleteActiveOrder(orderKey:String) : Observable<any>
   {
-    return this.http.delete(this.dbUrl+"activeDistributorOrders/"+area+"/"+orderedBy+"/"+orderKey+".json");
+    return this.http.delete(this.dbUrl+"activeDistributorOrders/"+orderKey+".json");
   }
 
   public getDistributorships() : Observable<any>
@@ -237,11 +238,12 @@ export class ApiService {
 
   public getProcessedDistributorViewOrders(date:string) : Observable<any>
   {
-    return this.http.get(this.dbUrl+"processedOrdersView/"+date+".json");
+    return this.http.get(this.dbUrl+"processedDistributorOrders/"+date+".json");
   }
 
   public sendPushNotification(title : string , matter:string,token : string) : Observable<any>
   {
+    
     return this.http.post("https://us-central1-kidysadminapp.cloudfunctions.net/sendApprovalNotification" , {
       title : title,
       matter : matter,
@@ -268,5 +270,15 @@ export class ApiService {
   public addItemToExistingOrder(orderPlace:string , orderedBy : string , orderKey:string , index:any , itemToBeAdded:any) : Observable<any>
   {
     return this.http.put(this.dbUrl+"/activeDistributorOrders/"+orderPlace+"/"+orderedBy+"/"+orderKey+"/items/"+index+".json" , itemToBeAdded);
+  }
+
+  public onboardBrandAsParent(formValue:any) : Observable<any>
+  {
+    return this.http.post(this.dbUrl+"Categories.json" , formValue);
+  }
+
+  public onboardBrandForViewing(formValue:any , parentKey:any) : Observable<any>
+  {
+    return this.http.put(this.dbUrl+"onlyCategories/"+parentKey+".json" , formValue);
   }
 }

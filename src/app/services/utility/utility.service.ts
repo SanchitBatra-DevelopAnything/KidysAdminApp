@@ -13,7 +13,6 @@ export class UtilityService {
   skippedMaintenance:Subject<boolean>;
 
   itemAddedInExistingOrder:Subject<boolean>;
-  
 
   constructor() { 
     this.userLoggedIn = new Subject<boolean>();

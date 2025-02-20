@@ -32,7 +32,7 @@ export class OldOrdersComponent {
     let date = this.selected!.getDate();
     let month = this.selected!.getMonth();
     let year = this.selected!.getFullYear();
-    let fullDate = date+""+(month+1)+""+year;
+    let fullDate = date+"-"+(month+1)+"-"+year;
       this.apiService.getProcessedDistributorViewOrders(fullDate).subscribe((orders)=>{
         if(orders == null)
         {

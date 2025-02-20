@@ -54,16 +54,16 @@ export class DistributorsListComponent {
     {
       let obj = {...distributors[this.distributorKeys[i]] , "distributorKey" : this.distributorKeys[i]};
       this.distributorUsefulData.push(obj);
-    }
-    this.distributorUsefulData.sort((a, b) => (a.area.trim() > b.area.trim()) ? 1 : -1)
+    } 
     this.filteredDistributorUsefulData = [...this.distributorUsefulData];
+    console.log(this.filteredDistributorUsefulData);
   }
 
   deleteDistributor(distributorKey : any)
   {
     this.isLoading = true;
     this.apiService.deleteDistributor(distributorKey).subscribe((_)=>{
-      this.toastr.success('Distributor Deleted Successfully', 'Notification!' , {
+      this.toastr.success('Member Deleted Successfully', 'Notification!' , {
         timeOut : 4000 ,
         closeButton : true , 
         positionClass : 'toast-bottom-right'
@@ -81,13 +81,15 @@ export class DistributorsListComponent {
       return;
     }
     this.filteredDistributorUsefulData = this.distributorUsefulData.filter((distributorObj)=>{
-      console.log(distributorObj.distributorId);
-      if(distributorObj.area.toString().trim().toLowerCase().includes(dataReceived.toString().trim().toLowerCase()) || distributorObj.distributorName.toString().trim().toLowerCase().includes(dataReceived.toString().trim().toLowerCase()))
+      console.log(distributorObj.distributorKey);
+      if(distributorObj.contact.toString().trim().startsWith(dataReceived.toString().trim()))
       {
         return true;
       }
       return false;
     });
+
+    console.log('now it is = '+JSON.stringify(this.filteredDistributorUsefulData));
   }
 
 }

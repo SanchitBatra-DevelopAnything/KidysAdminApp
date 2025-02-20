@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ApiService } from '../services/api/api.service';
@@ -13,26 +13,25 @@ import { UtilityService } from '../services/utility/utility.service';
 })
 export class EditItemComponent {
 
-  ref:DynamicDialogRef | undefined;
-  itemKey:string = "";
-  fullConfig:any;
-  itemData:any = {};
-  categoryKey:string = "";
-  task:AngularFireUploadTask | any;
-  isLoading:boolean = false;
+  ref: DynamicDialogRef | undefined;
+  itemKey: string = "";
+  fullConfig: any;
+  itemData: any = {};
+  categoryKey: string = "";
+  task: AngularFireUploadTask | any;
+  isLoading: boolean = false;
 
-  originalUrl:string|undefined;
+  originalUrl: string | undefined;
 
   editItemForm: FormGroup = new FormGroup({
 
   });
   photoPreview: string | undefined;
-  selectedImage:any;
+  selectedImage: any;
 
-  constructor(private config:DynamicDialogConfig , private formBuilder:FormBuilder , private storage:AngularFireStorage , private apiService:ApiService , private toastr:ToastrService , private utilityService:UtilityService){}
-  
-  ngOnInit()
-  {
+  constructor(private config: DynamicDialogConfig, private formBuilder: FormBuilder, private storage: AngularFireStorage, private apiService: ApiService, private toastr: ToastrService, private utilityService: UtilityService) { }
+
+  ngOnInit() {
     this.fullConfig = this.config;
     this.itemKey = this.fullConfig["data"]["key"];
     this.itemData = this.fullConfig["data"]["itemData"];
@@ -43,17 +42,51 @@ export class EditItemComponent {
 
     this.editItemForm = this.formBuilder.group({
       itemName: [this.itemData["itemName"], Validators.required],
-      delhi_ncr_price: [this.itemData["delhi_ncr_price"], Validators.required],
-      out_station_price: [this.itemData["out_station_price"], Validators.required],
-      western_price: [this.itemData["western_price"], Validators.required],
-      super_stockist_price: [this.itemData["super_stockist_price"], Validators.required],
-      modern_trade_price: [this.itemData["modern_trade_price"], Validators.required],
-      details : [this.itemData['details']],
+      itemPrice: [this.itemData["itemPrice"], Validators.required],
+      slab_1_start: [this.itemData["slab_1_start"]],
+      slab_1_end: [this.itemData["slab_1_end"]],
+      slab_1_discount: [this.itemData["slab_1_discount"]],
+      slab_2_start: [this.itemData["slab_2_start"]],
+      slab_2_end: [this.itemData["slab_2_end"]],
+      slab_2_discount: [this.itemData["slab_2_discount"]],
+      slab_3_start: [this.itemData["slab_3_start"]],
+      slab_3_end: [this.itemData["slab_3_end"]],
+      slab_3_discount: [this.itemData["slab_3_discount"]],
+      areaPrices: this.formBuilder.array([])
     });
 
     this.photoPreview = this.itemData["imgUrl"];
     this.originalUrl = this.photoPreview; //set original url as the url originally , photoPreview will change if new image is selected.
+    this.fetchAreas();
+
   }
+
+  fetchAreas() {
+    this.apiService.getDistributorships().subscribe((areaData) => {
+      if (areaData) {
+        const areas = Object.values(areaData).map((area: any) => area.areaName);
+        this.initializeAreaPrices(areas, this.itemData.areaPrices || {});
+      }
+    });
+  }
+
+  initializeAreaPrices(areas: string[], existingAreaPrices: { [key: string]: number }): void {
+    const areaPricesArray = this.editItemForm.get('areaPrices') as FormArray;
+    areas.forEach((area) => {
+      areaPricesArray.push(
+        this.formBuilder.group({
+          areaName: [area.trim().toLowerCase()],
+          price: [existingAreaPrices[area.trim().toLowerCase()] ?? ''] // Pre-fill price if exists
+        })
+      );
+    });
+  }
+
+  get areaPricesControls() {
+    return (this.editItemForm.get('areaPrices') as FormArray).controls;
+  }
+
+
 
 
   onFileChange(event: any) {
@@ -67,46 +100,71 @@ export class EditItemComponent {
       };
       this.selectedImage = event.target.files[0];
     }
-    else
-    {
+    else {
       this.selectedImage = null;
     }
   }
 
-  async onSubmit(formValue : any)  {
+  async onSubmit(formValue: any) {
     if (this.editItemForm.valid) {
       // Process form data here
       this.isLoading = true;
-      if(this.originalUrl!=this.photoPreview)
-      {
-      var filePath = `items/${this.selectedImage.name}_${new Date().getTime()}`;
-      var fileRef = this.storage.ref(filePath);
-        this.task = this.storage.upload(filePath,this.selectedImage);
-        (await this.task).ref.getDownloadURL().then((url:any) => {
-            formValue["imgUrl"] = url;
-            this.apiService.editItem(this.categoryKey , this.itemKey , formValue).subscribe(()=>{
-              this.utilityService.itemEditted.next(this.itemKey);
-              this.isLoading = false;
-              this.toastr.success('Item Editted Successfully , Please close the form!', 'Notification!' , {
-                timeOut : 4000 ,
-                closeButton : true , 
-                positionClass : 'toast-top-right'
-              });
-              this.resetForm();
+      if (this.originalUrl != this.photoPreview) {
+        var filePath = `items/${this.selectedImage.name}_${new Date().getTime()}`;
+        var fileRef = this.storage.ref(filePath);
+        this.task = this.storage.upload(filePath, this.selectedImage);
+        (await this.task).ref.getDownloadURL().then((url: any) => {
+          formValue["imgUrl"] = url;
+          const formData = this.editItemForm.value;
+
+          // Convert areaPrices FormArray to a map, filtering out empty prices
+          const areaPricesMap: { [key: string]: number } = {};
+          formData.areaPrices.forEach((area: any) => {
+            if (area.price) { // Only add if price is provided
+              areaPricesMap[area.areaName] = Number(area.price);
+            }
+          });
+
+          const requestBody = {
+            ...formData,
+            areaPrices: areaPricesMap
+          };
+          this.apiService.editItem(this.categoryKey, this.itemKey, requestBody).subscribe(() => {
+            this.utilityService.itemEditted.next(this.itemKey);
+            this.isLoading = false;
+            this.toastr.success('Item Editted Successfully , Please close the form!', 'Notification!', {
+              timeOut: 4000,
+              closeButton: true,
+              positionClass: 'toast-top-right'
             });
-         });
+            this.resetForm();
+          });
+        });
       }
-      else
-      {
+      else {
         //photo was same , only update the items content.
         formValue["imgUrl"] = this.originalUrl;
-        this.apiService.editItem(this.categoryKey , this.itemKey , formValue).subscribe((_)=>{
+        const formData = this.editItemForm.value;
+
+          // Convert areaPrices FormArray to a map, filtering out empty prices
+          const areaPricesMap: { [key: string]: number } = {};
+          formData.areaPrices.forEach((area: any) => {
+            if (area.price) { // Only add if price is provided
+              areaPricesMap[area.areaName] = Number(area.price);
+            }
+          });
+
+          const requestBody = {
+            ...formData,
+            areaPrices: areaPricesMap
+          };
+        this.apiService.editItem(this.categoryKey, this.itemKey, requestBody).subscribe((_) => {
           this.utilityService.itemEditted.next(this.itemKey);
           this.isLoading = false;
-          this.toastr.success('Item Editted Successfully , Please close the form!', 'Notification!' , {
-            timeOut : 4000 ,
-            closeButton : true , 
-            positionClass : 'toast-top-right'
+          this.toastr.success('Item Editted Successfully , Please close the form!', 'Notification!', {
+            timeOut: 4000,
+            closeButton: true,
+            positionClass: 'toast-top-right'
           });
           this.resetForm();
         });
@@ -116,8 +174,7 @@ export class EditItemComponent {
     }
   }
 
-  resetForm()
-  {
+  resetForm() {
     this.editItemForm.reset();
     this.photoPreview = undefined;
     this.originalUrl = this.photoPreview;

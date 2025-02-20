@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { BrandOnboardComponent } from '../brand-onboard/brand-onboard.component';
 
 @Component({
   selector: 'app-categories-list',
   templateUrl: './categories-list.component.html',
   styleUrls: ['./categories-list.component.scss']
 })
-export class CategoriesListComponent implements OnInit {
+export class CategoriesListComponent {
 
   isLoading : boolean = false;
   categoryList : any[] = [];
   categoryKeys : any[] = [];
+  ref:DynamicDialogRef | undefined;
 
-
-  constructor(private apiService : ApiService) { }
+  constructor(private apiService:ApiService , private dialogService : DialogService){}
 
   ngOnInit(): void {
     this.loadCategories();
@@ -33,6 +35,16 @@ export class CategoriesListComponent implements OnInit {
 
       this.isLoading = false;
     });
+  }
+
+  onBrandOnboard()
+  {
+       this.ref = this.dialogService.open(BrandOnboardComponent, { 
+          header: 'Onboard a brand.',
+          maximizable:true,
+          height : "800px",
+          width:"600px",
+      });
   }
 
 }

@@ -20,22 +20,7 @@ export class OrdersComponent implements OnInit{
 
   ngOnInit() : void{
     this.isLoading = true;
-    this.getMaintenanceInfo();
     this.getActiveOrders();
-  }
-
-  getMaintenanceInfo()
-  {
-    this.apiService.checkMaintenance().subscribe((data)=>{
-      if(data == null)
-      {
-        return;
-      }
-      if(data['off'] && !data['showMessage'])
-      {
-        this.router.navigate(['']);
-      }
-    }); 
   }
 
   getActiveOrders()
@@ -48,24 +33,8 @@ export class OrdersComponent implements OnInit{
         this.activeOrdersKeys = [];
         return;
       }
-      let areaDeleted = Object.values(orders);
-      let allOrders = [];
-      for(let i=0;i<areaDeleted.length;i++)
-      {
-        let areaOrder:any = areaDeleted[i];
-        for(const name in areaOrder)
-        {
-          allOrders.push(areaOrder[name]);
-        }
-      }
-      for(let i=0;i<allOrders.length;i++)
-      {
-        for(const o in allOrders[i])
-        {
-          this.activeOrdersKeys.push(o);
-          this.activeOrders.push(allOrders[i][o]);
-        }
-      }
+      this.activeOrders = Object.values(orders);
+      this.activeOrdersKeys = Object.keys(orders);
       this.isLoading = false;
     });
     
@@ -73,14 +42,11 @@ export class OrdersComponent implements OnInit{
 
   showBill(area:string , orderedBy : string, orderKey:string)
   {
-    this.router.navigate(['orderBill/'+area+'/'+orderedBy+'/'+orderKey]);
+    this.router.navigate(['orderBill/'+orderKey]);
   }
 
   oldOrderPage()
   {
     this.router.navigate(['/processedOrders']);
   }
-
-
-
 }
