@@ -26,6 +26,7 @@ export class OrderDetailComponent {
   dataSource:any;
   discount:number = 0;
   subTotal:number = 0;
+  adminType:any = 'Sub';
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
@@ -36,6 +37,7 @@ export class OrderDetailComponent {
     this.isLoading = false;
     this.orderKey = this.route.snapshot.params['orderKey'];
     this.displayedColumns = ['Sno' , 'Item','Quantity'  , 'Price' , 'Discount', 'Discounted Price'];
+    this.adminType = sessionStorage.getItem('adminType');
     this.getOrderItems();
   }
 

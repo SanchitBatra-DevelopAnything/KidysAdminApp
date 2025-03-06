@@ -54,6 +54,8 @@ import { OldOrdersComponent } from './orders/old-orders/old-orders.component';
 import { OldOrderDetailComponent } from './orders/old-order-detail/old-order-detail.component';
 import { DistributorAreasComponent } from './manage/distributor-areas/distributor-areas.component';
 import { AddAreaFormComponent } from './add-area-form/add-area-form.component';
+import { AdminsComponent } from './manage/admins/admins.component';
+import { AddAdminFormComponent } from './add-admin-form/add-admin-form.component';
 
 // import { EditItemComponent } from './edit-item/edit-item.component';
 // import { DistributorAreasComponent } from './manage/distributor-areas/distributor-areas.component';
@@ -77,6 +79,7 @@ const appRoutes : Routes = [
   {path : 'manage' , component : ManageComponent , children:[
     {path : 'distributors', component : DistributorsListComponent},
     {path : 'areas', component : DistributorAreasComponent},
+    {path : 'admins' , component : AdminsComponent}
   ] ,},
   {path : 'processedOrders' , component : OldOrdersComponent},
   {path : 'orderBill/:orderKey' , component : OrderDetailComponent},
@@ -104,6 +107,8 @@ const appRoutes : Routes = [
     OldOrderDetailComponent,
     DistributorAreasComponent,
     AddAreaFormComponent,
+    AdminsComponent,
+    AddAdminFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,8 @@ export class UtilityService {
   skippedMaintenance:Subject<boolean>;
 
   itemAddedInExistingOrder:Subject<boolean>;
+  adminAdded:Subject<boolean>;
+  categoryAdded:Subject<boolean>;
 
   constructor() { 
     this.userLoggedIn = new Subject<boolean>();
@@ -21,5 +23,7 @@ export class UtilityService {
     this.areaAdded = new Subject<string>();
     this.skippedMaintenance = new Subject<boolean>();
     this.itemAddedInExistingOrder = new Subject<boolean>();
+    this.adminAdded = new Subject<boolean>();
+    this.categoryAdded = new Subject<boolean>();
   }
 }

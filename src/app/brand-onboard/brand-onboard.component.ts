@@ -26,7 +26,7 @@ export class BrandOnboardComponent implements OnInit {
   photoPreview: string | undefined;
   selectedImage: any;
 
-  constructor(private config: DynamicDialogConfig, private formBuilder: FormBuilder, private storage: AngularFireStorage, private apiService: ApiService, private toastr: ToastrService) { }
+  constructor(private config: DynamicDialogConfig, private formBuilder: FormBuilder, private storage: AngularFireStorage, private apiService: ApiService, private toastr: ToastrService , private utilityService:UtilityService) { }
 
   ngOnInit() {
     this.addBrandForm = this.formBuilder.group({
@@ -71,9 +71,11 @@ export class BrandOnboardComponent implements OnInit {
                 positionClass: 'toast-top-right'
               });
               this.resetForm();
+              this.utilityService.categoryAdded.next(true);
+              this.ref?.close();
             })
           }
-
+          
         });
       });
     } else {

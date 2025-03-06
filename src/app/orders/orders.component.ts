@@ -25,7 +25,8 @@ export class OrdersComponent implements OnInit{
 
   getActiveOrders()
   {
-    this.apiService.getActiveOrders().subscribe((orders)=>{
+    console.log("Getting active orders");
+    this.apiService.getActiveOrders().subscribe((orders:any)=>{
       if(orders == null)
       {
         this.isLoading = false;
@@ -33,9 +34,33 @@ export class OrdersComponent implements OnInit{
         this.activeOrdersKeys = [];
         return;
       }
-      this.activeOrders = Object.values(orders);
-      this.activeOrdersKeys = Object.keys(orders);
+      if(sessionStorage.getItem('adminType')!='Sub')
+      {
+        //for SuperAdmins
+        this.activeOrders = Object.values(orders);
+        this.activeOrdersKeys = Object.keys(orders);
+        this.isLoading = false;
+      }
+      else
+      {
+        //for Sub-Admins
+        // Convert object to array
+        console.log("Starting to filter the orders");
+        const adminArea = sessionStorage.getItem('loggedInArea');
+      const allOrderData = Object.values(orders);
+      const allOrderKeys = Object.keys(orders);
+  
+      // Filter only those admins where type === "Sub"
+      const filteredOrders = allOrderData.map((order, index) => ({ order, key: allOrderKeys[index] }))
+                                        .filter((item:any) => item.order.area.trim().toLowerCase() == adminArea?.trim().toLowerCase());
+  
+      // Extract filtered data back into separate arrays
+      this.activeOrders = filteredOrders.map(item => item.order);
+      this.activeOrdersKeys = filteredOrders.map(item => item.key);
+  
       this.isLoading = false;
+      }
+      
     });
     
   }

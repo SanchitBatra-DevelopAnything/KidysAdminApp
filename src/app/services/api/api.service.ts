@@ -281,4 +281,14 @@ export class ApiService {
   {
     return this.http.put(this.dbUrl+"onlyCategories/"+parentKey+".json" , formValue);
   }
+
+  public deleteAdmin(adminKey:any) : Observable<any>
+  {
+    return this.http.delete(this.dbUrl+"admins/"+adminKey+".json");
+  }
+
+  public addAdmin(adminBody:any) : Observable<any>
+  {
+    return this.http.post(this.dbUrl+"admins.json" , adminBody);
+  }
 }

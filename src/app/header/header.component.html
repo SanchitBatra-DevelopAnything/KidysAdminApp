@@ -38,13 +38,13 @@
     </ng-template>
     <hr class = "custom-hr">
     <ng-template pTemplate="content">
-        <h4 class = "pangolin option"><a routerLink = "/categories" routerLinkActive = "active-link" (click) = "openDrawer = false;">CATEGORIES</a></h4>
+        <h4 class = "pangolin option"><a routerLink = "/categories" routerLinkActive = "active-link" (click) = "openDrawer = false;" *ngIf = "adminType!='Sub'">CATEGORIES</a></h4>
         <hr class = "custom-hr">
         <h4 class = "pangolin option"><a routerLink = "/dailyReport" routerLinkActive = "active-link" (click) = "openDrawer = false;">ORDERS</a></h4>
         <hr class = "custom-hr">
-        <h4 class = "pangolin option"><a routerLink = "/notifications" routerLinkActive = "active-link" (click) = "openDrawer = false;">NOTIFICATIONS</a></h4>
+        <h4 class = "pangolin option"><a routerLink = "/notifications" routerLinkActive = "active-link" (click) = "openDrawer = false;" *ngIf = "adminType!='Sub'">NOTIFICATIONS</a></h4>
         <hr class = "custom-hr">
-        <h4 class = "pangolin option"><a routerLink = "/manage" routerLinkActive = "active-link" (click) = "openDrawer = false;">MANAGE</a></h4>
+        <h4 class = "pangolin option"><a routerLink = "/manage" routerLinkActive = "active-link" (click) = "openDrawer = false;" *ngIf = "adminType!='Sub'">MANAGE</a></h4>
         <hr class = "custom-hr">
     </ng-template>
 </p-sidebar>

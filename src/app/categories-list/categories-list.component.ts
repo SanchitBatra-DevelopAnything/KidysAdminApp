@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { BrandOnboardComponent } from '../brand-onboard/brand-onboard.component';
+import { UtilityService } from '../services/utility/utility.service';
+import { Subscribable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-categories-list',
@@ -14,11 +16,15 @@ export class CategoriesListComponent {
   categoryList : any[] = [];
   categoryKeys : any[] = [];
   ref:DynamicDialogRef | undefined;
+  categoryAddedSub:Subscription = new Subscription();
 
-  constructor(private apiService:ApiService , private dialogService : DialogService){}
+  constructor(private apiService:ApiService , private dialogService : DialogService , private utilityService : UtilityService){}
 
   ngOnInit(): void {
     this.loadCategories();
+    this.categoryAddedSub = this.utilityService.categoryAdded.subscribe((_)=>{
+      this.loadCategories();
+    });
   }
 
   loadCategories()
@@ -45,6 +51,11 @@ export class CategoriesListComponent {
           height : "800px",
           width:"600px",
       });
+  }
+
+  onDestroy()
+  {
+    this.categoryAddedSub.unsubscribe();
   }
 
 }

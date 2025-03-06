@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -10,7 +10,7 @@ import { UtilityService } from '../services/utility/utility.service';
   templateUrl: './add-area-form.component.html',
   styleUrls: ['./add-area-form.component.scss']
 })
-export class AddAreaFormComponent implements OnInit{
+export class AddAreaFormComponent implements OnInit,OnDestroy{
 
   ref:DynamicDialogRef | undefined;
   isLoading:boolean = false;
@@ -41,6 +41,8 @@ export class AddAreaFormComponent implements OnInit{
     }
   }
 
-
-
+  ngOnDestroy(): void {
+    this.utilityService.areaAdded.unsubscribe();
+  }
+  
 }

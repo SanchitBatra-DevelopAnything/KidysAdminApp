@@ -41,12 +41,34 @@ export class OldOrdersComponent {
           this.isLoading = false;
           return;
         }
-        this.processedOrders = Object.values(orders);
-        this.processedOrderKeys = Object.keys(orders);
-        this.isLoading = false;
-      });
-    
-    
+        if(sessionStorage.getItem('adminType')!='Sub')
+          {
+            //for SuperAdmins
+            this.processedOrders = Object.values(orders);
+            this.processedOrderKeys = Object.keys(orders);
+            this.isLoading = false;
+          }
+          else
+          {
+            //for Sub-Admins
+            // Convert object to array
+            console.log("Starting to filter the orders");
+            const admin_username = sessionStorage.getItem('loggedInUser');
+          const allOrderData = Object.values(orders);
+          const allOrderKeys = Object.keys(orders);
+      
+          // Filter only those admins where type === "Sub"
+          const filteredOrders = allOrderData.map((order, index) => ({ order, key: allOrderKeys[index] }))
+                                            .filter((item:any) => item.order.acceptedBy.trim() == admin_username?.trim());
+      
+          // Extract filtered data back into separate arrays
+          this.processedOrders = filteredOrders.map(item => item.order);
+          this.processedOrderKeys = filteredOrders.map(item => item.key);
+      
+          this.isLoading = false;
+          }
+          
+        });
   }
 
   showBill(order:any , orderKey:any)

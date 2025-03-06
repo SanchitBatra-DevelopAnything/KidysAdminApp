@@ -10,11 +10,12 @@ export class HeaderComponent implements OnInit {
 
   loggedIn = true;
   openDrawer:boolean = false;
+  adminType:any = "Sub"
 
   constructor(private utilityService:UtilityService) { }
 
   ngOnInit(): void {
-    
+    this.adminType = sessionStorage.getItem('adminType');
   }
 
   onLogout()

@@ -84,7 +84,7 @@ export class LoginComponent {
         alert('invalid password');
         return;
       }
-      this.loginSuccessfull();
+      this.loginSuccessfull(adminIndex);
     }
     else
     {
@@ -106,12 +106,25 @@ export class LoginComponent {
     return -1;
   }
 
-  loginSuccessfull()
+  loginSuccessfull(adminIndex:any)
   {
+    let arr = Object.values(this.admins);
+    let currentAdmin : any = arr[adminIndex];
     sessionStorage.setItem("loggedInUser" , this.loginForm.value.username);
     sessionStorage.setItem("loggedIn" , "true");
+    sessionStorage.setItem("adminType" , currentAdmin.type);
+    //super admin has no area but type = Super , each sub-admin has an area.
+    sessionStorage.setItem("loggedInArea" , currentAdmin.area);
     this.utilityService.userLoggedIn.next(true); //inform app component ki header on kardo.
-    this.router.navigate(['/categories']);
+    if(sessionStorage.getItem('adminType')!='Sub')
+    {
+      this.router.navigate(['/categories']);
+    }
+    else
+    {
+      this.router.navigate(['/dailyReport']);
+    }
+
   }
 
   ngOnDestroy()
